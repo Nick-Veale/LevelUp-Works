@@ -1,0 +1,45 @@
+h2 {
+    font-family: nunito;
+}
+
+.whatWeOffer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.leftOfferDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 1000px;
+    flex: 2;
+}
+/* 
+.wwoText {
+    width: 400px;
+} */
+
+.wwoSlider {
+    display: flex;
+    justify-content: flex-end;
+    flex: 1;
+}
+
+.imageSlider {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.leftArrow {
+    height: 30%;
+    position: relative;
+    left: 9%;
+}
+
+.rightArrow {
+    height: 30%;
+    position: relative;
+    right: 9%;
+}
