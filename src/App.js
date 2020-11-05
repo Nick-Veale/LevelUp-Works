@@ -1,19 +1,23 @@
 import React from 'react';
+import Homepage from './Homepage';
 import Nav from './Components/Nav';
-import SignUp from './Components/SignUp';
-import Offer from './Components/Offer';
-import Skills from './Components/Skills';
-import './App.css';
+import Features from './Features';
+import Teachers from './Teachers';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 class App extends React.Component{
   render() {
     return (
-      <div>
-          <Nav />
-          <SignUp />
-          <Offer />
-          <Skills />
-      </div>
+      <Router>
+        <div>
+            <Nav />
+              <Switch>
+                <Route exact path="/" component={Homepage} />
+                <Route path="/features" component={Features} />
+                <Route path="/teachers" component={Teachers} />
+              </Switch>
+        </div>  
+      </Router>
     )
   }
 };
