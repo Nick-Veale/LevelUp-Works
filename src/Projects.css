@@ -1,0 +1,33 @@
+.projectsHeader {
+  margin-left: 22%;
+  margin-right: 10%;
+}
+
+.projectsH1 {
+  font-weight: bold;
+}
+
+.projFilterControls {
+  position: relative;
+  bottom: 30px;
+  margin-left: 10%;
+  width: 169px;
+  height: 600px;
+  border: 2px solid black;
+}
+
+.projFilterControlsTop {
+  margin-left: 22%;
+  margin-right: 10%;
+  border: 2px solid black;
+  height: 30px;
+}
+
+.projContent {
+  position: relative;
+  bottom: 590px;
+  margin-left: 22%;
+  margin-right: 10%;
+  height: 2400px;
+  border: 2px solid black;
+}

@@ -1,9 +1,10 @@
 import React from 'react';
 import Homepage from './Homepage';
 import Nav from './Components/Nav';
-import Features from './Features';
+import Projects from './Projects';
 import Teachers from './Teachers';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+
 
 class App extends React.Component{
   render() {
@@ -13,7 +14,7 @@ class App extends React.Component{
             <Nav />
               <Switch>
                 <Route exact path="/" component={Homepage} />
-                <Route path="/features" component={Features} />
+                <Route path="/projects" component={Projects} />
                 <Route path="/teachers" component={Teachers} />
               </Switch>
         </div>  
