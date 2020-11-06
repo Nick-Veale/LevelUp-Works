@@ -1,1 +1,4 @@
 [1105/090507.833:ERROR:process_info.cc(359)] UncheckedAllocate
+[1105/135407.812:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[1106/170545.095:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\Nick Veale\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\c97f77ae-0fd2-49c0-93a9-0a1f710da7b2: The system cannot find the path specified. (0x3)
+[1106/170545.098:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
