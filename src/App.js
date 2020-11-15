@@ -4,6 +4,18 @@ import Nav from './Components/Nav';
 import Projects from './Projects';
 import Teachers from './Teachers';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import { createMuiTheme } from '@material-ui/core/styles';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#43C0F6'
+    },
+    secondary: {
+      main: '#F91C85'
+    }
+  }
+});
 
 
 class App extends React.Component{

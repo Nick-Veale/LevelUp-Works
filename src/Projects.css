@@ -4,7 +4,12 @@
 }
 
 .projectsH1 {
-  font-weight: bold;
+  font-weight: bolder;
+  margin-bottom: 30px;
+}
+.projectsH4 {
+  font-size: 1.2em;
+  margin: 20px, 0px, 20px, 0px;
 }
 
 .projFilterControls {
@@ -13,14 +18,14 @@
   margin-left: 10%;
   width: 169px;
   height: 600px;
-  border: 2px solid black;
 }
 
 .projFilterControlsTop {
   margin-left: 22%;
   margin-right: 10%;
-  border: 2px solid black;
   height: 30px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .projContent {
@@ -30,4 +35,18 @@
   margin-right: 10%;
   height: 2400px;
   border: 2px solid black;
+}
+
+.MuiFormLabel-root {
+  border-bottom: 2px solid grey;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  margin-top: 20px;
+}
+.MuiFormControlLabel-root {
+  font-size: 50%;
+}
+
+Button:focus {
+  outline: none;
 }

@@ -9,7 +9,8 @@ class SignUp extends React.Component {
         const signUpDivStyle = {
             backgroundImage: "url(" + background + ")",
             backgroundSize: "120%",
-            backgroundPosition: "center"
+            backgroundPosition: "center",
+            zIndex: '-1'
         };
 
         return (
