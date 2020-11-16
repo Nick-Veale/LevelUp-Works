@@ -1,0 +1,91 @@
+.profileDiv {
+  background-color: #eeeeee;
+}
+
+.profileContent {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 75px;
+}
+
+.profilePhoto {
+  height: 500px;
+  width: 300px;
+  border: 2px solid #e2e2e2;
+  border-radius: 30px;
+  background-color: white;
+  text-align: center;
+  margin: 30px;
+  padding: 50px;
+}
+
+.photo {
+  height: 150px;
+  border-radius: 50%;
+  margin-bottom: 50px;
+}
+
+.profileInfo {
+  height: 600px;
+  width: 700px;
+  border: 2px solid #e2e2e2;
+  border-radius: 30px;
+  background-color: white;
+  text-align: center;
+  margin: 30px;
+  padding: 50px;
+  font-size: 1.5em;
+  color: grey;
+}
+
+.infoSpan {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px;
+  font-family: nunito;
+  font-weight: 700;
+}
+
+#profileNameHeading {
+  font-size: 2em;
+  margin-bottom: 70px;
+}
+
+.profileEditButton {
+  font-family: nunito;
+  font-weight: 700;
+  width: 150px;
+  height: 30px;
+  border: 3px solid #43c0f6;
+  color: #43c0f6;
+  background-color: white;
+  border-radius: 8px;
+  margin: 10px;
+  box-shadow: 0px 2px 5px rgb(0, 0, 0, 0.3);
+  font-size: 0.8em;
+}
+
+.backButton {
+  position: relative;
+  left: 1280px;
+  bottom: 60px;
+  background-color: #f91c85;
+  border: 0px;
+  border-radius: 7px;
+  color: white;
+  font-family: nunito;
+  font-weight: 700;
+  font-size: 1em;
+  width: 200px;
+  height: 30px;
+  box-shadow: 0px 2px 5px rgb(0, 0, 0, 0.3);
+}
+
+button:focus {
+  outline: none;
+}
+
+.infoSpanContainer {
+  margin-bottom: 20px;
+}

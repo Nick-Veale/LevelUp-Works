@@ -1,13 +1,13 @@
 import React from 'react';
 import './Offer.css';
-import proj1 from '../img/proj1.png'
-import proj2 from '../img/proj2.png'
-import proj3 from '../img/proj3.png'
-import proj4 from '../img/proj4.png'
-import animation from '../img/animation.png'
-import augmentedReality from '../img/augmentedReality.png'
-import chatBots from '../img/chatBots.png'
-import games from '../img/games.png'
+import proj1 from '../../../../img/proj1.png'
+import proj2 from '../../../../img/proj2.png'
+import proj3 from '../../../../img/proj3.png'
+import proj4 from '../../../../img/proj4.png'
+import animation from '../../../../img/animation.png'
+import augmentedReality from '../../../../img/augmentedReality.png'
+import chatBots from '../../../../img/chatBots.png'
+import games from '../../../../img/games.png'
 
 class Offer extends React.Component{
 

@@ -1,9 +1,9 @@
 import React from 'react';
 import './Skills.css';
-import lilAtom from '../img/lilAtom.png';
-import ideaCloud from '../img/ideaCloud.png';
-import collabHands from '../img/collabHands.png';
-import brainBulb from '../img/brainBulb.png';
+import lilAtom from '../../../../img/lilAtom.png';
+import ideaCloud from '../../../../img/ideaCloud.png';
+import collabHands from '../../../../img/collabHands.png';
+import brainBulb from '../../../../img/brainBulb.png';
 
 
 class Skills extends React.Component {

@@ -41,10 +41,16 @@ export default function Projects() {
 
     useEffect(() => {
         // this is where I would put my fetch call the either the server or the API.
+        setCallDetails({
+            subscription: subscription,
+            activity: activity,
+            yearLevel: yearLevel,
+            subject: subject,
+            complexity: complexity
+        });
+        
 
-    }, [callDetails])
-
-    
+    }, [subscription], [activity], [yearLevel], [subject], [complexity]);
 
     return (
         <div>

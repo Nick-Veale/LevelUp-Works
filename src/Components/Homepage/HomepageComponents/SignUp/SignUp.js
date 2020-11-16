@@ -1,6 +1,6 @@
 import React from 'react';
 import './SignUp.css';
-import background from '../img/heroImage1.jpg';
+import background from '../../../../img/heroImage1.jpg';
 
 class SignUp extends React.Component {
 
