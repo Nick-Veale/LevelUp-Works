@@ -10,6 +10,7 @@ import teachers from '../../img/teacher.png';
 import ClearIcon from '@material-ui/icons/Clear';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import profilePicture from '../../img/profilePicture.png';
+import teacherProfilePicture from '../../img/teacherProfilePicture.png';
 
 function Nav() {
 
@@ -18,6 +19,7 @@ function Nav() {
     const [signStyle, setSignStyle] = useState({borderBottom: '4px solid #f91c85'});
     const [logStyle, setLogStyle] = useState({});
     const [loggedIn, setLoggedIn] = useState(true);
+    const [teacher, setTeacher] = useState(true);
 
     const clearIconStyles = {
         position: 'relative',
@@ -112,13 +114,23 @@ function Nav() {
                             </Modal>
             </span>);
         } else {
-            return (
-                <span>
-                    <Link style={navStyle} to="/Profile">
-                        <span style={{cursor: 'pointer'}}><img style={{width: '25px', borderRadius: '50%'}} src={profilePicture} alt=""></img> Rawiri Fletcher</span>
-                    </Link>
-                </span>
-            );
+            if (teacher === false) {
+                return (
+                    <span>
+                        <Link style={navStyle} to="/Profile">
+                            <span style={{cursor: 'pointer'}}><img style={{width: '25px', borderRadius: '50%'}} src={profilePicture} alt=""></img> Rawiri Fletcher</span>
+                        </Link>
+                    </span>
+                );
+            } else {
+                return (
+                    <span>
+                        <Link style={navStyle} to="/Profile">
+                            <span className="profileSpan" style={{cursor: 'pointer'}}><img style={{width: '25px', borderRadius: '50%'}} src={teacherProfilePicture} alt=""></img> Jasmina Salvador</span>
+                        </Link>
+                    </span>
+                );
+            };
         };
     };
     

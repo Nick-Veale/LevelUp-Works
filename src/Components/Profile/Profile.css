@@ -82,6 +82,38 @@
   box-shadow: 0px 2px 5px rgb(0, 0, 0, 0.3);
 }
 
+.backDashButton {
+  position: relative;
+  left: 1080px;
+  bottom: 60px;
+  background-color: #f91c85;
+  border: 0px;
+  border-radius: 7px;
+  color: white;
+  font-family: nunito;
+  font-weight: 700;
+  font-size: 1em;
+  width: 200px;
+  height: 30px;
+  box-shadow: 0px 2px 5px rgb(0, 0, 0, 0.3);
+}
+
+.backProjButton {
+  position: relative;
+  left: 1060px;
+  bottom: 60px;
+  background-color: #e5ab2c;
+  border: 0px;
+  border-radius: 7px;
+  color: white;
+  font-family: nunito;
+  font-weight: 700;
+  font-size: 1em;
+  width: 200px;
+  height: 30px;
+  box-shadow: 0px 2px 5px rgb(0, 0, 0, 0.3);
+}
+
 button:focus {
   outline: none;
 }
