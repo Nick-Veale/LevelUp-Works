@@ -195,3 +195,8 @@ li:hover {
 #ModalStyle {
   outline: none;
 }
+
+.profileSpan {
+  display: inline;
+  font-size: 0.8em;
+}
