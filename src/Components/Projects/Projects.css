@@ -34,7 +34,6 @@
   margin-left: 22%;
   margin-right: 10%;
   height: 2400px;
-  border: 2px solid black;
 }
 
 .MuiFormLabel-root {
@@ -49,4 +48,31 @@
 
 Button:focus {
   outline: none;
+}
+
+.projectItemDiv {
+  display: inline-block;
+  text-align: center;
+  width: 320px;
+  height: 320px;
+  margin: 20px;
+}
+
+.projectItemImage {
+  border: 2px solid grey;
+  border-radius: 15px;
+  width: 314px;
+  height: 221px;
+  box-shadow: 0px 2px 5px rgb(0, 0, 0, 0.4);
+}
+
+.projectItemText {
+  display: block;
+}
+
+.projectItemHeading {
+  font-family: nunito;
+  font-weight: 700;
+  margin-top: 10px;
+  color: grey;
 }
