@@ -1,11 +1,15 @@
 import React from 'react';
 import Homepage from './Components/Homepage/Homepage';
 import Nav from './Components/Nav/Nav';
-import Projects from './Components/Projects/Projects';
+import ProjectsStudent from './Components/Projects/ProjectsStudent';
+import ProjectsTeacher from './Components/Projects/ProjectsTeacher';
 import Teachers from './Components/Teachers/Teachers';
-import Profile from './Components/Profile/Profile.js';
+import Profile from './Components/Profile/Profile';
+import Students from './Components/Students/Students';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import { createMuiTheme } from '@material-ui/core/styles';
+import StudentProjectBuilder from './Components/Projects/ProjectBuilder/StudentProjectBuilder'
+import TeacherProjectBuilder from './Components/Projects/ProjectBuilder/TeacherProjectBuilder'
 
 const theme = createMuiTheme({
   palette: {
@@ -27,8 +31,12 @@ class App extends React.Component{
             <Nav />
               <Switch>
                 <Route exact path="/" component={Homepage} />
-                <Route path="/projects" component={Projects} />
+                <Route path="/students/projects" component={ProjectsStudent} />
+                <Route exact path="/students/projectbuilder" component={StudentProjectBuilder} />
+                <Route exact path="/teachers/projectbuilder" component={TeacherProjectBuilder} />
+                <Route path="/teachers/projects" component={ProjectsTeacher} />
                 <Route path="/teachers" component={Teachers} />
+                <Route path="/students" component={Students} />
                 <Route path="/profile" component={Profile} />
               </Switch>
         </div>  
