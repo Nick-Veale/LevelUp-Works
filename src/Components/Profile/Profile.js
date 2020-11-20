@@ -2,10 +2,11 @@ import React from 'react';
 import './Profile.css';
 import ProfilePicture from '../../img/profilePicture.png';
 import teacherProfilePicture from '../../img/teacherProfilePicture.png';
+import { Link } from 'react-router-dom';
 
 export default function Profile() {
 
-    const [teacher, setTeacher] = React.useState(true);
+    const [teacher, setTeacher] = React.useState(false);
 
     if (teacher) {
         return (
@@ -43,7 +44,13 @@ export default function Profile() {
                         </div>
                     </div>
                 </span>
-                <button className="backProjButton">BACK TO PROJECTS</button><button className="backDashButton">BACK TO DASHBOARD</button>
+                <Link to="/projects">
+                    <button className="backProjButton">BACK TO PROJECTS</button>
+                </Link>
+                <Link to="/teachers">
+                    <button className="backDashButton">BACK TO DASHBOARD</button>
+                </Link>
+                
             </div>
         );
     } else {
@@ -85,7 +92,9 @@ export default function Profile() {
                         </div>
                     </div>
                 </span>
-                <button className="backButton">BACK TO PROJECTS</button>
+                <Link to="/projects">
+                    <button className="backButton">BACK TO PROJECTS</button>
+                </Link>
             </div>
         );
     };
