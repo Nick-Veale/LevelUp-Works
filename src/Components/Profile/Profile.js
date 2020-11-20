@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 export default function Profile() {
 
-    const [teacher, setTeacher] = React.useState(true);
+    const [teacher, setTeacher] = React.useState(false);
 
     if (teacher) {
         return (

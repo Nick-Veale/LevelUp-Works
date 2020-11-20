@@ -131,7 +131,6 @@ function Nav() {
             if (teacher === false) {
                 return (
                     <span>
-                        <Link style={navStyle} to="/Profile">
                             <span 
                             aria-controls="simple-menu" 
                             aria-haspopup="true" 
@@ -154,18 +153,16 @@ function Nav() {
                                     color: 'black'
                                     }} 
                                     to="/profile">
-                                    <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+                                    <MenuItem onClick={handleMenuClose}>My Profile</MenuItem>
                                 </Link>
-                                <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+                                <MenuItem onClick={handleMenuClose}>Settings</MenuItem>
                                 <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
                             </Menu>
-                        </Link>
                     </span>
                 );
             } else {
                 return (
                     <span>
-                        <Link style={navStyle} to="/Profile">
                             <span 
                             aria-controls="simple-menu" 
                             aria-haspopup="true" 
@@ -183,12 +180,11 @@ function Nav() {
                                 onClose={handleMenuClose}
                             >
                                 <Link to="/profile">
-                                    <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+                                    <MenuItem onClick={handleMenuClose}>My Profile</MenuItem>
                                 </Link>
-                                <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+                                <MenuItem onClick={handleMenuClose}>Settings</MenuItem>
                                 <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
                             </Menu>
-                        </Link>
                     </span>
                 );
             };
