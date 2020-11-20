@@ -59,11 +59,11 @@ Button:focus {
 }
 
 .projectItemImage {
-  border: 2px solid grey;
+  /* border: 2px solid grey; */
   border-radius: 15px;
   width: 314px;
   height: 221px;
-  box-shadow: 0px 2px 5px rgb(0, 0, 0, 0.4);
+  /* box-shadow: 0px 2px 5px rgb(0, 0, 0, 0.4); */
 }
 
 .projectItemText {

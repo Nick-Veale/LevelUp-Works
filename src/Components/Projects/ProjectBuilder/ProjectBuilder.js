@@ -4,7 +4,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import BottomNavigation from '@material-ui/core/BottomNavigation';
 import List from '@material-ui/core/List';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
@@ -28,6 +27,8 @@ import Settings from '@material-ui/icons/Settings';
 import ExitToApp from '@material-ui/icons/ExitToApp';
 import './ProjectBuilder.css';
 import profilePicture from '../../../img/profilePicture.png';
+import teacherProfilePicture from '../../../img/teacherProfilePicture.png';
+import {Link} from 'react-router-dom';
 
 const drawerWidth = 280;
 
@@ -112,7 +113,8 @@ const useStyles = makeStyles((theme) => ({
 export default function MiniDrawer() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
-  const [projectWindow, setProjectWindow] = React.useState(0)
+  const [projectWindow, setProjectWindow] = React.useState(0);
+  const [teacher, setTeacher] = React.useState(true);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -177,6 +179,88 @@ export default function MiniDrawer() {
     setProjectWindow(id);
   };
 
+  const handleSideBarItems = () => {
+    if (teacher) {
+      return (
+        <List>
+          <ListItem style={sideBarButton(0)} button onClick={() => handleSidebarClick(0)}>
+            <ListItemIcon><img style={sideBarIcon()} src={objectivesLight} alt="" /></ListItemIcon>
+            <div id="sideBarText">Learning Objectives</div>
+          </ListItem>
+          <ListItem style={sideBarButton(1)} button onClick={() => handleSidebarClick(1)}>
+            <ListItemIcon><img style={sideBarIcon()} src={steps} alt="" /></ListItemIcon>
+            <div id="sideBarText">Instructions</div>
+          </ListItem>
+          <ListItem style={sideBarButton(2)} button onClick={() => handleSidebarClick(2)}>
+            <ListItemIcon><img style={sideBarIcon()} src={videoLight} alt="" /></ListItemIcon>
+            <div id="sideBarText">Video Tutorial</div>
+          </ListItem>
+          <ListItem style={sideBarButton(3)} button onClick={() => handleSidebarClick(3)}>
+            <ListItemIcon><img style={sideBarIcon()} src={newProj} alt="" /></ListItemIcon>
+            <div id="sideBarText">Preview Project</div>
+          </ListItem>
+          <ListItem style={sideBarButton(4)} button onClick={() => handleSidebarClick(4)}>
+            <ListItemIcon><img style={sideBarIcon()} src={submitProj} alt="" /></ListItemIcon>
+            <div id="sideBarText">Check Submissions</div>
+          </ListItem>
+          <ListItem style={sideBarButton(5)} button onClick={() => handleSidebarClick(5)}>
+            <ListItemIcon><img style={sideBarIcon()} src={bonus} alt="" /></ListItemIcon>
+            <div id="sideBarText">Offline Activities</div>
+          </ListItem>
+          <ListItem style={sideBarButton(6)} button onClick={() => handleSidebarClick(6)}>
+            <ListItemIcon><img style={sideBarIcon()} src={quiz} alt="" /></ListItemIcon>
+            <div id="sideBarText">View Quiz Results</div>
+          </ListItem>
+        </List>
+      )
+    } else {
+      return (
+        <List>
+        <ListItem style={sideBarButton(0)} button onClick={() => handleSidebarClick(0)}>
+          <ListItemIcon><img style={sideBarIcon()} src={objectivesLight} alt="" /></ListItemIcon>
+          <div id="sideBarText">Learning Objectives</div>
+        </ListItem>
+        <ListItem style={sideBarButton(1)} button onClick={() => handleSidebarClick(1)}>
+          <ListItemIcon><img style={sideBarIcon()} src={steps} alt="" /></ListItemIcon>
+          <div id="sideBarText">Instructions</div>
+        </ListItem>
+        <ListItem style={sideBarButton(2)} button onClick={() => handleSidebarClick(2)}>
+          <ListItemIcon><img style={sideBarIcon()} src={videoLight} alt="" /></ListItemIcon>
+          <div id="sideBarText"  >Video Tutorial</div>
+        </ListItem>
+        <ListItem style={sideBarButton(3)} button onClick={() => handleSidebarClick(3)}>
+          <ListItemIcon><img style={sideBarIcon()} src={newProj} alt="" /></ListItemIcon>
+          <div id="sideBarText">Make Project</div>
+        </ListItem>
+        <ListItem style={sideBarButton(4)} button onClick={() => handleSidebarClick(4)}>
+          <ListItemIcon><img style={sideBarIcon()} src={submitProj} alt="" /></ListItemIcon>
+          <div id="sideBarText">Submit Project</div>
+        </ListItem>
+        <ListItem style={sideBarButton(5)} button onClick={() => handleSidebarClick(5)}>
+          <ListItemIcon><img style={sideBarIcon()} src={bonus} alt="" /></ListItemIcon>
+          <div id="sideBarText">Bonus Challenge</div>
+        </ListItem>
+        <ListItem style={sideBarButton(6)} button onClick={() => handleSidebarClick(6)}>
+          <ListItemIcon><img style={sideBarIcon()} src={quiz} alt="" /></ListItemIcon>
+          <div id="sideBarText">Take the Quiz</div>
+        </ListItem>
+    </List>
+      )
+    }
+  };
+
+  const handleProfilePicture = () => {
+    if (teacher) {
+      return (
+        teacherProfilePicture
+      )
+    } else {
+      return (
+        profilePicture
+      )
+    }
+  }
+
   return (
     <div className={classes.root}>
       {/* <CssBaseline /> */}
@@ -206,7 +290,9 @@ export default function MiniDrawer() {
             </div>
             <button className="appBarButton1">Take Screenshot</button>
             <button className="appBarButton2">Ask Teacher for Help</button>
-            <button className="appBarButton3">More Projects</button>
+            <Link to="/students/projects">
+              <button className="appBarButton3">More Projects</button>
+            </Link>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -227,37 +313,8 @@ export default function MiniDrawer() {
           {/* Spacing for Top of SideBar */}
         </div>
         <Divider />
-        <img className="sideBarPicture" src={profilePicture} alt="" />
-        <List>
-            <ListItem style={sideBarButton(0)} button onClick={() => handleSidebarClick(0)}>
-              <ListItemIcon><img style={sideBarIcon()} src={objectivesLight} alt="" /></ListItemIcon>
-              <div id="sideBarText">Learning Objectives</div>
-            </ListItem>
-            <ListItem style={sideBarButton(1)} button onClick={() => handleSidebarClick(1)}>
-              <ListItemIcon><img style={sideBarIcon()} src={steps} alt="" /></ListItemIcon>
-              <div id="sideBarText">Instructions</div>
-            </ListItem>
-            <ListItem style={sideBarButton(2)} button onClick={() => handleSidebarClick(2)}>
-              <ListItemIcon><img style={sideBarIcon()} src={videoLight} alt="" /></ListItemIcon>
-              <div id="sideBarText"  >Video Tutorial</div>
-            </ListItem>
-            <ListItem style={sideBarButton(3)} button onClick={() => handleSidebarClick(3)}>
-              <ListItemIcon><img style={sideBarIcon()} src={newProj} alt="" /></ListItemIcon>
-              <div id="sideBarText">Make Project</div>
-            </ListItem>
-            <ListItem style={sideBarButton(4)} button onClick={() => handleSidebarClick(4)}>
-              <ListItemIcon><img style={sideBarIcon()} src={submitProj} alt="" /></ListItemIcon>
-              <div id="sideBarText">Submit Project</div>
-            </ListItem>
-            <ListItem style={sideBarButton(5)} button onClick={() => handleSidebarClick(5)}>
-              <ListItemIcon><img style={sideBarIcon()} src={bonus} alt="" /></ListItemIcon>
-              <div id="sideBarText">Bonus Challenge</div>
-            </ListItem>
-            <ListItem style={sideBarButton(6)} button onClick={() => handleSidebarClick(6)}>
-              <ListItemIcon><img style={sideBarIcon()} src={quiz} alt="" /></ListItemIcon>
-              <div id="sideBarText">Take the Quiz</div>
-            </ListItem>
-        </List>
+        <img className="sideBarPicture" src={handleProfilePicture()} alt="" />
+        {handleSideBarItems()}
         <IconButton
             aria-label="open drawer"
             onClick={handleDrawerClose}
@@ -321,7 +378,7 @@ export default function MiniDrawer() {
           </div>
       </Drawer>
       <main className={classes.content}>
-        <ProjectBuildWindow contentId={projectWindow}/>
+        <ProjectBuildWindow contentId={projectWindow} teacher={teacher}/>
       </main>
     </div>
   );
