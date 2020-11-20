@@ -8,6 +8,21 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import {Link} from 'react-router-dom';
+import project1 from '../../img/project1.png';
+import project2 from '../../img/project2.png';
+import project3 from '../../img/project3.png';
+import project4 from '../../img/project4.png';
+import project5 from '../../img/project5.png';
+import project6 from '../../img/project6.png';
+import project7 from '../../img/project7.png';
+import project8 from '../../img/project8.png';
+import project9 from '../../img/project9.png';
+import project10 from '../../img/project10.png';
+import project11 from '../../img/project11.png';
+import project12 from '../../img/project12.png';
+import project13 from '../../img/project13.png';
+import project14 from '../../img/project14.png';
+import project15 from '../../img/project15.png';
 
 export default function Projects() {
 
@@ -25,26 +40,110 @@ export default function Projects() {
     });
     const [projectItemContent, setProjectItemContent] = useState([
         {
-            imgUrl: "",
+            imgUrl: project1,
             name: "Introduction",
             level: "Beginner",
             type: "Animation",
             id: 0
         },
         {
-            imgUrl: "",
+            imgUrl: project2,
             name: "My Birthday",
             level: "Beginner",
             type: "Animation",
             id: 1
         },
         {
-            imgUrl: "",
+            imgUrl: project3,
             name: "10 Block Challenge",
             level: "Beginner",
             type: "Animation",
             id: 2
-        }
+        },
+        {
+            imgUrl: project4,
+            name: "Build a Band",
+            level: "Beginner",
+            type: "Animation",
+            id: 3
+        },
+        {
+            imgUrl: project5,
+            name: "The bear and the Monkey",
+            level: "Beginner",
+            type: "Animation",
+            id: 4
+        },
+        {
+            imgUrl: project6,
+            name: "Debugging",
+            level: "Beginner",
+            type: "Animation",
+            id: 5
+        },
+        {
+            imgUrl: project7,
+            name: "About Me",
+            level: "Beginner",
+            type: "Animation",
+            id: 6
+        },
+        {
+            imgUrl: project8,
+            name: "I Am Here!",
+            level: "Beginner",
+            type: "Animation",
+            id: 7
+        },
+        {
+            imgUrl: project9,
+            name: "Funny Faces",
+            level: "Beginner",
+            type: "Animation",
+            id: 8
+        },
+        {
+            imgUrl: project10,
+            name: "It Tickles!",
+            level: "Beginner",
+            type: "Animation",
+            id: 9
+        },
+        {
+            imgUrl: project11,
+            name: "Penguin in a Desert",
+            level: "Beginner",
+            type: "Animation",
+            id: 10
+        },
+        {
+            imgUrl: project12,
+            name: "Time Travel",
+            level: "Beginner",
+            type: "Animation",
+            id: 11
+        },
+        {
+            imgUrl: project13,
+            name: "Birthday Card",
+            level: "Beginner",
+            type: "Animation",
+            id: 12
+        },
+        {
+            imgUrl: project14,
+            name: "The Lion and the Mouse Part 1",
+            level: "Beginner",
+            type: "Animation",
+            id: 13
+        },
+        {
+            imgUrl: project15,
+            name: "The Lion and the Mouse Part 2",
+            level: "Beginner",
+            type: "Animation",
+            id: 14
+        },
     ])
 
     const handleComp = (event) => {
@@ -152,7 +251,7 @@ const ProjectItem = (props) => {
     return(
         <div className="projectItemDiv">
             <Link to="/students/projectbuilder">
-                <img src="" alt="" className="projectItemImage"/>
+                <img src={props.content.imgUrl} alt="" className="projectItemImage"/>
             </Link>
             <div className="projectItemText">
                 <h3 className="projectItemHeading">{props.content.name}</h3>

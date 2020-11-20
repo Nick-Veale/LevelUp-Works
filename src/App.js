@@ -8,8 +8,8 @@ import Profile from './Components/Profile/Profile';
 import Students from './Components/Students/Students';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import { createMuiTheme } from '@material-ui/core/styles';
-import StudentProjectBuilder from './Components/Projects/ProjectBuilder/StudentProjectBuilder'
-import TeacherProjectBuilder from './Components/Projects/ProjectBuilder/TeacherProjectBuilder'
+import ProjectBuilder from './Components/Projects/ProjectBuilder/ProjectBuilder';
+
 
 const theme = createMuiTheme({
   palette: {
@@ -32,8 +32,7 @@ class App extends React.Component{
               <Switch>
                 <Route exact path="/" component={Homepage} />
                 <Route path="/students/projects" component={ProjectsStudent} />
-                <Route exact path="/students/projectbuilder" component={StudentProjectBuilder} />
-                <Route exact path="/teachers/projectbuilder" component={TeacherProjectBuilder} />
+                <Route exact path="/students/projectbuilder" component={ProjectBuilder} />
                 <Route path="/teachers/projects" component={ProjectsTeacher} />
                 <Route path="/teachers" component={Teachers} />
                 <Route path="/students" component={Students} />

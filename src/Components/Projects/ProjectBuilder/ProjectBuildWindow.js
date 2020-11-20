@@ -8,6 +8,10 @@ import controlBlocksSmall from '../../../img/controlBlocksSmall.png';
 import motionBlocks from '../../../img/motionBlocks.png';
 import motionBlocksSmall from '../../../img/motionBlocksSmall.png';
 import scratchSignUp from '../../../img/scratchSignUp.png';
+import ImageIcon from '@material-ui/icons/Image';
+import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
+import screenShotExample from '../../../img/screenShotExample.png';
+import teacherShow from '../../../img/teacherShow.png';
 
 export default function ProjectBuildWindow(props) {
 
@@ -93,11 +97,51 @@ export default function ProjectBuildWindow(props) {
                 </div>
             )
         } else if (props.contentId === 4) {
-            return (
-                <div className="projectContentDiv">
-                    <h2>Submit Your Projects</h2>
-                </div>
-            )
+            if (props.teacher) {
+                return (
+                    <div>
+                        <span className="teacherSubmissionsTextSpan">
+                            <h2>Project Submissions</h2>
+                            <div />
+                            <button className="teacherBuilderButton">
+                                Download All Files
+                            </button>
+                            <button className="teacherBuilderButton">
+                                Mark All as Complete
+                            </button>
+                        </span>
+                    </div>
+                )
+            } else {
+                return (
+                    <div className="projectContentDivInline">
+                        <div className="projectContentDivHalf halfLeft">
+                            <img style={{width: "600px", margin: '20px'}} src={screenShotExample} alt="" />
+                            <h2>Submit Project Photo</h2>
+                            <p>After completing your project, take a screenshot of your project and upload here.</p>
+                            <button className="largeButton">
+                                <div className="largeButtonContent">
+                                    <ImageIcon style={{fontSize: "60px"}} />
+                                    <p>Send Photo</p>
+                                </div>
+                            </button>
+                        </div>
+                        <div className="projectContentDivHalf halfRight">
+                            <img style={{width: "600px", margin: "20px"}} src={teacherShow} alt="" />
+                            <h2>Show your Teacher</h2>
+                            <p>If your teacher is in the same room as you, clcik the button below to let them know you're done.</p>
+                            <button className="largeButton">
+                                <div className="largeButtonContent">
+                                    <EmojiPeopleIcon style={{fontSize: "60px"}} />
+                                    <p>Call Teacher</p>
+                                </div>
+                                
+                            </button>
+                        </div>
+                    </div>
+                )
+            }
+            
         } else if (props.contentId === 5) {
             return (
                 <div className="projectContentDiv">
