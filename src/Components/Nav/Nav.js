@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState, useContext } from 'react';
 import './Nav.css';
 import Logo from '../../img/starLogo.png';
 import nzFlag from '../../img/nzFlag.png';
@@ -13,13 +13,67 @@ import profilePicture from '../../img/profilePicture.png';
 import teacherProfilePicture from '../../img/teacherProfilePicture.png';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import { UserContext } from '../../userContext';
+import { studentLogin, teacherLogin } from '../../utils/login';
 
 function Nav() {
 
+    const { user, setUser } = useContext(UserContext);
+
+    const TeacherLogInPuts = () => {
+        return (
+            <form>
+                <input type="email" id="modalInputBox" placeholder="Email Address"></input>
+                <input type="password" id="modalInputBox" placeholder="Password"></input>
+                <button id="modalButton" onClick={async () => {
+                    const user = await teacherLogin();
+                    setUser(user)}}
+                    >LOG IN</button> 
+            </form>
+        );
+    };
+    const StudentLogInPuts = () => {
+        return (
+            <form>
+                <input type="email" id="modalInputBox" placeholder="Email Address"></input>
+                <input type="password" id="modalInputBox" placeholder="Password"></input>
+                <button id="modalButton" onClick={async () => {
+                    const user = await studentLogin();
+                    setUser(user);
+                    }}>LOG IN</button>
+            </form>
+        );
+    };
+    const TeacherSignUpPuts = () => {
+        return (
+            <form>
+                <input type="text" id="modalInputBox" placeholder="Full Name"></input>
+                <input type="email" id="modalInputBox" placeholder="Email Address"></input>
+                <input type="password" id="modalInputBox" placeholder="Password"></input>
+                <input type="password" id="modalInputBox" placeholder="Confirm Password"></input>
+                <button id="modalButton">SIGN UP</button>
+            </form>
+        );
+    };
+    const StudentSignUpPuts = () => {
+        return (
+            <form>
+                <input type="text" id="modalInputBox" placeholder="Full Name"></input>
+                <input type="email" id="modalInputBox" placeholder="Email Address"></input>
+                <input type="password" id="modalInputBox" placeholder="Password"></input>
+                <input type="password" id="modalInputBox" placeholder="Confirm Password"></input>
+                <button id="modalButton">SIGN UP</button>
+            </form>
+        );
+    };
+
     const [open, setOpen] = useState(false);
-    const [modalinputs, setModalInputs] = useState(<SignUpPuts />);
-    const [signStyle, setSignStyle] = useState({borderBottom: '4px solid #f91c85'});
-    const [logStyle, setLogStyle] = useState({});
+    const [StudentModalinputs, setStudentModalInputs] = useState(<StudentSignUpPuts />);
+    const [TeacherModalinputs, setTeacherModalInputs] = useState(<TeacherSignUpPuts />);
+    const [studentSignStyle, setStudentSignStyle] = useState({borderBottom: '4px solid #f91c85'});
+    const [teacherSignStyle, setTeacherSignStyle] = useState({borderBottom: '4px solid #f91c85'});
+    const [studentLogStyle, setStudentLogStyle] = useState({});
+    const [teacherLogStyle, setTeacherLogStyle] = useState({});
     const [loggedIn, setLoggedIn] = useState(true);
     const [teacher, setTeacher] = useState(false);
     const [anchorEl, setAnchorEl] = useState(null);
@@ -43,10 +97,10 @@ function Nav() {
         setOpen(false);
     };
 
-    const handleLogIn = () => {
-        setModalInputs(<LogInPuts />);
-        setSignStyle({});
-        setLogStyle({
+    const handleStudentLogIn = () => {
+        setStudentModalInputs(<StudentLogInPuts />);
+        setStudentSignStyle({});
+        setStudentLogStyle({
             borderBottom: '4px solid #43c0f6', 
             transition: '0.2s', 
             transitionTimingFunction: 'ease-out',
@@ -54,10 +108,32 @@ function Nav() {
         });
     };
 
-    const handleSignUp = () => {
-        setModalInputs(<SignUpPuts />);
-        setLogStyle({});
-        setSignStyle({
+    const handleStudentSignUp = () => {
+        setStudentModalInputs(<StudentSignUpPuts />);
+        setStudentLogStyle({});
+        setStudentSignStyle({
+            borderBottom: '4px solid #f91c85', 
+            transition: '0.2s', 
+            transitionTimingFunction: 'ease-out',
+            color: 'rgb(90, 90, 90)',
+        });
+    };
+
+    const handleTeacherLogIn = () => {
+        setTeacherModalInputs(<TeacherLogInPuts />);
+        setTeacherSignStyle({});
+        setTeacherLogStyle({
+            borderBottom: '4px solid #43c0f6', 
+            transition: '0.2s', 
+            transitionTimingFunction: 'ease-out',
+            color: 'rgb(90, 90, 90)',
+        });
+    };
+
+    const handleTeacherSignUp = () => {
+        setTeacherModalInputs(<TeacherSignUpPuts />);
+        setTeacherLogStyle({});
+        setTeacherSignStyle({
             borderBottom: '4px solid #f91c85', 
             transition: '0.2s', 
             transitionTimingFunction: 'ease-out',
@@ -73,12 +149,17 @@ function Nav() {
     const handleMenuOpen = (e) => {
         setAnchorEl(e.currentTarget);
     };
-    const handleMenuClose = (e) => {
+    const handleMenuClose = () => {
         setAnchorEl(null);
+    };
+    const handleLogOut = () => {
+        setUser(null);
+        setAnchorEl(null);
+        setOpen(false);
     };
 
     const handleRightDivWhenLoggedIn = () => {
-        if (loggedIn === false) {
+        if (!user) {
             return (
             <span>
                 <span onClick={() => handleOpen()} style={{cursor: 'pointer'}} >
@@ -99,14 +180,14 @@ function Nav() {
                                 <br/>
                                 <h2 id="modalTitle">Students</h2>
                                 <div id="modalLogInSignUp">
-                                    <div id="modalLogInDiv" onClick={() => handleLogIn()}>
-                                        <h3 style={logStyle} id="modalLogIn" >LOG IN</h3>
+                                    <div id="modalLogInDiv" onClick={() => handleStudentLogIn()}>
+                                        <h3 style={studentLogStyle} id="modalLogIn" >LOG IN</h3>
                                     </div>
-                                    <div id="modalSignUpDiv" onClick={() => handleSignUp()}>
-                                        <h3 style={signStyle} id="modalSignUp" >SIGN UP</h3>
+                                    <div id="modalSignUpDiv" onClick={() => handleStudentSignUp()}>
+                                        <h3 style={studentSignStyle} id="modalSignUp" >SIGN UP</h3>
                                     </div>
                                 </div>
-                                {modalinputs}
+                                {StudentModalinputs}
                             </div>
                             <div id="modalTeachers">
                                 <br/>
@@ -114,21 +195,21 @@ function Nav() {
                                 <br/>
                                 <h2 id="modalTitle">Teachers</h2>
                                 <div id="modalLogInSignUp">
-                                    <div id="modalLogInDiv" onClick={() => handleLogIn()}>
-                                        <h3 style={logStyle} id ="modalLogIn" >LOG IN</h3>
+                                    <div id="modalLogInDiv" onClick={() => handleTeacherLogIn()}>
+                                        <h3 style={teacherLogStyle} id ="modalLogIn" >LOG IN</h3>
                                     </div>
-                                    <div id="modalSignUpDiv" onClick={() => handleSignUp()}>
-                                        <h3 style={signStyle} id="modalSignUp" >SIGN UP</h3>
+                                    <div id="modalSignUpDiv" onClick={() => handleTeacherSignUp()}>
+                                        <h3 style={teacherSignStyle} id="modalSignUp" >SIGN UP</h3>
                                     </div>
                                 </div>
-                                {modalinputs}
+                                {TeacherModalinputs}
                             </div>
                             <ClearIcon onClick={() => handleClose()} style={clearIconStyles}/>   
                         </div>
                     </Modal>
             </span>);
         } else {
-            if (teacher === false) {
+            if (user.isTeacher === false) {
                 return (
                     <span>
                             <span 
@@ -136,7 +217,7 @@ function Nav() {
                             aria-haspopup="true" 
                             onClick={handleMenuOpen} 
                             style={{cursor: 'pointer'}}>
-                                <img style={{width: '25px', borderRadius: '50%'}} src={profilePicture} alt=""></img> 
+                                <img style={{width: '25px', borderRadius: '50%'}} src={user.profilePicture} alt=""></img> 
                                 Rawiri Fletcher
                             </span>
                             <Menu
@@ -156,7 +237,13 @@ function Nav() {
                                     <MenuItem onClick={handleMenuClose}>My Profile</MenuItem>
                                 </Link>
                                 <MenuItem onClick={handleMenuClose}>Settings</MenuItem>
-                                <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
+                                <Link style={{
+                                    textDecoration: 'none', 
+                                    color: 'black'
+                                    }} 
+                                    to="/">
+                                    <MenuItem onClick={handleLogOut}>Logout</MenuItem>
+                                </Link>
                             </Menu>
                     </span>
                 );
@@ -169,7 +256,7 @@ function Nav() {
                             onClick={handleMenuOpen} 
                             className="profileSpan" 
                             style={{cursor: 'pointer'}}>
-                                <img style={{width: '25px', borderRadius: '50%'}} src={teacherProfilePicture} alt=""></img> 
+                                <img style={{width: '25px', borderRadius: '50%'}} src={user.profilePicture} alt=""></img> 
                                 Jasmina Salvador
                             </span>
                             <Menu
@@ -179,11 +266,21 @@ function Nav() {
                                 open={Boolean(anchorEl)}
                                 onClose={handleMenuClose}
                             >
-                                <Link to="/profile">
+                                <Link style={{
+                                    textDecoration: 'none', 
+                                    color: 'black'
+                                    }}
+                                    to="/profile">
                                     <MenuItem onClick={handleMenuClose}>My Profile</MenuItem>
                                 </Link>
                                 <MenuItem onClick={handleMenuClose}>Settings</MenuItem>
-                                <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
+                                <Link style={{
+                                    textDecoration: 'none', 
+                                    color: 'black'
+                                    }}
+                                    to="/">
+                                    <MenuItem onClick={handleLogOut}>Logout</MenuItem>
+                                </Link>
                             </Menu>
                     </span>
                 );
@@ -192,7 +289,7 @@ function Nav() {
     };
 
     const handleCenterDivWhenLoggedIn = () => {
-        if (loggedIn === false) {
+        if (!user) {
             return(
                 <ul className="CenterList">
                 <Link style={navStyle} to="/">
@@ -207,13 +304,13 @@ function Nav() {
             </ul>
             );
         } else {
-            if (teacher) {
+            if (user.isTeacher === true) {
                 return(
                     <ul className="CenterList">
                     <Link style={navStyle} to="/">
                         <li>HOME</li>
                     </Link>
-                    <Link style={navStyle} to="/teachers/projects">
+                    <Link style={navStyle} to="/projects">
                         <li>PROJECTS</li>
                     </Link>
                     <Link style={navStyle} to="/students">
@@ -227,7 +324,7 @@ function Nav() {
                    <Link style={navStyle} to="/">
                         <li>HOME</li>
                     </Link>
-                   <Link style={navStyle} to="/students/projects">
+                   <Link style={navStyle} to="/projects">
                        <li>PROJECTS</li>
                    </Link>
                </ul>
@@ -261,24 +358,3 @@ function Nav() {
 
 export default Nav;
 
-const LogInPuts = () => {
-    return (
-        <form>
-            <input type="email" id="modalInputBox" placeholder="Email Address"></input>
-            <input type="password" id="modalInputBox" placeholder="Password"></input>
-            <button id="modalButton">LOG IN</button>
-        </form>
-    );
-};
-
-const SignUpPuts = () => {
-    return (
-        <form>
-            <input type="text" id="modalInputBox" placeholder="Full Name"></input>
-            <input type="email" id="modalInputBox" placeholder="Email Address"></input>
-            <input type="password" id="modalInputBox" placeholder="Password"></input>
-            <input type="password" id="modalInputBox" placeholder="Confirm Password"></input>
-            <button id="modalButton">SIGN UP</button>
-        </form>
-    );
-};

@@ -1,11 +1,10 @@
-import React from 'react';
+import React, {useContext, useState} from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
@@ -29,6 +28,7 @@ import './ProjectBuilder.css';
 import profilePicture from '../../../img/profilePicture.png';
 import teacherProfilePicture from '../../../img/teacherProfilePicture.png';
 import {Link} from 'react-router-dom';
+import {UserContext} from '../../../userContext';
 
 const drawerWidth = 280;
 
@@ -111,10 +111,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function MiniDrawer() {
+
+  const { user, setUser } = useContext(UserContext);
+
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
-  const [projectWindow, setProjectWindow] = React.useState(0);
-  const [teacher, setTeacher] = React.useState(true);
+  const [open, setOpen] = useState(false);
+  const [projectWindow, setProjectWindow] = useState(0);
+  const [teacher, setTeacher] = useState(false);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -180,7 +183,7 @@ export default function MiniDrawer() {
   };
 
   const handleSideBarItems = () => {
-    if (teacher) {
+    if (user.isTeacher) {
       return (
         <List>
           <ListItem style={sideBarButton(0)} button onClick={() => handleSidebarClick(0)}>
@@ -249,18 +252,6 @@ export default function MiniDrawer() {
     }
   };
 
-  const handleProfilePicture = () => {
-    if (teacher) {
-      return (
-        teacherProfilePicture
-      )
-    } else {
-      return (
-        profilePicture
-      )
-    }
-  }
-
   return (
     <div className={classes.root}>
       {/* <CssBaseline /> */}
@@ -290,7 +281,7 @@ export default function MiniDrawer() {
             </div>
             <button className="appBarButton1">Take Screenshot</button>
             <button className="appBarButton2">Ask Teacher for Help</button>
-            <Link to="/students/projects">
+            <Link to="/projects">
               <button className="appBarButton3">More Projects</button>
             </Link>
         </Toolbar>
@@ -313,7 +304,7 @@ export default function MiniDrawer() {
           {/* Spacing for Top of SideBar */}
         </div>
         <Divider />
-        <img className="sideBarPicture" src={handleProfilePicture()} alt="" />
+        <img className="sideBarPicture" src={user.profilePicture} alt="" />
         {handleSideBarItems()}
         <IconButton
             aria-label="open drawer"
@@ -378,7 +369,7 @@ export default function MiniDrawer() {
           </div>
       </Drawer>
       <main className={classes.content}>
-        <ProjectBuildWindow contentId={projectWindow} teacher={teacher}/>
+        <ProjectBuildWindow contentId={projectWindow} />
       </main>
     </div>
   );
