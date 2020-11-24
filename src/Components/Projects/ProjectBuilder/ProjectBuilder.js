@@ -1,11 +1,10 @@
-import React from 'react';
+import React, {useContext, useState} from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
@@ -26,9 +25,8 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import Settings from '@material-ui/icons/Settings';
 import ExitToApp from '@material-ui/icons/ExitToApp';
 import './ProjectBuilder.css';
-import profilePicture from '../../../img/profilePicture.png';
-import teacherProfilePicture from '../../../img/teacherProfilePicture.png';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
+import {UserContext} from '../../../userContext';
 
 const drawerWidth = 280;
 
@@ -111,10 +109,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function MiniDrawer() {
+
+  const { user, setUser } = useContext(UserContext);
+
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
-  const [projectWindow, setProjectWindow] = React.useState(0);
-  const [teacher, setTeacher] = React.useState(true);
+  const [open, setOpen] = useState(false);
+  const [projectWindow, setProjectWindow] = useState(0);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -158,7 +158,6 @@ export default function MiniDrawer() {
      } else {
       return {
         display: 'flex',
-        marginLeft: '8px'
       }
      };
   };
@@ -180,7 +179,7 @@ export default function MiniDrawer() {
   };
 
   const handleSideBarItems = () => {
-    if (teacher) {
+    if (user.isTeacher) {
       return (
         <List>
           <ListItem style={sideBarButton(0)} button onClick={() => handleSidebarClick(0)}>
@@ -249,137 +248,163 @@ export default function MiniDrawer() {
     }
   };
 
-  const handleProfilePicture = () => {
-    if (teacher) {
+  const conditionalButtons = () => {
+    if (user.isTeacher) {
       return (
-        teacherProfilePicture
-      )
+      <div>
+        <Link>
+          <button className="appBarButton1">Take Screenshot</button>
+        </Link>
+        <Link to="/teachers">
+          <button className="appBarButton2">Teacher Dashboard</button>
+        </Link>
+        <Link to="/projects">
+          <button className="appBarButton3">More Projects</button>
+        </Link>
+      </div>
+      );
     } else {
       return (
-        profilePicture
-      )
+        <div>
+          <Link>
+            <button className="appBarButton1">Take Screenshot</button>
+          </Link>
+          <Link>
+            <button className="appBarButton2">Ask Teacher for Help</button>
+          </Link>
+          <Link to="/projects">
+            <button className="appBarButton3">More Projects</button>
+          </Link>
+        </div>
+      );
     }
-  }
+  };
 
-  return (
-    <div className={classes.root}>
-      {/* <CssBaseline /> */}
-      <AppBar
-        position="fixed"
-        className={clsx(classes.appBar)}
-      >
-        <Toolbar style={{backgroundColor: 'white', boxShadow: '0px 0px 0px black'}}>
-          <Typography variant="h6" noWrap>
-            <img style={{width: '130px'}} src={StarLogo} alt="" />
-          </Typography>
-            <div style={{
-              color: 'grey',
-              fontFamily: 'nunito',
-              fontWeight: '700',
-              position: 'relative',
-              left: '40px',
-              top: '10px'}}>
-              <h4 style={{
+  const handleLogOut = () => {
+    setUser(null);
+  };
+
+  if (!user) {
+    return (
+      <Redirect to="/" />
+    );
+  } else {
+    return (
+      <div className={classes.root}>
+        {/* <CssBaseline /> */}
+        <AppBar
+          position="fixed"
+          className={clsx(classes.appBar)}
+        >
+          <Toolbar style={{backgroundColor: 'white', boxShadow: '0px 0px 0px black'}}>
+            <Typography variant="h6" noWrap>
+              <img style={{width: '130px'}} src={StarLogo} alt="" />
+            </Typography>
+              <div style={{
+                color: 'grey',
                 fontFamily: 'nunito',
                 fontWeight: '700',
                 position: 'relative',
-                margin: '0px',
-                top: '6px'
-              }}>PROJECT</h4>
-              <p>Introduction</p>
-            </div>
-            <button className="appBarButton1">Take Screenshot</button>
-            <button className="appBarButton2">Ask Teacher for Help</button>
-            <Link to="/students/projects">
-              <button className="appBarButton3">More Projects</button>
-            </Link>
-        </Toolbar>
-      </AppBar>
-      <Drawer
-        variant="permanent"
-        className={clsx(classes.drawer, {
-          [classes.drawerOpen]: open,
-          [classes.drawerClose]: !open,
-        })}
-        classes={{
-          paper: clsx({
+                left: '40px',
+                top: '10px'}}>
+                <h4 style={{
+                  fontFamily: 'nunito',
+                  fontWeight: '700',
+                  position: 'relative',
+                  margin: '0px',
+                  top: '6px'
+                }}>PROJECT</h4>
+                <p>Introduction</p>
+              </div>
+              {conditionalButtons()}
+          </Toolbar>
+        </AppBar>
+        <Drawer
+          variant="permanent"
+          className={clsx(classes.drawer, {
             [classes.drawerOpen]: open,
             [classes.drawerClose]: !open,
-          }),
-        }}
-        style={{backgroundColor: '#43C0F6'}}
-      >
-        <div className={classes.toolbar}>
-          {/* Spacing for Top of SideBar */}
-        </div>
-        <Divider />
-        <img className="sideBarPicture" src={handleProfilePicture()} alt="" />
-        {handleSideBarItems()}
-        <IconButton
-            aria-label="open drawer"
-            onClick={handleDrawerClose}
-            edge="start"
-            className={clsx(classes.menuButtonOpen, {
-              [classes.hide]: !open,
-            })}
-          >
-            <ArrowLeft style={{
-              color: '#F91C84',
-              fontSize: '48px',
-              letterSpacing: '20px'
-            }} />
-          </IconButton>
-        <IconButton
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            className={clsx(classes.menuButtonClosed, {
-              [classes.hide]: open,
-            })}
-          >
-            <ArrowRight style={{
-              color: '#F91C84',
-              fontSize: '48px',
-              letterSpacing: '20px'
-            }} />
-          </IconButton>
-          <div style={showLowerIcons()} className="sideBarLowMainDivOpen">  
-            <div className="sideBarLowSingleDivOpen">
-              <AccountCircleIcon id="sideBarLowIcon" />
-              <h5 className="sideBarH5">Profile</h5>
-            </div>
-            <div className="sideBarLowSingleDivOpen">
-              <icon>
-              <Settings id="sideBarLowIcon" />
-              </icon>
-              <h5 className="sideBarH5">Settings</h5>
-            </div>
-            <div className="sideBarLowSingleDivOpen">
-              <icon>
-              <ExitToApp id="sideBarLowIcon" />
-              </icon>
-              <h5 className="sideBarH5">Logout</h5>
-            </div>
+          })}
+          classes={{
+            paper: clsx({
+              [classes.drawerOpen]: open,
+              [classes.drawerClose]: !open,
+            }),
+          }}
+          style={{backgroundColor: '#43C0F6'}}
+        >
+          <div className={classes.toolbar}>
+            {/* Spacing for Top of SideBar */}
           </div>
-          <div style={hideLowerIcons()} className="sideBarLowMainDivOpen">  
-            <div className="sideBarLowSingleDivClosed">
-              <AccountCircleIcon id="sideBarLowIcon" />
+          <Divider />
+          <img className="sideBarPicture" src={user.profilePicture} alt="" />
+          {handleSideBarItems()}
+          <IconButton
+              aria-label="open drawer"
+              onClick={handleDrawerClose}
+              edge="start"
+              className={clsx(classes.menuButtonOpen, {
+                [classes.hide]: !open,
+              })}
+            >
+              <ArrowLeft style={{
+                color: '#F91C84',
+                fontSize: '48px',
+                letterSpacing: '20px'
+              }} />
+            </IconButton>
+          <IconButton
+              aria-label="open drawer"
+              onClick={handleDrawerOpen}
+              edge="start"
+              className={clsx(classes.menuButtonClosed, {
+                [classes.hide]: open,
+              })}
+            >
+              <ArrowRight style={{
+                color: '#F91C84',
+                fontSize: '48px',
+                letterSpacing: '20px'
+              }} />
+            </IconButton>
+            <div style={showLowerIcons()} className="sideBarLowMainDivOpen">  
+              <div className="sideBarLowSingleDivOpen">
+                <AccountCircleIcon id="sideBarLowIcon" />
+                <h5 className="sideBarH5">Profile</h5>
+              </div>
+              <div className="sideBarLowSingleDivOpen">
+                <icon>
+                <Settings id="sideBarLowIcon" />
+                </icon>
+                <h5 className="sideBarH5">Settings</h5>
+              </div>
+              <div className="sideBarLowSingleDivOpen" onClick={() => handleLogOut}>
+                <icon>
+                <ExitToApp id="sideBarLowIcon" />
+                </icon>
+                <h5 className="sideBarH5">Logout</h5>
+              </div>
             </div>
-            <div className="sideBarLowSingleDivClosed">
-              <icon>
-              <Settings id="sideBarLowIcon" />
-              </icon>
+            <div style={hideLowerIcons()} className="sideBarLowMainDivOpen">  
+              <div className="sideBarLowSingleDivClosed">
+                <AccountCircleIcon id="sideBarLowIcon" />
+              </div>
+              <div className="sideBarLowSingleDivClosed">
+                <icon>
+                <Settings id="sideBarLowIcon" />
+                </icon>
+              </div>
+                <div className="sideBarLowSingleDivClosed" onClick={() => handleLogOut()}>
+                  <icon>
+                  <ExitToApp id="sideBarLowIcon" />
+                  </icon>
+                </div>
             </div>
-            <div className="sideBarLowSingleDivClosed">
-              <icon>
-              <ExitToApp id="sideBarLowIcon" />
-              </icon>
-            </div>
-          </div>
-      </Drawer>
-      <main className={classes.content}>
-        <ProjectBuildWindow contentId={projectWindow} teacher={teacher}/>
-      </main>
-    </div>
-  );
+        </Drawer>
+        <main className={classes.content}>
+          <ProjectBuildWindow contentId={projectWindow} />
+        </main>
+      </div>
+    );
+  };
 };

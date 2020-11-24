@@ -12,8 +12,11 @@ import ImageIcon from '@material-ui/icons/Image';
 import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
 import screenShotExample from '../../../img/screenShotExample.png';
 import teacherShow from '../../../img/teacherShow.png';
+import { UserContext } from '../../../userContext';
 
 export default function ProjectBuildWindow(props) {
+
+    const { user, userContext } = React.useContext(UserContext);
 
     const handleRender = () => {
         if (props.contentId === 0) {
@@ -91,13 +94,22 @@ export default function ProjectBuildWindow(props) {
                 </div>
             )
         } else if (props.contentId === 3) {
+
+            let x = 88;
+
             return (
                 <div className="projectContentDiv">
-                    <h2>Build your Project</h2>
+                    <br/>
+                    <iframe 
+                    src="https://scratch.mit.edu/"
+                    width={x*16}
+                    height={x*9}
+                    frameborder="0"
+                    title="Scratch - Imagine, Program, Share" />
                 </div>
             )
         } else if (props.contentId === 4) {
-            if (props.teacher) {
+            if (user.isTeacher) {
                 return (
                     <div>
                         <span className="teacherSubmissionsTextSpan">
@@ -135,7 +147,6 @@ export default function ProjectBuildWindow(props) {
                                     <EmojiPeopleIcon style={{fontSize: "60px"}} />
                                     <p>Call Teacher</p>
                                 </div>
-                                
                             </button>
                         </div>
                     </div>

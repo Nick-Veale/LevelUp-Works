@@ -203,39 +203,39 @@ export default function Projects() {
                 </div>
                 <div className="projFilterControls">
                     <FormControl>
-                        <FormLabel>Subscription</FormLabel>                            
+                        <FormLabel id="FormLabel">Subscription</FormLabel>                            
                         <RadioGroup name="subscription" value={subscription} onChange={handleSub}>
-                            <FormControlLabel value="Free" control={<Radio color="primary"/>} label="Free" />
-                            <FormControlLabel value="Premium" control={<Radio color="primary"/>} label="Premium" />
+                            <FormControlLabel id="FormControlLabel" value="Free" control={<Radio color="primary"/>} label="Free" />
+                            <FormControlLabel id="FormControlLabel" value="Premium" control={<Radio color="primary"/>} label="Premium" />
                         </RadioGroup>
                     </FormControl>
                     <FormControl>
-                        <FormLabel>Activity Type</FormLabel>                            
+                        <FormLabel id="FormLabel">Activity Type</FormLabel> 
                         <RadioGroup name="activity" value={activity} onChange={handleAct}>
-                            <FormControlLabel value="Animation" control={<Radio color="primary"/>} label="Animation" />
-                            <FormControlLabel value="Game" control={<Radio color="primary"/>} label="Game" />
-                            <FormControlLabel value="Chatbot" control={<Radio color="primary"/>} label="Chatbot" />
-                            <FormControlLabel value="Augmented Reality" control={<Radio color="primary"/>} label="Augmented Reality" />
+                            <FormControlLabel id="FormControlLabel" value="Animation" control={<Radio color="primary"/>} label="Animation" />
+                            <FormControlLabel id="FormControlLabel" value="Game" control={<Radio color="primary"/>} label="Game" />
+                            <FormControlLabel id="FormControlLabel" value="Chatbot" control={<Radio color="primary"/>} label="Chatbot" />
+                            <FormControlLabel id="FormControlLabel" value="Augmented Reality" control={<Radio color="primary"/>} label="Augmented Reality" />
                         </RadioGroup>
                     </FormControl>
                     <FormControl>
-                        <FormLabel>Year Level</FormLabel>                            
+                        <FormLabel id="FormLabel">Year Level</FormLabel>                            
                         <RadioGroup name="yearLevel" value={yearLevel} onChange={handleYear}>
-                            <FormControlLabel value="1-4" control={<Radio color="primary"/>} label="1-4" />
-                            <FormControlLabel value="5-6" control={<Radio color="primary"/>} label="5-6" />
-                            <FormControlLabel value="7-8" control={<Radio color="primary"/>} label="7-8" />
-                            <FormControlLabel value="9-13" control={<Radio color="primary"/>} label="9-13" />
+                            <FormControlLabel id="FormControlLabel" value="1-4" control={<Radio color="primary"/>} label="1-4" />
+                            <FormControlLabel id="FormControlLabel" value="5-6" control={<Radio color="primary"/>} label="5-6" />
+                            <FormControlLabel id="FormControlLabel" value="7-8" control={<Radio color="primary"/>} label="7-8" />
+                            <FormControlLabel id="FormControlLabel" value="9-13" control={<Radio color="primary"/>} label="9-13" />
                         </RadioGroup>
                     </FormControl>
                     <FormControl>
-                        <FormLabel>Subject Matter</FormLabel>                            
+                        <FormLabel id="FormLabel">Subject Matter</FormLabel>                            
                         <RadioGroup name="subscription" value={subject} onChange={handleSubject}>
-                            <FormControlLabel value="Computer Science" control={<Radio color="primary"/>} label="Computer Science" />
-                            <FormControlLabel value="Maths" control={<Radio color="primary"/>} label="Maths" />
-                            <FormControlLabel value="Science" control={<Radio color="primary"/>} label="Science" />
-                            <FormControlLabel value="Language" control={<Radio color="primary"/>} label="Language" />
-                            <FormControlLabel value="Art" control={<Radio color="primary"/>} label="Art" />
-                            <FormControlLabel value="Music" control={<Radio color="primary"/>} label="Music" />
+                            <FormControlLabel id="FormControlLabel" value="Computer Science" control={<Radio color="primary"/>} label="Computer Science" />
+                            <FormControlLabel id="FormControlLabel" value="Maths" control={<Radio color="primary"/>} label="Maths" />
+                            <FormControlLabel id="FormControlLabel" value="Science" control={<Radio color="primary"/>} label="Science" />
+                            <FormControlLabel id="FormControlLabel" value="Language" control={<Radio color="primary"/>} label="Language" />
+                            <FormControlLabel id="FormControlLabel" value="Art" control={<Radio color="primary"/>} label="Art" />
+                            <FormControlLabel id="FormControlLabel" value="Music" control={<Radio color="primary"/>} label="Music" />
                         </RadioGroup>
                     </FormControl>
                 </div>
@@ -250,12 +250,12 @@ export default function Projects() {
 const ProjectItem = (props) => {
     return(
         <div className="projectItemDiv">
-            <Link to="/students/projectbuilder">
+            <Link to="/projectbuilder">
                 <img src={props.content.imgUrl} alt="" className="projectItemImage"/>
             </Link>
             <div className="projectItemText">
                 <h3 className="projectItemHeading">{props.content.name}</h3>
-                <h5 className="projectItemHeading">{props.content.level} | {props.content.type}</h5>
+                <h5 className="projectItemHeading2">{props.content.level} | {props.content.type}</h5>
             </div>
         </div>
     )

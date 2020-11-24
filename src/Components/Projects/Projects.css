@@ -14,6 +14,7 @@
 
 .projFilterControls {
   position: relative;
+  font-family: "open-sans";
   bottom: 30px;
   margin-left: 10%;
   width: 169px;
@@ -33,7 +34,6 @@
   bottom: 590px;
   margin-left: 22%;
   margin-right: 10%;
-  height: 2400px;
 }
 
 .MuiFormLabel-root {
@@ -68,11 +68,33 @@ Button:focus {
 
 .projectItemText {
   display: block;
+  height: 100px;
+  width: 320px;
 }
 
 .projectItemHeading {
+  font-size: 130%;
   font-family: nunito;
   font-weight: 700;
   margin-top: 10px;
   color: grey;
+}
+
+.projectItemHeading2 {
+  font-size: 120%;
+  font-family: nunito;
+  font-weight: 300;
+  margin-top: 10px;
+  color: grey;
+}
+
+#FormLabel {
+  font-family: nunito;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+#FormControlLabel {
+  font-family: nunito;
+  font-weight: 500;
 }
