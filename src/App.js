@@ -22,7 +22,7 @@ export default function App() {
               <Switch>
                 <Route exact path="/" component={Homepage} />
                 <Route path="/projects" component={Projects} />
-                <Route exact path="/students/projectbuilder" component={ProjectBuilder} />
+                <Route exact path="/projectbuilder" component={ProjectBuilder} />
                 <Route path="/teachers" component={Teachers} />
                 <Route path="/students" component={Students} />
                 <Route path="/profile" component={Profile} />

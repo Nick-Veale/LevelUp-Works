@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './SignUp.css';
 import background from '../../../../img/heroImage1.jpg';
+import NavModal from '../../../Nav/NavModal';
 
-class SignUp extends React.Component {
+export default function SignUp() {
 
-    render() {
+        const [open, setOpen] = useState(false);
+
+        const handleOpen = () => {
+            setOpen(true);
+        };
+        const handleClose = () => {
+            setOpen(false);
+        };
 
         const signUpDivStyle = {
             backgroundImage: "url(" + background + ")",
@@ -20,7 +28,8 @@ class SignUp extends React.Component {
                         <p>Let us help you advance students in Digital Technologies and other learning areas with our project-based learning programme.</p>
                         <div className="signUpButtons">
                             <button className="learnMoreButton">Learn More</button>
-                            <button className="signUpButton" name="signUp">SIGN UP</button>
+                            <button onClick={() => handleOpen()} className="signUpButton" name="signUp">SIGN UP</button>
+                            <NavModal open={open} handleClose={handleClose} />
                             <div className="buttonLabel">
                             <label for="signUp"><small>*Basic Subscription includes the first 15 projects <b>free</b> of charge</small></label>
                             </div>
@@ -28,7 +37,5 @@ class SignUp extends React.Component {
                     </div>  
             </div>
         )
-    }
 };
 
-export default SignUp;

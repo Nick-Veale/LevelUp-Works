@@ -250,7 +250,7 @@ export default function Projects() {
 const ProjectItem = (props) => {
     return(
         <div className="projectItemDiv">
-            <Link to="/students/projectbuilder">
+            <Link to="/projectbuilder">
                 <img src={props.content.imgUrl} alt="" className="projectItemImage"/>
             </Link>
             <div className="projectItemText">
