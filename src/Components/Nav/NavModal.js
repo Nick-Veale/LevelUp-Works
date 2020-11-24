@@ -6,6 +6,7 @@ import students from '../../img/Students.png';
 import teachers from '../../img/teacher.png';
 import ClearIcon from '@material-ui/icons/Clear';
 import { Redirect } from 'react-router-dom';
+import './Nav.css';
 
 
 export default function NavModal(props) {
@@ -19,9 +20,8 @@ export default function NavModal(props) {
                 <input type="password" id="modalInputBox" placeholder="Password"></input>
                 <button id="modalButton" onClick={async () => {
                     const user = await teacherLogin();
-                    <Redirect to="/profile" />;
-                    setUser(user)}}
-                    >LOG IN</button> 
+                    setUser(user);
+                }}>LOG IN</button> 
             </form>
         );
     };
@@ -32,7 +32,6 @@ export default function NavModal(props) {
                 <input type="password" id="modalInputBox" placeholder="Password"></input>
                 <button id="modalButton" onClick={async () => {
                     const user = await studentLogin();
-                    <Redirect to="/profile" />;
                     setUser(user);
                     }}>LOG IN</button>
             </form>

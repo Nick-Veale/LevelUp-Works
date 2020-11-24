@@ -44,10 +44,10 @@ function Nav() {
     const handleRightDivWhenLoggedIn = () => {
         if (!user) {
             return (
-            <span>
-                <span onClick={() => handleOpen()} style={{cursor: 'pointer'}} >
+            <span style={{width: '200px'}}>
+                <span onClick={() => handleOpen()} style={{cursor: 'pointer', textAlign: 'end', fontSize: '0.9em'}} >
                     <AccountCircleIcon style={{marginRight: '3px'}}/>
-                    Register | Login
+                     REGISTER | LOGIN
                 </span>
                 <NavModal open={open} handleClose={handleClose}/> 
             </span>);
@@ -61,7 +61,7 @@ function Nav() {
                             onClick={handleMenuOpen} 
                             style={{cursor: 'pointer'}}>
                                 <img style={{width: '25px', borderRadius: '50%'}} src={user.profilePicture} alt=""></img> 
-                                Rawiri Fletcher
+                                {user.username}
                             </span>
                             <Menu
                                 id="fade-menu"
@@ -100,7 +100,7 @@ function Nav() {
                             className="profileSpan" 
                             style={{cursor: 'pointer'}}>
                                 <img style={{width: '25px', borderRadius: '50%'}} src={user.profilePicture} alt=""></img> 
-                                Jasmina Salvador
+                                {user.username}
                             </span>
                             <Menu
                                 id="simple-menu"
@@ -150,14 +150,14 @@ function Nav() {
             if (user.isTeacher === true) {
                 return(
                     <ul className="CenterList">
-                    <Link style={navStyle} to="/projects">
-                        <li>PROJECTS</li>
-                    </Link>
                     <Link style={navStyle} to="/profile">
                         <li>PROFILE</li>
                     </Link>
-                    <Link style={navStyle} to="/students">
-                        <li>MY STUDENTS</li>
+                    <Link style={navStyle} to="/projects">
+                        <li>PROJECTS</li>
+                    </Link>
+                    <Link style={navStyle} to="/teachers">
+                        <li>TEACHER DASHBOARD</li>
                     </Link>
                 </ul>
                 );
@@ -203,7 +203,7 @@ function Nav() {
                 </div>
                 <div className="RightDiv">
                     <span className="langSpan">
-                        <small>Lang</small>
+                        <small>LANG</small>
                         <img className="smallFlag" src={nzFlag} alt=""/>
                         <img className="smallFlag" src={maoriFlag} alt=""/>
                     </span>
