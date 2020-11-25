@@ -14,7 +14,7 @@ class Skills extends React.Component {
                 <br/>
                 <br/>
                 <div className="skillsHeadingDiv">
-                    <h2>Teaching kids programming and digital skills is <i>MORE</i>  than just writing code.</h2>
+                    <h2 className="skillsHeadingDiv">Teaching kids programming and digital skills is <i className="skillsHeadingItalics">MORE</i> than just writing code.</h2>
                 </div>
                 <div className="pictureBoxContainer">
                     <div className="pictureBox pb1">
@@ -35,8 +35,8 @@ class Skills extends React.Component {
                     </div>
                 </div>
                 <br/>
-                <div className="skillsHeadingDiv">
-                    <h2>How our programme helps teacher and schools</h2>
+                <div className="skillsHeadingDiv2">
+                    <h2 className="skillsHeadingDiv2">How our programme helps teacher and schools</h2>
                 </div>
                 <br/>
                 <div className="skillsButtonContainer">

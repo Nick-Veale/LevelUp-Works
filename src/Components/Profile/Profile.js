@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import './Profile.css';
 import { Link, Redirect } from 'react-router-dom';
 import { UserContext } from '../../userContext';
+import Footer from '../Homepage/HomepageComponents/Footer/Footer';
 
 export default function Profile() {
 
@@ -52,7 +53,7 @@ export default function Profile() {
                     <Link to="/teachers">
                         <button className="backDashButton">BACK TO DASHBOARD</button>
                     </Link>
-                    
+                    <Footer />
                 </div>
             );
         } else {
@@ -97,6 +98,7 @@ export default function Profile() {
                     <Link to="/projects">
                         <button className="backButton">BACK TO PROJECTS</button>
                     </Link>
+                    <Footer />
                 </div>
             );
         };
