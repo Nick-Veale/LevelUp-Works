@@ -1,0 +1,67 @@
+.waitingMainDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 50px 0px 50px 0px;
+}
+
+.waitingLeftDivImage {
+  width: 600px;
+}
+.waitingRightDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.waitingTextDiv {
+  margin: 0px 50px 50px 50px;
+  width: 600px;
+  color: grey;
+}
+
+.waitingTextDiv h2 {
+  font-family: nunito;
+  font-weight: 700;
+  font-size: 2.3em;
+  margin: 30px;
+}
+
+.waitingTextDiv h3 {
+  font-family: nunito;
+  margin: 30px;
+}
+
+.waitingTextDiv p {
+  font-family: nunito;
+  margin: 30px;
+  font-size: 1.2em;
+}
+
+.waitingButtonDiv {
+  display: flex;
+  justify-content: flex-start;
+  width: 600px;
+  margin-left: 50px;
+}
+
+.waitingButtonDiv button {
+  width: 180px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 5px rgb(0, 0, 0, 0.4);
+  font-family: nunito;
+  font-weight: 800;
+}
+.waitingEnquireButton {
+  border: 2px solid #43c0f6;
+  background-color: white;
+  color: #707070;
+  margin-right: 100px;
+}
+
+.waitingSignUpButton {
+  border: 2px solid #f91c85;
+  background-color: #f91c85;
+  color: white;
+}

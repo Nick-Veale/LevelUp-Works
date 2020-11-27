@@ -1,19 +1,18 @@
-.container {
-  background-color: #d3d3d3;
-  margin: 0px;
-  padding: 0px;
-  width: 100%;
+.KCcontainer {
+  background-color: #efeff1;
+  padding: 40px;
+  color: #606060;
 }
 
-.key {
-  margin-top: 1rem;
+.KCkey {
+  margin-top: 2rem;
 }
-.container ul {
+.KCcontainer ul {
   list-style-type: none;
   position: relative;
 }
 
-.container li:before {
+.KCcontainer li:before {
   content: "";
   display: inline-block;
   position: absolute;
@@ -27,25 +26,87 @@
   margin-right: 5px;
 }
 
-.keyTitle {
+.KCkeyTitle {
   font-weight: bold;
-  font-family: Nunito;
+  font-family: nunito;
   margin-bottom: 1px;
   margin-left: 0px;
   margin-right: 0px;
   margin-top: 0px;
 }
-.keyPara {
-  font-family: OpenSans;
+
+.KCkeyPara {
+  font-family: "Open Sans";
   margin: 0px;
 }
 
-.title {
-  font-family: Nunito;
+.KCtitle h2 {
+  font-family: nunito;
+  font-weight: 700;
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #606060;
 }
 
-.textBox {
-  margin-left: auto;
-  margin-right: auto;
+.KCtitle h4 {
+  font-size: 1.4em;
+  font-family: "Open Sans";
+  color: #606060;
+  margin-top: 25;
+  margin-bottom: 25px;
+}
+
+.KCtextBox {
+  margin-left: 10%;
+  margin-right: 10%;
   width: 70%;
+}
+
+.skillsButtonContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.skillsButtonGrey {
+  width: 250px;
+  font-family: nunito;
+  font-weight: 700;
+  color: grey;
+  margin-left: 50px;
+  margin-right: 50px;
+  border-radius: 5px;
+  border: 3px solid #efeff1;
+  background-color: #efeff1;
+  box-shadow: 0px 2px 5px rgb(77, 77, 77, 0.4);
+  transition: 0.3s;
+}
+
+.skillsButtons {
+  font-family: nunito;
+  font-weight: 700;
+  color: grey;
+  width: 250px;
+  margin-left: 50px;
+  margin-right: 50px;
+  border-radius: 5px;
+  border: 3px solid #43c0f6;
+  background-color: white;
+  box-shadow: 0px 2px 5px rgb(77, 77, 77, 0.4);
+  transition: 0.3s;
+}
+
+.skillsButtons:focus {
+  outline: none;
+}
+.skillsButtonGrey:focus {
+  outline: none;
+}
+.skillsHeadingDiv2 {
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+  margin-bottom: 50px;
+  font-family: nunito;
+  font-weight: 700;
+  color: rgb(68, 68, 68);
 }
