@@ -1,0 +1,244 @@
+.sideBarH5 {
+  font-family: nunito;
+  font-weight: 700;
+  color: white;
+  font-size: 1em;
+}
+
+#sideBarLowIcon {
+  filter: invert(100%);
+}
+
+.sideBarLowMainDivOpen {
+  position: absolute;
+  bottom: 0px;
+  display: flex;
+}
+
+.sideBarLowSingleDivOpen {
+  cursor: pointer;
+  text-align: center;
+  margin: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.sideBarLowSingleDivClosed {
+  cursor: pointer;
+  text-align: center;
+  margin: 10px;
+}
+
+#sideBarText {
+  font-family: nunito;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: white;
+}
+
+.sideBarPicture {
+  border-radius: 50%;
+  width: 70px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 12px;
+}
+
+.projectBuildWindowCurlyBox {
+  height: 100%;
+  width: 100%;
+  border-radius: 50px;
+  background: #d5f2ff;
+}
+
+.projectContentDiv {
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  color: grey;
+}
+
+.projectContentDivInline {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  color: grey;
+}
+
+.projectInstructionsMainDiv {
+  max-width: 900px;
+}
+
+.projectInstructionsButtonLeft {
+  position: absolute;
+  left: 10%;
+  border: 2px solid white;
+  border-radius: 50%;
+  background-color: #e2eef3;
+  height: 80px;
+  width: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 2px 5px rgb(0, 0, 0, 0.4);
+  transition: 0.3s;
+}
+.projectInstructionsButtonRight {
+  position: absolute;
+  right: 100px;
+  border: 2px solid white;
+  border-radius: 50%;
+  background-color: #e2eef3;
+  height: 80px;
+  width: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 2px 5px rgb(0, 0, 0, 0.4);
+  transition: 0.3s;
+}
+
+.projectInstructionsButtonLeftArrow {
+  height: 30px;
+  width: 30px;
+  border-left: 7px solid #f91c85;
+  border-top: 7px solid #f91c85;
+  border-radius: 5px;
+  transform: rotate(-45deg);
+  margin-left: 10px;
+}
+.projectInstructionsButtonRightArrow {
+  height: 30px;
+  width: 30px;
+  border-right: 7px solid #f91c85;
+  border-top: 7px solid #f91c85;
+  border-radius: 5px;
+  transform: rotate(45deg);
+  margin-right: 10px;
+}
+.projectInstructionsButtonRight:hover {
+  height: 100px;
+  width: 100px;
+  box-shadow: 0px 7px 10px rgb(0, 0, 0, 0.4);
+}
+.projectInstructionsButtonLeft:hover {
+  height: 100px;
+  width: 100px;
+  box-shadow: 0px 7px 10px rgb(0, 0, 0, 0.4);
+}
+
+.projectObjectivesImageContainer {
+  margin-top: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.projectObjectivesImageDiv {
+  width: 30%;
+  font-family: nunito;
+  font-weight: 700;
+}
+
+.projectObjectivesImages {
+  display: flex;
+  align-items: center;
+}
+
+.projectObjectivesH2 {
+  margin-top: 50px;
+}
+
+.appBarButton1 {
+  position: absolute;
+  right: 500px;
+  width: 170px;
+  height: 30px;
+  font-family: nunito;
+  font-weight: 700;
+  color: white;
+  box-shadow: 0px 2px 5px rgb(0, 0, 0, 0.4);
+  border: 1px solid #e5ab2c;
+  background-color: #e5ab2c;
+  border-radius: 6px;
+  margin: 10px;
+  margin-top: -15px;
+}
+.appBarButton2 {
+  position: absolute;
+  right: 300px;
+  width: 170px;
+  height: 30px;
+  font-family: nunito;
+  font-weight: 700;
+  color: white;
+  box-shadow: 0px 2px 5px rgb(0, 0, 0, 0.4);
+  border: 1px solid #f91c85;
+  background-color: #f91c85;
+  border-radius: 6px;
+  margin: 10px;
+  margin-top: -15px;
+}
+.appBarButton3 {
+  position: absolute;
+  right: 100px;
+  width: 170px;
+  height: 30px;
+  font-family: nunito;
+  font-weight: 700;
+  color: white;
+  box-shadow: 0px 2px 5px rgb(0, 0, 0, 0.4);
+  border: 1px solid #43c0f6;
+  background-color: #43c0f6;
+  border-radius: 6px;
+  margin: 10px;
+  margin-top: -15px;
+}
+
+.projectContentDivHalf {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  width: 50%;
+}
+
+.halfLeft {
+  border-right: 2px solid grey;
+}
+
+.largeButton {
+  background-color: #f91c85;
+  border: 0px solid #f91c85;
+  border-radius: 15px;
+  height: 143px;
+  width: 243px;
+  text-align: center;
+  box-shadow: 0px 2px 5px rgb(0, 0, 0, 0.4);
+}
+
+.largeButtonContent {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 15px;
+  height: 100px;
+  width: 200px;
+  display: block;
+  color: white;
+}
+
+.teacherSubmissionsTextSpan {
+  display: flex;
+  justify-content: space-between;
+}
+
+.teacherBuilderButton {
+  background-color: #d5f2ff;
+  border: 0;
+}

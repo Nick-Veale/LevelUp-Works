@@ -12,19 +12,21 @@ import ArrowLeft from '@material-ui/icons/ArrowLeft';
 import ArrowRight from '@material-ui/icons/ArrowRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
-import StarLogo from '../../img/starLogo2.png';
-import TeacherBuildWindow from './TeacherBuildWindow';
+import StarLogo from '../../../img/starLogo2.png';
+import ProjectBuildWindow from './ProjectBuildWindow';
+import objectivesLight from '../../../img/objectivesLight.png';
+import steps from '../../../img/steps.png';
+import bonus from '../../../img/bonus.png';
+import newProj from '../../../img/newProj.png';
+import quiz from '../../../img/quiz.png';
+import submitProj from '../../../img/submitProj.png';
+import videoLight from '../../../img/videoLight.png';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import Settings from '@material-ui/icons/Settings';
 import ExitToApp from '@material-ui/icons/ExitToApp';
-import './TeacherDashboard.css';
+import './ProjectBuilder.css';
 import {Link, Redirect} from 'react-router-dom';
-import {UserContext} from '../../userContext';
-import progressTracker from '../../img/progressTracker.png';
-import FaceIcon from '@material-ui/icons/Face';
-import LiveHelpIcon from '@material-ui/icons/LiveHelp';
-import LocalLibraryIcon from '@material-ui/icons/LocalLibrary';
-import submitProj from '../../img/submitProj.png';
+import {UserContext} from '../../../userContext';
 
 const drawerWidth = 280;
 
@@ -106,7 +108,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Teachers() {
+export default function MiniDrawer() {
 
   const { user, setUser } = useContext(UserContext);
 
@@ -140,26 +142,6 @@ export default function Teachers() {
     };
   };
 
-  const sideBarMaterialIcon = () => {
-    if (open) {
-      return {
-        color: 'white',
-        fontSize: '30px',
-        transition: '0.3s'
-      };
-    } else {
-      return {
-        color: 'white',
-        fontSize: '50px',
-        marginTop: '10px',
-        marginBottom: '10px',
-        marginRight:'50px',
-        marginLeft: '9px',
-        transition: '0.3s'
-      }
-    }
-  }
-
   const sideBarButton = (id) => {
     if (id === projectWindow) {
       return {
@@ -176,7 +158,6 @@ export default function Teachers() {
      } else {
       return {
         display: 'flex',
-        marginLeft: '8px'
       }
      };
   };
@@ -197,6 +178,108 @@ export default function Teachers() {
     setProjectWindow(id);
   };
 
+  const handleSideBarItems = () => {
+    if (user.isTeacher) {
+      return (
+        <List>
+          <ListItem style={sideBarButton(0)} button onClick={() => handleSidebarClick(0)}>
+            <ListItemIcon><img style={sideBarIcon()} src={objectivesLight} alt="" /></ListItemIcon>
+            <div id="sideBarText">Learning Objectives</div>
+          </ListItem>
+          <ListItem style={sideBarButton(1)} button onClick={() => handleSidebarClick(1)}>
+            <ListItemIcon><img style={sideBarIcon()} src={steps} alt="" /></ListItemIcon>
+            <div id="sideBarText">Instructions</div>
+          </ListItem>
+          <ListItem style={sideBarButton(2)} button onClick={() => handleSidebarClick(2)}>
+            <ListItemIcon><img style={sideBarIcon()} src={videoLight} alt="" /></ListItemIcon>
+            <div id="sideBarText">Video Tutorial</div>
+          </ListItem>
+          <ListItem style={sideBarButton(3)} button onClick={() => handleSidebarClick(3)}>
+            <ListItemIcon><img style={sideBarIcon()} src={newProj} alt="" /></ListItemIcon>
+            <div id="sideBarText">Preview Project</div>
+          </ListItem>
+          <ListItem style={sideBarButton(4)} button onClick={() => handleSidebarClick(4)}>
+            <ListItemIcon><img style={sideBarIcon()} src={submitProj} alt="" /></ListItemIcon>
+            <div id="sideBarText">Check Submissions</div>
+          </ListItem>
+          <ListItem style={sideBarButton(5)} button onClick={() => handleSidebarClick(5)}>
+            <ListItemIcon><img style={sideBarIcon()} src={bonus} alt="" /></ListItemIcon>
+            <div id="sideBarText">Offline Activities</div>
+          </ListItem>
+          <ListItem style={sideBarButton(6)} button onClick={() => handleSidebarClick(6)}>
+            <ListItemIcon><img style={sideBarIcon()} src={quiz} alt="" /></ListItemIcon>
+            <div id="sideBarText">View Quiz Results</div>
+          </ListItem>
+        </List>
+      )
+    } else {
+      return (
+        <List>
+        <ListItem style={sideBarButton(0)} button onClick={() => handleSidebarClick(0)}>
+          <ListItemIcon><img style={sideBarIcon()} src={objectivesLight} alt="" /></ListItemIcon>
+          <div id="sideBarText">Learning Objectives</div>
+        </ListItem>
+        <ListItem style={sideBarButton(1)} button onClick={() => handleSidebarClick(1)}>
+          <ListItemIcon><img style={sideBarIcon()} src={steps} alt="" /></ListItemIcon>
+          <div id="sideBarText">Instructions</div>
+        </ListItem>
+        <ListItem style={sideBarButton(2)} button onClick={() => handleSidebarClick(2)}>
+          <ListItemIcon><img style={sideBarIcon()} src={videoLight} alt="" /></ListItemIcon>
+          <div id="sideBarText"  >Video Tutorial</div>
+        </ListItem>
+        <ListItem style={sideBarButton(3)} button onClick={() => handleSidebarClick(3)}>
+          <ListItemIcon><img style={sideBarIcon()} src={newProj} alt="" /></ListItemIcon>
+          <div id="sideBarText">Make Project</div>
+        </ListItem>
+        <ListItem style={sideBarButton(4)} button onClick={() => handleSidebarClick(4)}>
+          <ListItemIcon><img style={sideBarIcon()} src={submitProj} alt="" /></ListItemIcon>
+          <div id="sideBarText">Submit Project</div>
+        </ListItem>
+        <ListItem style={sideBarButton(5)} button onClick={() => handleSidebarClick(5)}>
+          <ListItemIcon><img style={sideBarIcon()} src={bonus} alt="" /></ListItemIcon>
+          <div id="sideBarText">Bonus Challenge</div>
+        </ListItem>
+        <ListItem style={sideBarButton(6)} button onClick={() => handleSidebarClick(6)}>
+          <ListItemIcon><img style={sideBarIcon()} src={quiz} alt="" /></ListItemIcon>
+          <div id="sideBarText">Take the Quiz</div>
+        </ListItem>
+    </List>
+      )
+    }
+  };
+
+  const conditionalButtons = () => {
+    if (user.isTeacher) {
+      return (
+      <div>
+        <Link>
+          <button className="appBarButton1">Take Screenshot</button>
+        </Link>
+        <Link to="/teachers">
+          <button className="appBarButton2">Teacher Dashboard</button>
+        </Link>
+        <Link to="/projects">
+          <button className="appBarButton3">More Projects</button>
+        </Link>
+      </div>
+      );
+    } else {
+      return (
+        <div>
+          <Link>
+            <button className="appBarButton1">Take Screenshot</button>
+          </Link>
+          <Link>
+            <button className="appBarButton2">Ask Teacher for Help</button>
+          </Link>
+          <Link to="/projects">
+            <button className="appBarButton3">More Projects</button>
+          </Link>
+        </div>
+      );
+    }
+  };
+
   const handleLogOut = () => {
     setUser(null);
   };
@@ -208,6 +291,7 @@ export default function Teachers() {
   } else {
     return (
       <div className={classes.root}>
+        {/* <CssBaseline /> */}
         <AppBar
           position="fixed"
           className={clsx(classes.appBar)}
@@ -232,17 +316,7 @@ export default function Teachers() {
                 }}>PROJECT</h4>
                 <p>Introduction</p>
               </div>
-              <div>
-                <Link>
-                  <button className="appBarButton1">Take Screenshot</button>
-                </Link>
-                <Link>
-                  <button className="appBarButton2">Help Center</button>
-                </Link>
-                <Link to="/projects">
-                  <button className="appBarButton3">View Projects</button>
-                </Link>
-              </div>
+              {conditionalButtons()}
           </Toolbar>
         </AppBar>
         <Drawer
@@ -264,28 +338,7 @@ export default function Teachers() {
           </div>
           <Divider />
           <img className="sideBarPicture" src={user.profilePicture} alt="" />
-          <List>
-            <ListItem style={sideBarButton(0)} button onClick={() => handleSidebarClick(0)}>
-              <ListItemIcon><img style={sideBarIcon()} src={progressTracker} alt="" /></ListItemIcon>
-              <div id="sideBarText">Progress Tracker</div>
-            </ListItem>
-            <ListItem style={sideBarButton(1)} button onClick={() => handleSidebarClick(1)}>
-              <ListItemIcon><FaceIcon style={sideBarMaterialIcon()} /></ListItemIcon>
-              <div id="sideBarText">Student Profiles</div>
-            </ListItem>
-            <ListItem style={sideBarButton(2)} button onClick={() => handleSidebarClick(2)}>
-              <ListItemIcon><LiveHelpIcon style={sideBarMaterialIcon()} /></ListItemIcon>
-              <div id="sideBarText">Help Requests</div>
-            </ListItem>
-            <ListItem style={sideBarButton(3)} button onClick={() => handleSidebarClick(3)}>
-              <ListItemIcon><img style={sideBarIcon()} src={submitProj} alt="" /></ListItemIcon>
-              <div id="sideBarText">Project Submissions</div>
-            </ListItem>
-            <ListItem style={sideBarButton(4)} button onClick={() => handleSidebarClick(4)}>
-              <ListItemIcon><LocalLibraryIcon style={sideBarMaterialIcon()} /></ListItemIcon>
-              <div id="sideBarText">Project Library</div>
-            </ListItem>
-          </List>
+          {handleSideBarItems()}
           <IconButton
               aria-label="open drawer"
               onClick={handleDrawerClose}
@@ -325,7 +378,7 @@ export default function Teachers() {
                 </icon>
                 <h5 className="sideBarH5">Settings</h5>
               </div>
-              <div onClick={() => handleLogOut()} className="sideBarLowSingleDivOpen">
+              <div className="sideBarLowSingleDivOpen" onClick={() => handleLogOut}>
                 <icon>
                 <ExitToApp id="sideBarLowIcon" />
                 </icon>
@@ -341,15 +394,15 @@ export default function Teachers() {
                 <Settings id="sideBarLowIcon" />
                 </icon>
               </div>
-              <div onClick={() => handleLogOut()} className="sideBarLowSingleDivClosed">
-                <icon>
-                <ExitToApp id="sideBarLowIcon" />
-                </icon>
-              </div>
+                <div className="sideBarLowSingleDivClosed" onClick={() => handleLogOut()}>
+                  <icon>
+                  <ExitToApp id="sideBarLowIcon" />
+                  </icon>
+                </div>
             </div>
         </Drawer>
         <main className={classes.content}>
-          <TeacherBuildWindow contentId={projectWindow} />
+          <ProjectBuildWindow contentId={projectWindow} />
         </main>
       </div>
     );
