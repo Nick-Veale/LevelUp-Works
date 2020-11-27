@@ -5,6 +5,7 @@ import Skills from './HomepageComponents/Skills/Skills';
 import { Redirect } from 'react-router-dom';
 import { UserContext } from '../../userContext';
 import Footer from './HomepageComponents/Footer/Footer';
+import KeyComp from "./HomepageComponents/KeyComp/KeyComp";
 
 export default function Homepage() {
 
@@ -17,6 +18,7 @@ export default function Homepage() {
                 <Offer />
                 <Skills />  
                 <Footer />
+                <KeyComp />
             </div>
          );
     } else {
