@@ -315,10 +315,15 @@ export default function Teachers() {
               }} />
             </IconButton>
             <div style={showLowerIcons()} className="sideBarLowMainDivOpen">  
-              <div className="sideBarLowSingleDivOpen">
-                <AccountCircleIcon id="sideBarLowIcon" />
-                <h5 className="sideBarH5">Profile</h5>
-              </div>
+              <Link to="/profile" style={{
+                  textDecoration: 'none',
+                  color: 'white'
+                }}>
+                <div className="sideBarLowSingleDivOpen">
+                  <AccountCircleIcon id="sideBarLowIcon" style={{color: "black"}}/>
+                  <h5 className="sideBarH5">Profile</h5>
+                </div>
+              </Link>
               <div className="sideBarLowSingleDivOpen">
                 <icon>
                 <Settings id="sideBarLowIcon" />
