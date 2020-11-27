@@ -14,7 +14,7 @@ class Skills extends React.Component {
                 <br/>
                 <br/>
                 <div className="skillsHeadingDiv">
-                    <h2>Teaching kids programming and digital skills is <i>MORE</i>  than just writing code.</h2>
+                    <h2 className="skillsHeadingDiv">Teaching kids programming and digital skills is <i className="skillsHeadingItalics">MORE</i> than just writing code.</h2>
                 </div>
                 <div className="pictureBoxContainer">
                     <div className="pictureBox pb1">
@@ -34,18 +34,9 @@ class Skills extends React.Component {
                         <div className="pbText">Technology and Future Focus</div>
                     </div>
                 </div>
-                <br/>
-                <div className="skillsHeadingDiv">
-                    <h2>How our programme helps teacher and schools</h2>
+                <div className="skillsFooterDiv">
+                    <h2 className="skillsFooterDiv">How our programme helps teacher and schools</h2>
                 </div>
-                <br/>
-                <div className="skillsButtonContainer">
-                    <button className="skillsButtons">Learning Pathways</button>
-                    <button className="skillsButtons">Digital Technologies</button>
-                    <button className="skillsButtons">Key Competencies</button>
-                    <button className="skillsButtons">IR4.0</button>
-                </div>
-                <br/>
             </div>
         )
     }

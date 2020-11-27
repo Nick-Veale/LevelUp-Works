@@ -1,18 +1,32 @@
 .skillsHeadingDiv {
+  font-family: "nunito";
+  font-weight: 700;
   display: flex;
   justify-content: center;
+  margin-bottom: 50px;
+  color: #6c6c6c;
+}
+
+.skillsFooterDiv {
+  margin: 50px 0px 20px;
+  display: flex;
+  justify-content: center;
+  font-family: nunito;
+  font-weight: 700;
+  color: #6c6c6c;
 }
 
 .pictureBoxContainer {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .pictureBox {
   width: 300px;
   height: 220px;
-  margin: 50px;
+  margin: 10px 50px 10px 50px;
   border-radius: 10%;
   padding: 0;
   padding-top: 20px;
@@ -22,8 +36,17 @@
   text-align: center;
 }
 
+.skillsHeadingItalics {
+  font-style: italic;
+  margin-right: 10px;
+  margin-left: 10px;
+  margin-bottom: 5px;
+}
+
 .pbText {
   font-size: 160%;
+  font-family: nunito;
+  font-weight: 700;
 }
 .pbImage {
   width: 40%;
@@ -44,19 +67,4 @@
 .pb4 {
   background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
     url("../../../../img/TechAFutFoc.png");
-}
-
-.skillsButtonContainer {
-  display: flex;
-  justify-content: center;
-}
-
-.skillsButtons {
-  width: 250px;
-  margin-left: 50px;
-  margin-right: 50px;
-  border-radius: 5px;
-  border: 3px solid #43c0f6;
-  background-color: white;
-  box-shadow: 0px 2px 5px rgb(77, 77, 77, 0.4);
 }

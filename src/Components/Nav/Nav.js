@@ -138,12 +138,8 @@ function Nav() {
                 <Link style={navStyle} to="/">
                     <li>HOME</li>
                 </Link>
-                {/* <Link style={navStyle} to="/projects"> */}
                     <li>FEATURES</li>
-                {/* </Link> */}
-                {/* <Link style={navStyle} to="/teachers"> */}
                     <li>TEACHERS</li>
-                {/* </Link> */}
             </ul>
             );
         } else {
@@ -170,7 +166,7 @@ function Nav() {
                    <Link style={navStyle} to="/profile">
                        <li>PROFILE</li>
                    </Link>
-               </ul>
+                   </ul>
                 );
             };
         };
@@ -210,8 +206,8 @@ function Nav() {
                     {handleRightDivWhenLoggedIn()}
                 </div>
         </div>
-    )
+    );
 };
 
-export default Nav;
+export default Nav; 
 

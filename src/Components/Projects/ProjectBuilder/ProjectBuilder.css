@@ -242,3 +242,43 @@
   background-color: #d5f2ff;
   border: 0;
 }
+
+.bonusChallengeDiv {
+  text-align: center;
+}
+
+.bonusChallengeDivMargin {
+  margin: 60px;
+  font-family: nunito;
+  font-weight: 700;
+}
+
+.bonusChallengeList {
+  text-align: left;
+  margin-left: 175px;
+  margin-right: auto;
+}
+
+.quizForm {
+  display: block;
+}
+
+.quizDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.quizInputCheckbox {
+  margin: 20px auto 20px auto;
+  text-align: left;
+}
+
+.quizInputCheckbox2 {
+  margin: 10px;
+}
+
+.quizDiv label {
+  font-family: nunito;
+  font-weight: 700;
+}

@@ -13,10 +13,11 @@ import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
 import screenShotExample from '../../../img/screenShotExample.png';
 import teacherShow from '../../../img/teacherShow.png';
 import { UserContext } from '../../../userContext';
+import scratchScreenshot from '../../../img/scratchScreenshot.png';
 
 export default function ProjectBuildWindow(props) {
 
-    const { user, userContext } = React.useContext(UserContext);
+    const { user, setUser } = React.useContext(UserContext);
 
     const handleRender = () => {
         if (props.contentId === 0) {
@@ -78,9 +79,7 @@ export default function ProjectBuildWindow(props) {
                 </div>
             )
         } else if (props.contentId === 2) {
-
             let x = 80;
-
             return (
                 <div className="projectContentDivInline">
                     <iframe
@@ -94,18 +93,14 @@ export default function ProjectBuildWindow(props) {
                 </div>
             )
         } else if (props.contentId === 3) {
-
             let x = 88;
-
             return (
                 <div className="projectContentDiv">
                     <br/>
-                    <iframe 
-                    src="https://scratch.mit.edu/"
-                    width={x*16}
-                    height={x*9}
-                    frameborder="0"
-                    title="Scratch - Imagine, Program, Share" />
+                    <img src={scratchScreenshot} alt="" 
+                    style={{
+                        width: '80vw'
+                    }}/>
                 </div>
             )
         } else if (props.contentId === 4) {
@@ -152,17 +147,51 @@ export default function ProjectBuildWindow(props) {
                     </div>
                 )
             }
-            
         } else if (props.contentId === 5) {
             return (
-                <div className="projectContentDiv">
-                    <h2>Bonus Challenge!</h2>
+                <div className="projectContentDivInline">
+                    
+                    <div className="bonusChallengeDiv">                    
+                        <div className="bonusChallengeDivMargin">As a Bonus</div>
+                        <h2 className="bonusChallengeDivMargin">Try this same excercise and add your twist!</h2>
+                        <h3 className="bonusChallengeDivMargin">For some ideas, you can add ...</h3>
+                        <ul className="bonusChallengeList">
+                            <li>Extra images of your own</li>
+                            <li>Sound to the animations</li>
+                            <li>Another chapter to the story!</li>
+                        </ul>
+                        <div className="bonusChallengeDivMargin">Use your imagination and go wild! The bigger and crazier, the better!</div> 
+                    </div>
+
                 </div>
-            )
+            );
         } else if (props.contentId === 6) {
             return (
-                <div className="projectContentDiv">
-                    <h2>Take the Quiz!</h2>
+                <div className="projectContentDivInline">
+                    <div className="quizDiv">
+                        <h2>Test your Skills!</h2>
+                        <div>Answer these questions correctly to move on!</div>
+                        <form className="quizForm">
+                            <div className="quizInputCheckbox">
+                                <label>
+                                    <input type="checkbox" className="quizInputCheckbox2" />
+                                    Check this box if you think the answer to the question is this.
+                                </label>
+                            </div>
+                            <div classname="quizInputCheckbox">
+                                <label>
+                                    <input type="checkbox" className="quizInputCheckbox2" />
+                                    Check this box if you think that 1 is greater than 2.  
+                                </label>
+                            </div>
+                            <div className="quizInputCheckbox">
+                                <label>
+                                    <input type="checkbox" className="quizInputCheckbox2" />
+                                    Lol i don't know what you've been working on so i don't know what to ask.
+                                </label>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             )
         }

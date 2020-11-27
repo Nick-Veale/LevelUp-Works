@@ -369,11 +369,16 @@ export default function MiniDrawer() {
             </IconButton>
             <div style={showLowerIcons()} className="sideBarLowMainDivOpen">  
               <div className="sideBarLowSingleDivOpen">
-                <AccountCircleIcon id="sideBarLowIcon" />
-                <h5 className="sideBarH5">Profile</h5>
+                <Link style={{
+                  textDecoration: 'none',
+                  color: 'white'
+                }}to="/profile">
+                <AccountCircleIcon id="sideBarLowIcon" style={{color: 'black'}} />
+                  <h5 className="sideBarH5">Profile</h5>
+                </Link>
               </div>
               <div className="sideBarLowSingleDivOpen">
-                <icon>
+                <icon> 
                 <Settings id="sideBarLowIcon" />
                 </icon>
                 <h5 className="sideBarH5">Settings</h5>
@@ -386,9 +391,14 @@ export default function MiniDrawer() {
               </div>
             </div>
             <div style={hideLowerIcons()} className="sideBarLowMainDivOpen">  
-              <div className="sideBarLowSingleDivClosed">
-                <AccountCircleIcon id="sideBarLowIcon" />
-              </div>
+              <Link style={{
+                textDecoration: 'none',
+                color: 'black'
+                }} to="/profile">
+                <div className="sideBarLowSingleDivClosed">
+                  <AccountCircleIcon id="sideBarLowIcon" />
+                </div>
+              </Link>
               <div className="sideBarLowSingleDivClosed">
                 <icon>
                 <Settings id="sideBarLowIcon" />

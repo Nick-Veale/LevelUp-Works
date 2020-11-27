@@ -53,7 +53,7 @@ class Offer extends React.Component{
                     </div>
                     <br/>
                     <div className="wwoImageButtons">
-                        <h2>What will students create?</h2>
+                        <h2 className="wwoh2">What will students create?</h2>
                         <div className="imageButtonContainer">
                             <button className="imageButton" onClick={() => this.dotHandle(0)}>
                                 <img src={animation} alt="" /><div>Animation</div>

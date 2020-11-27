@@ -156,7 +156,6 @@
 .appBarButton1 {
   position: absolute;
   right: 500px;
-  width: 170px;
   height: 30px;
   font-family: nunito;
   font-weight: 700;
@@ -171,7 +170,6 @@
 .appBarButton2 {
   position: absolute;
   right: 300px;
-  width: 170px;
   height: 30px;
   font-family: nunito;
   font-weight: 700;
@@ -186,7 +184,6 @@
 .appBarButton3 {
   position: absolute;
   right: 100px;
-  width: 170px;
   height: 30px;
   font-family: nunito;
   font-weight: 700;
