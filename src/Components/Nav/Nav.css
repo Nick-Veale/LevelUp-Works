@@ -206,3 +206,10 @@ h2 {
   display: inline;
   font-size: 0.8em;
 }
+
+#simple-menu {
+}
+
+.MuiPopover-paper {
+  background-color: wheat;
+}

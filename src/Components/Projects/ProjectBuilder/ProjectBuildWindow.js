@@ -193,9 +193,9 @@ export default function ProjectBuildWindow(props) {
                         </form>
                     </div>
                 </div>
-            )
-        }
-    } 
+            );
+        };
+    };
 
     return (
         <div style={{height: '90vh'}}>

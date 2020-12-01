@@ -131,6 +131,12 @@
   box-shadow: 0px 7px 10px rgb(0, 0, 0, 0.4);
 }
 
+.projectInstructionsButtonRight:focus {
+  outline: none;
+}
+.projectInstructionsButtonLeft:focus {
+  outline: none;
+}
 .projectObjectivesImageContainer {
   margin-top: 30px;
   width: 100%;
@@ -198,7 +204,15 @@
   margin: 10px;
   margin-top: -15px;
 }
-
+.appBarButton1:focus {
+  outline: none;
+}
+.appBarButton2:focus {
+  outline: none;
+}
+.appBarButton3:focus {
+  outline: none;
+}
 .projectContentDivHalf {
   display: flex;
   flex-direction: column;
