@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState } from "react";
 import Homepage from "./Components/Homepage/Homepage";
 import Nav from "./Components/Nav/Nav";
 import Projects from "./Components/Projects/Projects";

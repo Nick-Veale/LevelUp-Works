@@ -3,8 +3,7 @@ import { UserContext } from "../../userContext";
 import "./Projects.css";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Button from "@material-ui/core/Button";
-import Radio from "@material-ui/core/Radio";
-import RadioGroup from "@material-ui/core/RadioGroup";
+import Checkbox from "@material-ui/core/Checkbox";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
@@ -28,19 +27,8 @@ import project15 from "../../img/project15.png";
 import { Link as ScrollLink } from "react-scroll";
 
 export default function Projects() {
-  const [subscription, setSubscription] = useState("Free");
-  const [activity, setActivity] = useState("Animation");
-  const [yearLevel, setYearLevel] = useState("1-4");
-  const [subject, setSubject] = useState("Computer Science");
   const [complexity, setComplexity] = useState("Beginner");
   const [numberShown, setNumberShown] = useState(25);
-  const [callDetails, setCallDetails] = useState({
-    subscription: subscription,
-    activity: activity,
-    yearLevel: yearLevel,
-    subject: subject,
-    complexity: complexity,
-  });
   const [projectItemContent, setProjectItemContent] = useState([
     {
       imgUrl: project1,
@@ -163,26 +151,41 @@ export default function Projects() {
       id: 14,
     },
   ]);
+  const [filterItemContent, setFilterItemContent] = useState([]);
+  const [filter, setFilter] = useState({
+    free: false,
+    premium: false,
+    animation: false,
+    game: false,
+    chatbot: false,
+    augmentedReality: false,
+    oneToFour: false,
+    fiveToSix: false,
+    sevenToEight: false,
+    nineToThirteen: false,
+    computerScience: false,
+    maths: false,
+    science: false,
+    language: false,
+    art: false,
+    music: false,
+  });
 
+  //Filter Functions
   const handleComp = (event) => {
     setComplexity(event);
   };
-  const handleSub = (event) => {
-    setSubscription(event.target.value);
-  };
-  const handleYear = (event) => {
-    setYearLevel(event.target.value);
-  };
-  const handleSubject = (event) => {
-    setSubject(event.target.value);
-  };
-  const handleAct = (event) => {
-    setActivity(event.target.value);
-  };
-
   const handleSetNumber = (num) => {
     setNumberShown(num);
   };
+  const handleSearchParams = (e) => {
+    setFilter({ ...filter, [e.target.name]: e.target.checked });
+    console.log(filter);
+  };
+  // useEffect(() => {
+  //   setFilterItemContent(projectItemContent.map)
+  // } [filter])
+  // Styling Functions
   const showVariant = (string) => {
     if (string === numberShown) {
       return "contained";
@@ -197,7 +200,6 @@ export default function Projects() {
       return null;
     }
   };
-
   const complexityRadioButtonClassName = (num) => {
     if (num === complexity) {
       return "complexityRadioButton";
@@ -205,7 +207,6 @@ export default function Projects() {
       return "complexityRadioButtonGrey";
     }
   };
-
   const numberRadioButtonClassName = (num) => {
     if (num === numberShown) {
       return "numberRadioButton";
@@ -213,7 +214,6 @@ export default function Projects() {
       return "numberRadioButtonGrey";
     }
   };
-
   const complexityVariant = (string) => {
     if (string === complexity) {
       return "contained";
@@ -221,7 +221,6 @@ export default function Projects() {
       return null;
     }
   };
-
   const complexityColor = (string) => {
     if (string === complexity) {
       return "primary";
@@ -230,23 +229,9 @@ export default function Projects() {
     }
   };
 
-  useEffect(
-    () => {
-      // this is where I would put my fetch call the either the server or the API.
-      setCallDetails({
-        subscription: subscription,
-        activity: activity,
-        yearLevel: yearLevel,
-        subject: subject,
-        complexity: complexity,
-      });
-    },
-    [subscription],
-    [activity],
-    [yearLevel],
-    [subject],
-    [complexity]
-  );
+  // const filteredList = projectItemContent.filter((item) => {
+  //   item.includes(searchParams[i]);
+  // });
 
   const projectList = projectItemContent.map((item) => (
     <ProjectItem content={item} number={numberShown} />
@@ -266,6 +251,7 @@ export default function Projects() {
         </h4>
         <br />
       </div>
+
       <main className="projMain">
         <div className="projFilterControlsTop">
           <ButtonGroup size="small">
@@ -294,6 +280,7 @@ export default function Projects() {
               Advanced
             </Button>
           </ButtonGroup>
+
           <ButtonGroup size="small">
             <div style={{ marginRight: "20px" }}>SHOW</div>
             <Button
@@ -322,142 +309,234 @@ export default function Projects() {
             </Button>
           </ButtonGroup>
         </div>
+
         <div className="projFilterControls">
           <FormControl>
             <FormLabel id="FormLabel">Subscription</FormLabel>
-            <RadioGroup
-              name="subscription"
-              value={subscription}
-              onChange={handleSub}
-            >
-              <FormControlLabel
-                id="FormControlLabel"
-                value="Free"
-                control={<Radio color="primary" />}
-                label={<span style={{ fontFamily: "nunito" }}>Free</span>}
-              />
-              <FormControlLabel
-                id="FormControlLabel"
-                value="Premium"
-                control={<Radio color="primary" />}
-                label={<span style={{ fontFamily: "nunito" }}>Premium</span>}
-              />
-            </RadioGroup>
+            <FormControlLabel
+              id="FormControlLabel"
+              value="Free"
+              control={
+                <Checkbox
+                  checked={filter.free}
+                  onChange={handleSearchParams}
+                  color="primary"
+                  name="free"
+                />
+              }
+              label={<span style={{ fontFamily: "nunito" }}>Free</span>}
+            />
+            <FormControlLabel
+              id="FormControlLabel"
+              value="Premium"
+              control={
+                <Checkbox
+                  checked={filter.premium}
+                  onChange={handleSearchParams}
+                  color="primary"
+                  name="premium"
+                />
+              }
+              label={<span style={{ fontFamily: "nunito" }}>Premium</span>}
+            />
           </FormControl>
+
           <FormControl>
             <FormLabel id="FormLabel">Activity Type</FormLabel>
-            <RadioGroup name="activity" value={activity} onChange={handleAct}>
-              <FormControlLabel
-                id="FormControlLabel"
-                value="Animation"
-                control={<Radio color="primary" />}
-                label={<span style={{ fontFamily: "nunito" }}>Animation</span>}
-              />
-              <FormControlLabel
-                id="FormControlLabel"
-                value="Game"
-                control={<Radio color="primary" />}
-                label={<span style={{ fontFamily: "nunito " }}>Game</span>}
-              />
-              <FormControlLabel
-                id="FormControlLabel"
-                value="Chatbot"
-                control={<Radio color="primary" />}
-                label={<span style={{ fontFamily: "nunito " }}>Chatbot</span>}
-              />
-              <FormControlLabel
-                id="FormControlLabel"
-                value="Augmented Reality"
-                control={<Radio color="primary" />}
-                label={
-                  <span style={{ fontFamily: "nunito " }}>
-                    Augmented Reality
-                  </span>
-                }
-              />
-            </RadioGroup>
+            <FormControlLabel
+              id="FormControlLabel"
+              value="Animation"
+              control={
+                <Checkbox
+                  checked={filter.animation}
+                  onChange={handleSearchParams}
+                  name="animation"
+                  color="primary"
+                />
+              }
+              label={<span style={{ fontFamily: "nunito" }}>Animation</span>}
+            />
+            <FormControlLabel
+              id="FormControlLabel"
+              value="Game"
+              control={
+                <Checkbox
+                  onChange={handleSearchParams}
+                  checked={filter.game}
+                  color="primary"
+                  name="game"
+                />
+              }
+              label={<span style={{ fontFamily: "nunito " }}>Game</span>}
+            />
+            <FormControlLabel
+              id="FormControlLabel"
+              value="Chatbot"
+              control={
+                <Checkbox
+                  onChange={handleSearchParams}
+                  checked={filter.chatbot}
+                  color="primary"
+                  name="chatbot"
+                />
+              }
+              label={<span style={{ fontFamily: "nunito " }}>Chatbot</span>}
+            />
+            <FormControlLabel
+              id="FormControlLabel"
+              value="Augmented Reality"
+              control={
+                <Checkbox
+                  color="primary"
+                  onChange={handleSearchParams}
+                  checked={filter.augmentedReality}
+                  name="augmentedReality"
+                />
+              }
+              label={
+                <span style={{ fontFamily: "nunito " }}>Augmented Reality</span>
+              }
+            />
           </FormControl>
+
           <FormControl>
             <FormLabel id="FormLabel">Year Level</FormLabel>
-            <RadioGroup
-              name="yearLevel"
-              value={yearLevel}
-              onChange={handleYear}
-            >
-              <FormControlLabel
-                id="FormControlLabel"
-                value="1-4"
-                control={<Radio color="primary" />}
-                label={<span style={{ fontFamily: "nunito " }}>1-4</span>}
-              />
-              <FormControlLabel
-                id="FormControlLabel"
-                value="5-6"
-                control={<Radio color="primary" />}
-                label={<span style={{ fontFamily: "nunito " }}>5-6</span>}
-              />
-              <FormControlLabel
-                id="FormControlLabel"
-                value="7-8"
-                control={<Radio color="primary" />}
-                label={<span style={{ fontFamily: "nunito " }}>7-8</span>}
-              />
-              <FormControlLabel
-                id="FormControlLabel"
-                value="9-13"
-                control={<Radio color="primary" />}
-                label={<span style={{ fontFamily: "nunito " }}>9-13</span>}
-              />
-            </RadioGroup>
+            <FormControlLabel
+              id="FormControlLabel"
+              value="1-4"
+              control={
+                <Checkbox
+                  name="oneToFour"
+                  onChange={handleSearchParams}
+                  checked={filter.oneToFour}
+                  color="primary"
+                />
+              }
+              label={<span style={{ fontFamily: "nunito " }}>1-4</span>}
+            />
+            <FormControlLabel
+              id="FormControlLabel"
+              value="5-6"
+              control={
+                <Checkbox
+                  onChange={handleSearchParams}
+                  name="fiveToSix"
+                  checked={filter.fiveToSix}
+                  color="primary"
+                />
+              }
+              label={<span style={{ fontFamily: "nunito " }}>5-6</span>}
+            />
+            <FormControlLabel
+              id="FormControlLabel"
+              value="7-8"
+              control={
+                <Checkbox
+                  onChange={handleSearchParams}
+                  name="sevenToEight"
+                  checked={filter.sevenToEight}
+                  color="primary"
+                />
+              }
+              label={<span style={{ fontFamily: "nunito " }}>7-8</span>}
+            />
+            <FormControlLabel
+              id="FormControlLabel"
+              value="9-13"
+              control={
+                <Checkbox
+                  onChange={handleSearchParams}
+                  name="nineToThirteen"
+                  value={filter.nineToThirteen}
+                  color="primary"
+                />
+              }
+              label={<span style={{ fontFamily: "nunito" }}>9-13</span>}
+            />
           </FormControl>
+
           <FormControl>
             <FormLabel id="FormLabel">Subject Matter</FormLabel>
-            <RadioGroup
-              name="subscription"
-              value={subject}
-              onChange={handleSubject}
-            >
-              <FormControlLabel
-                id="FormControlLabel"
-                value="Computer Science"
-                control={<Radio color="primary" />}
-                label={
-                  <span style={{ fontFamily: "nunito " }}>
-                    Computer Science
-                  </span>
-                }
-              />
-              <FormControlLabel
-                id="FormControlLabel"
-                value="Maths"
-                control={<Radio color="primary" />}
-                label={<span style={{ fontFamily: "nunito " }}>Maths</span>}
-              />
-              <FormControlLabel
-                id="FormControlLabel"
-                value="Science"
-                control={<Radio color="primary" />}
-                label={<span style={{ fontFamily: "nunito " }}>Science</span>}
-              />
-              <FormControlLabel
-                id="FormControlLabel"
-                value="Language"
-                control={<Radio color="primary" />}
-                label={<span style={{ fontFamily: "nunito " }}>Language</span>}
-              />
-              <FormControlLabel
-                id="FormControlLabel"
-                value="Art"
-                control={<Radio color="primary" />}
-                label={<span style={{ fontFamily: "nunito " }}>Art</span>}
-              />
-              <FormControlLabel
-                id="FormControlLabel"
-                value="Music"
-                control={<Radio color="primary" />}
-                label={<span style={{ fontFamily: "nunito " }}>Music</span>}
-              />
-            </RadioGroup>
+            <FormControlLabel
+              id="FormControlLabel"
+              value="Computer Science"
+              control={
+                <Checkbox
+                  onChange={handleSearchParams}
+                  name="computerScience"
+                  checked={filter.computerScience}
+                  color="primary"
+                />
+              }
+              label={
+                <span style={{ fontFamily: "nunito " }}>Computer Science</span>
+              }
+            />
+            <FormControlLabel
+              id="FormControlLabel"
+              value="Maths"
+              control={
+                <Checkbox
+                  onChange={handleSearchParams}
+                  name="maths"
+                  checked={filter.maths}
+                  color="primary"
+                />
+              }
+              label={<span style={{ fontFamily: "nunito " }}>Maths</span>}
+            />
+            <FormControlLabel
+              id="FormControlLabel"
+              value="Science"
+              control={
+                <Checkbox
+                  onChange={handleSearchParams}
+                  checked={filter.science}
+                  name="science"
+                  color="primary"
+                />
+              }
+              label={<span style={{ fontFamily: "nunito " }}>Science</span>}
+            />
+            <FormControlLabel
+              id="FormControlLabel"
+              value="Language"
+              control={
+                <Checkbox
+                  onChange={handleSearchParams}
+                  name="language"
+                  checked={filter.language}
+                  color="primary"
+                />
+              }
+              label={<span style={{ fontFamily: "nunito " }}>Language</span>}
+            />
+            <FormControlLabel
+              id="FormControlLabel"
+              value="Art"
+              control={
+                <Checkbox
+                  onChange={handleSearchParams}
+                  name="art"
+                  checked={filter.art}
+                  color="primary"
+                />
+              }
+              label={<span style={{ fontFamily: "nunito " }}>Art</span>}
+            />
+            <FormControlLabel
+              id="FormControlLabel"
+              value="Music"
+              control={
+                <Checkbox
+                  onChange={handleSearchParams}
+                  name="music"
+                  checked={filter.music}
+                  color="primary"
+                />
+              }
+              label={<span style={{ fontFamily: "nunito " }}>Music</span>}
+            />
           </FormControl>
         </div>
         <div className="projContent">{projectList}</div>
