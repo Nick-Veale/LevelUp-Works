@@ -1,6 +1,4 @@
 import Axios from "axios";
-import { UserContext } from "../userContext";
-import React, { useContext } from "react";
 import AccountCircleIcon from "../img/account_circle.png";
 
 export const login = async (email, password) => {
@@ -54,7 +52,7 @@ export const login = async (email, password) => {
 };
 
 export const fetchTeacherName = async (user) => {
-  if (user.isTeacher === false) {
+  if (user.TeacherID) {
     const name = await Axios.post("http://localhost:3030/fetchteacher", {
       TeacherID: user.TeacherID,
     });
@@ -98,47 +96,12 @@ export const update = async (user) => {
   });
 };
 
-// export const teacherLogin = async (a, b, c) => {
-//   return {
-//     id: 2,
-//     isTeacher: true,
-//     school: "Homai School",
-//     coursesPurchased: "Beginner",
-//     dateOfBirth: "25 June 1986",
-//     contactNo: "027 754 28 00",
-//     username: "Jasmina Salvador",
-//     password: "jasminasalvador123",
-//     email: "jsalvador@homai.edu",
-//     profilePicture: jasminaSalvador,
-//   };
-// };
-
-// export const studentSignUp = async (props) => {
-//   Axios.post("http://localhost:3030/register", {
-//     fullName: props.fullName,
-//     email: props.email,
-//     password: props.password,
-//     isTeacher: false,
-//   }).then((response) => {
-//     if (response.error) {
-//       return `An error has occured: ${response.error}`;
-//     } else {
-//       return `Registration Recieved! Please Log In.`;
-//     }
-//   });
-// };
-
-// export const teacherSignUp = async (props) => {
-//   Axios.post("http://localhost:3030/register", {
-//     fullName: props.fullName,
-//     email: props.email,
-//     password: props.password,
-//     isTeacher: true,
-//   }).then((response) => {
-//     if (response.error) {
-//       return `An error has occured: ${response.error}`;
-//     } else {
-//       return `Registration Recieved! Please Log In.`;
-//     }
-//   });
-// };
+export const fetchTeacherId = async (teacherName) => {
+  Axios.post("http://localhost:3030/fetchteacherid", {
+    teacherName: teacherName,
+  }).then((response) => {
+    console.log(response.data[0].FullName);
+    const teacherFullName = response.data[0].FullName;
+    return teacherFullName;
+  });
+};

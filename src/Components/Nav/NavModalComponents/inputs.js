@@ -31,6 +31,7 @@ export const TeacherLogInPuts = () => {
           type="email"
           id="modalInputBox"
           placeholder="Email Address"
+          required
           onChange={(e) => {
             setEmailLog(e.target.value);
           }}
@@ -39,6 +40,7 @@ export const TeacherLogInPuts = () => {
           type="password"
           id="modalInputBox"
           placeholder="Password"
+          required
           onChange={(e) => {
             setPasswordLog(e.target.value);
           }}
@@ -79,6 +81,7 @@ export const StudentLogInPuts = () => {
           type="email"
           id="modalInputBox"
           placeholder="Email Address"
+          required
           onChange={(e) => {
             setEmailLog(e.target.value);
           }}
@@ -87,6 +90,7 @@ export const StudentLogInPuts = () => {
           type="password"
           id="modalInputBox"
           placeholder="Password"
+          required
           onChange={(e) => {
             setPasswordLog(e.target.value);
           }}
@@ -100,115 +104,143 @@ export const StudentLogInPuts = () => {
 };
 
 export const TeacherSignUpPuts = () => {
+  const { setUser } = useContext(UserContext);
   const [fullNameReg, setFullNameReg] = useState("");
   const [emailReg, setEmailReg] = useState("");
   const [passwordReg, setPasswordReg] = useState("");
   const [confirmPasswordReg, setConfirmPasswordReg] = useState("");
   const [isTeacherReg] = useState(true);
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (passwordReg === confirmPasswordReg) {
+      await signup(fullNameReg, emailReg, passwordReg, isTeacherReg);
+      const defineUser = await login(emailReg, passwordReg);
+      if (typeof defineUser === String) {
+        alert({ defineUser });
+      } else {
+        const defineTeacherName = await fetchTeacherName(defineUser);
+        const definedUser = { ...defineUser, Teacher: defineTeacherName };
+        console.log(definedUser);
+        await setUser(definedUser);
+      }
+    } else {
+      alert("Passwords do not match");
+    }
+  };
+
   return (
     <div>
-      <input
-        type="text"
-        id="modalInputBox"
-        placeholder="Full Name"
-        onChange={(e) => {
-          setFullNameReg(e.target.value);
-        }}
-      ></input>
-      <input
-        type="email"
-        id="modalInputBox"
-        placeholder="Email Address"
-        onChange={(e) => {
-          setEmailReg(e.target.value);
-        }}
-      ></input>
-      <input
-        type="password"
-        id="modalInputBox"
-        placeholder="Password"
-        onChange={(e) => {
-          setPasswordReg(e.target.value);
-        }}
-      ></input>
-      <input
-        type="password"
-        id="modalInputBox"
-        placeholder="Confirm Password"
-        onChange={(e) => {
-          setConfirmPasswordReg(e.target.value);
-        }}
-      ></input>
-      <button
-        onClick={async () => {
-          if (passwordReg === confirmPasswordReg) {
-            await signup(fullNameReg, emailReg, passwordReg, isTeacherReg);
-          } else {
-            alert("Passwords do not match");
-          }
-        }}
-        id="modalButton"
-      >
-        SIGN UP
-      </button>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          id="modalInputBox"
+          placeholder="Full Name"
+          required
+          onChange={(e) => {
+            setFullNameReg(e.target.value);
+          }}
+        ></input>
+        <input
+          type="email"
+          id="modalInputBox"
+          placeholder="Email Address"
+          required
+          onChange={(e) => {
+            setEmailReg(e.target.value);
+          }}
+        ></input>
+        <input
+          type="password"
+          id="modalInputBox"
+          placeholder="Password"
+          required
+          onChange={(e) => {
+            setPasswordReg(e.target.value);
+          }}
+        ></input>
+        <input
+          type="password"
+          id="modalInputBox"
+          placeholder="Confirm Password"
+          required
+          onChange={(e) => {
+            setConfirmPasswordReg(e.target.value);
+          }}
+        ></input>
+        <button id="modalButton">SIGN UP</button>
+      </form>
     </div>
   );
 };
 
 export const StudentSignUpPuts = () => {
+  const { setUser } = useContext(UserContext);
   const [fullNameReg, setFullNameReg] = useState("");
   const [emailReg, setEmailReg] = useState("");
   const [passwordReg, setPasswordReg] = useState("");
   const [confirmPasswordReg, setConfirmPasswordReg] = useState("");
   const [isTeacherReg] = useState(false);
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (passwordReg === confirmPasswordReg) {
+      await signup(fullNameReg, emailReg, passwordReg, isTeacherReg);
+      const defineUser = await login(emailReg, passwordReg);
+      if (typeof defineUser === String) {
+        alert({ defineUser });
+      } else {
+        const defineTeacherName = await fetchTeacherName(defineUser);
+        const definedUser = { ...defineUser, Teacher: defineTeacherName };
+        console.log(definedUser);
+        await setUser(definedUser);
+      }
+    } else {
+      alert("Passwords do not match");
+    }
+  };
+
   return (
     <div>
-      <input
-        type="text"
-        id="modalInputBox"
-        placeholder="Full Name"
-        onChange={(e) => {
-          setFullNameReg(e.target.value);
-        }}
-      ></input>
-      <input
-        type="email"
-        id="modalInputBox"
-        placeholder="Email Address"
-        onChange={(e) => {
-          setEmailReg(e.target.value);
-        }}
-      ></input>
-      <input
-        type="password"
-        id="modalInputBox"
-        placeholder="Password"
-        onChange={(e) => {
-          setPasswordReg(e.target.value);
-        }}
-      ></input>
-      <input
-        type="password"
-        id="modalInputBox"
-        placeholder="Confirm Password"
-        onChange={(e) => {
-          setConfirmPasswordReg(e.target.value);
-        }}
-      ></input>
-      <button
-        onClick={async () => {
-          if (passwordReg === confirmPasswordReg) {
-            await signup(fullNameReg, emailReg, passwordReg, isTeacherReg);
-          } else {
-            alert("Passwords do not match");
-          }
-        }}
-        id="modalButton"
-      >
-        SIGN UP
-      </button>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          id="modalInputBox"
+          placeholder="Full Name"
+          required
+          onChange={(e) => {
+            setFullNameReg(e.target.value);
+          }}
+        ></input>
+        <input
+          type="email"
+          id="modalInputBox"
+          placeholder="Email Address"
+          required
+          onChange={(e) => {
+            setEmailReg(e.target.value);
+          }}
+        ></input>
+        <input
+          type="password"
+          id="modalInputBox"
+          placeholder="Password"
+          required
+          onChange={(e) => {
+            setPasswordReg(e.target.value);
+          }}
+        ></input>
+        <input
+          type="password"
+          id="modalInputBox"
+          placeholder="Confirm Password"
+          required
+          onChange={(e) => {
+            setConfirmPasswordReg(e.target.value);
+          }}
+        ></input>
+        <button id="modalButton">SIGN UP</button>
+      </form>
     </div>
   );
 };
