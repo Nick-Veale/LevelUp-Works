@@ -174,3 +174,51 @@ button:focus {
   border-radius: 10px;
   outline: none;
 }
+
+.profPicModalContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 30vh;
+  width: 30vw;
+}
+
+.profPicModalContentDivLeft {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 20vh;
+  width: 30vw;
+  order: 2;
+}
+
+.profPicModalContentDivRight {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 20vh;
+  width: 20vw;
+}
+
+.profPicPreviewDiv {
+  width: 10vw;
+  height: 10vw;
+  border-radius: 50%;
+  background-color: grey;
+}
+
+.profPicModalContentDivLeft button {
+  background-color: white;
+  border-radius: 5px;
+  border: 2px solid grey;
+  box-shadow: 0px 2px 5px rgb(0, 0, 0, 0.4);
+  width: 100px;
+}
+
+#profilePicFileInput {
+  max-width: 400px;
+  overflow: hidden;
+}

@@ -144,6 +144,26 @@ h2 {
   margin-bottom: 30px;
 }
 
+#welcomeModalTitle {
+  text-align: center;
+  color: rgb(90, 90, 90);
+  margin-bottom: 10px;
+  font-family: nunito;
+  font-weight: 700;
+  font-size: 2.4em;
+  margin-bottom: 30px;
+}
+
+#profilePicModalTitle {
+  text-align: center;
+  color: rgb(90, 90, 90);
+  margin-bottom: 10px;
+  font-family: nunito;
+  font-weight: 700;
+  font-size: 2.4em;
+  margin-bottom: 30px;
+}
+
 #modalLogInSignUp {
   display: flex;
   justify-content: space-evenly;

@@ -146,6 +146,7 @@ export default function Projects() {
   ]);
   const [filterItemContent, setFilterItemContent] = useState([]);
   const [numberShown, setNumberShown] = useState(25);
+
   // const filteredList = projectItemContent.filter((item) => {
   //   item.includes(searchParams[i]);
   // });

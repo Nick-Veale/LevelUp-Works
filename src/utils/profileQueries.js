@@ -1,5 +1,6 @@
 import Axios from "axios";
 import AccountCircleIcon from "../img/account_circle.png";
+import { blobToFile } from "./convertBlob";
 
 export const login = async (email, password) => {
   let functionReturn;
@@ -26,7 +27,10 @@ export const login = async (email, password) => {
       if (userInfo.data[0].ProfilePic === null) {
         return AccountCircleIcon;
       } else {
-        return userInfo.data[0].ProfilePic;
+        return blobToFile(
+          userInfo.data[0].ProfilePic,
+          `${userInfo.data[0].FullName}profPic.jpg`
+        );
       }
     };
 
