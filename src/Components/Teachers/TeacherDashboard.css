@@ -233,9 +233,63 @@
 .teacherSubmissionsTextSpan {
   display: flex;
   justify-content: space-between;
+  margin: 30px;
+  font-family: nunito;
+  font-weight: 700;
 }
 
 .teacherBuilderButton {
   background-color: #d5f2ff;
   border: 0;
+  margin: 10px;
+  font-family: nunito;
+  font-weight: 700;
 }
+
+.projectCard {
+  display: flex;
+  padding: 1rem 1rem;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
+  margin-right: 60px;
+  margin-left: 100px;
+  margin-bottom: 1rem;
+  background-color: white;
+  font-family: nunito;
+  font-weight: 700;
+  }
+  
+  .projectCardLeft {
+  justify-content: left;
+  align-items: center;
+  width: 80%;
+  overflow: hidden;
+  color: grey;
+  }
+  
+  .projectCardMiddle {
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 200%;
+    overflow: hidden;
+    color: grey;
+    }
+  
+  
+  .projectCardRight {
+    justify-content: right;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    color: grey;
+    }
+  
+    .enlargePhoto {
+    background-color: white;
+    border: 0;
+    margin: 10px;
+    font-family: nunito;
+    font-weight: 700;  
+    }
