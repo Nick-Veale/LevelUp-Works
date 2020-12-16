@@ -19,7 +19,7 @@ export default function TeacherTrue(props) {
       </Modal>
       <Modal
         open={props.openPic}
-        onClose={() => props.handleClosePic}
+        onClose={props.handleClosePic}
         aria-labelledby="profilePicModalTitle"
         aria-describedby="profilePicModalDescription"
       >
@@ -51,7 +51,7 @@ export default function TeacherTrue(props) {
             </div>
             <div className="profPicModalContentDivRight">
               <div className="profPicPreviewDiv">
-                <img srcObject={props.profilePic} alt="" />
+                <img className="profPicPreview" src={props.profilePic} alt="" />
               </div>
             </div>
           </div>
@@ -68,7 +68,7 @@ export default function TeacherTrue(props) {
           </button>
           <button
             className="profileEditButton"
-            onClick={() => props.handleOpenPic}
+            onClick={() => props.handleOpenPic()}
           >
             CHANGE PHOTO
           </button>

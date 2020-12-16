@@ -50,7 +50,7 @@ export default function StudentFalse(props) {
             </div>
             <div className="profPicModalContentDivRight">
               <div className="profPicPreviewDiv">
-                <img srcObject={props.profilePic} alt="" />
+                <img className="profPicPreview" src={props.profilePic} alt="" />
               </div>
             </div>
           </div>
@@ -58,7 +58,7 @@ export default function StudentFalse(props) {
       </Modal>
       <span className="profileContent">
         <div className="profilePhoto">
-          <img src={user.profilePicture} className="photo" alt=""></img>
+          <img src={props.profilePic} className="photo" alt=""></img>
           <button
             className="profileEditButton"
             onClick={() => props.handleInputChange()}

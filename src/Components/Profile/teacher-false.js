@@ -58,7 +58,7 @@ export default function TeacherFalse(props) {
             </div>
             <div className="profPicModalContentDivRight">
               <div className="profPicPreviewDiv">
-                <img source={props.profilePic} alt="" />
+                <img className="profPicPreview" src={props.profilePic} alt="" />
               </div>
             </div>
           </div>

@@ -210,6 +210,11 @@ button:focus {
   background-color: grey;
 }
 
+.profPicPreview {
+  width: 10vw;
+  border-radius: 50%;
+}
+
 .profPicModalContentDivLeft button {
   background-color: white;
   border-radius: 5px;

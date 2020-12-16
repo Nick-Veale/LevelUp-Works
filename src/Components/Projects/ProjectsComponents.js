@@ -1,5 +1,4 @@
-import React, { useState, useContext } from "react";
-import { FilterContext } from "../../userContext";
+import React, { useState } from "react";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Button from "@material-ui/core/Button";
 import Checkbox from "@material-ui/core/Checkbox";
@@ -8,17 +7,11 @@ import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 
 export const ProjectsUI = (props) => {
-  const { filter, setFilter } = useContext(FilterContext);
   const [complexity, setComplexity] = useState("Beginner");
-
+  const [queryValue, SetQueryValue] = useState(props.queryValue);
   //Filter Functions
   const handleComp = (event) => {
     setComplexity(event);
-  };
-
-  const handleSearchParams = (e) => {
-    setFilter({ ...filter, [e.target.name]: e.target.checked });
-    console.log(filter);
   };
 
   const showVariant = (string) => {
@@ -131,8 +124,9 @@ export const ProjectsUI = (props) => {
             value="Free"
             control={
               <Checkbox
-                checked={filter.free}
-                onChange={handleSearchParams}
+                onChange={(e) => props.handleSetQ(e)}
+                checked={queryValue.includes("free")}
+                value="free"
                 color="primary"
                 name="free"
               />
@@ -144,10 +138,11 @@ export const ProjectsUI = (props) => {
             value="Premium"
             control={
               <Checkbox
-                checked={filter.premium}
-                onChange={handleSearchParams}
+                onChange={(e) => props.handleSetQ(e)}
+                checked={queryValue.includes("primary")}
                 color="primary"
                 name="premium"
+                value="premium"
               />
             }
             label={<span style={{ fontFamily: "nunito" }}>Premium</span>}
@@ -161,9 +156,10 @@ export const ProjectsUI = (props) => {
             value="Animation"
             control={
               <Checkbox
-                checked={filter.animation}
-                onChange={handleSearchParams}
+                onChange={(e) => props.handleSetQ(e)}
+                checked={queryValue.includes("animation")}
                 name="animation"
+                value="animation"
                 color="primary"
               />
             }
@@ -174,10 +170,11 @@ export const ProjectsUI = (props) => {
             value="Game"
             control={
               <Checkbox
-                onChange={handleSearchParams}
-                checked={filter.game}
-                color="primary"
+                onChange={(e) => props.handleSetQ(e)}
+                checked={queryValue.includes("game")}
                 name="game"
+                value="game"
+                color="primary"
               />
             }
             label={<span style={{ fontFamily: "nunito " }}>Game</span>}
@@ -187,10 +184,11 @@ export const ProjectsUI = (props) => {
             value="Chatbot"
             control={
               <Checkbox
-                onChange={handleSearchParams}
-                checked={filter.chatbot}
-                color="primary"
+                onChange={(e) => props.handleSetQ(e)}
+                checked={queryValue.includes("chatbot")}
                 name="chatbot"
+                value="chatbot"
+                color="primary"
               />
             }
             label={<span style={{ fontFamily: "nunito " }}>Chatbot</span>}
@@ -201,9 +199,10 @@ export const ProjectsUI = (props) => {
             control={
               <Checkbox
                 color="primary"
-                onChange={handleSearchParams}
-                checked={filter.augmentedReality}
+                onChange={(e) => props.handleSetQ(e)}
+                checked={queryValue.includes("augmentedReality")}
                 name="augmentedReality"
+                value="augmentedReality"
               />
             }
             label={
@@ -219,9 +218,10 @@ export const ProjectsUI = (props) => {
             value="1-4"
             control={
               <Checkbox
+                onChange={(e) => props.handleSetQ(e)}
+                checked={queryValue.includes("oneToFour")}
                 name="oneToFour"
-                onChange={handleSearchParams}
-                checked={filter.oneToFour}
+                value="oneToFour"
                 color="primary"
               />
             }
@@ -232,9 +232,10 @@ export const ProjectsUI = (props) => {
             value="5-6"
             control={
               <Checkbox
-                onChange={handleSearchParams}
+                onChange={(e) => props.handleSetQ(e)}
+                checked={queryValue.includes("fiveToSix")}
                 name="fiveToSix"
-                checked={filter.fiveToSix}
+                value="fiveToSix"
                 color="primary"
               />
             }
@@ -245,9 +246,10 @@ export const ProjectsUI = (props) => {
             value="7-8"
             control={
               <Checkbox
-                onChange={handleSearchParams}
+                onChange={(e) => props.handleSetQ(e)}
+                checked={queryValue.includes("sevenToEight")}
                 name="sevenToEight"
-                checked={filter.sevenToEight}
+                value="sevenToEight"
                 color="primary"
               />
             }
@@ -258,9 +260,10 @@ export const ProjectsUI = (props) => {
             value="9-13"
             control={
               <Checkbox
-                onChange={handleSearchParams}
+                onChange={(e) => props.handleSetQ(e)}
+                checked={queryValue.includes("nineToThirteen")}
                 name="nineToThirteen"
-                value={filter.nineToThirteen}
+                value="nineToThirteen"
                 color="primary"
               />
             }
@@ -275,9 +278,10 @@ export const ProjectsUI = (props) => {
             value="Computer Science"
             control={
               <Checkbox
-                onChange={handleSearchParams}
+                onChange={(e) => props.handleSetQ(e)}
+                checked={queryValue.includes("computerScience")}
                 name="computerScience"
-                checked={filter.computerScience}
+                value="computerScience"
                 color="primary"
               />
             }
@@ -290,9 +294,10 @@ export const ProjectsUI = (props) => {
             value="Maths"
             control={
               <Checkbox
-                onChange={handleSearchParams}
+                onChange={(e) => props.handleSetQ(e)}
+                checked={queryValue.includes("maths")}
                 name="maths"
-                checked={filter.maths}
+                value="maths"
                 color="primary"
               />
             }
@@ -303,9 +308,10 @@ export const ProjectsUI = (props) => {
             value="Science"
             control={
               <Checkbox
-                onChange={handleSearchParams}
-                checked={filter.science}
+                onChange={(e) => props.handleSetQ(e)}
+                checked={queryValue.includes("science")}
                 name="science"
+                value="science"
                 color="primary"
               />
             }
@@ -316,9 +322,10 @@ export const ProjectsUI = (props) => {
             value="Language"
             control={
               <Checkbox
-                onChange={handleSearchParams}
+                onChange={(e) => props.handleSetQ(e)}
+                checked={queryValue.includes("language")}
                 name="language"
-                checked={filter.language}
+                value="language"
                 color="primary"
               />
             }
@@ -329,9 +336,10 @@ export const ProjectsUI = (props) => {
             value="Art"
             control={
               <Checkbox
-                onChange={handleSearchParams}
+                onChange={(e) => props.handleSetQ(e)}
+                checked={queryValue.includes("art")}
                 name="art"
-                checked={filter.art}
+                value="art"
                 color="primary"
               />
             }
@@ -342,9 +350,10 @@ export const ProjectsUI = (props) => {
             value="Music"
             control={
               <Checkbox
-                onChange={handleSearchParams}
+                onChange={(e) => props.handleSetQ(e)}
+                checked={queryValue.includes("music")}
                 name="music"
-                checked={filter.music}
+                value="music"
                 color="primary"
               />
             }

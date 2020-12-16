@@ -177,8 +177,11 @@ export default function Profile() {
             modalStyle={modalStyle}
             picModalStyle={picModalStyle}
             handleApplyChange={handleApplyChange}
+            handleOpenPic={handleOpenPic}
+            openPic={openPic}
             handleClosePic={handleClosePic}
-            profilePic={profilePic}
+            handleClose={handleClose}
+            profilePic={user.profilePicture}
             handleSetSchool={(e) => {
               setSchool(e);
               console.log(school);
@@ -207,7 +210,7 @@ export default function Profile() {
             picModalStyle={picModalStyle}
             open={open}
             openPic={openPic}
-            profilePic={profilePic}
+            profilePic={user.profilePicture}
             handleOpenPic={handleOpenPic}
             handleInputChange={handleInputChange}
             handleclose={handleClose}
@@ -224,10 +227,31 @@ export default function Profile() {
           <StudentTrue
             openPic={openPic}
             open={open}
+            profilePic={user.profilePicture}
+            handleOpenPic={handleOpenPic}
+            handleInputChange={handleInputChange}
+            handleClose={handleClose}
             modalStyle={modalStyle}
             picModalStyle={picModalStyle}
-            handleClosePic={() => handleClosePic}
+            handleClosePic={handleClosePic}
             handleSubmitPic={() => handleSubmitPic}
+            handleApplyChange={handleApplyChange}
+            handleSetProfilePic={(e) => setProfilePic(e)}
+            handleSetSchool={(e) => {
+              setSchool(e);
+            }}
+            handleSetTeacher={(e) => {
+              setTeacher(e);
+            }}
+            handleSetDateOfBirth={(e) => {
+              setDateOfBirth(e);
+            }}
+            handleSetContactNo={(e) => {
+              setContactNo(e);
+            }}
+            handleSetEmail={(e) => {
+              setEmail(e);
+            }}
           />
           <Footer />
         </div>

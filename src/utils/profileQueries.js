@@ -15,7 +15,7 @@ export const login = async (email, password) => {
     return "Input does not match our records. Please check your credentials and try again.";
   } else {
     const isTeacher = () => {
-      if (userInfo.data[0].IsTeacher === 1) {
+      if (userInfo.data.IsTeacher === 1) {
         return true;
       } else {
         return false;
@@ -27,37 +27,38 @@ export const login = async (email, password) => {
     // ).toString("base64")}`};
 
     const hasPic = () => {
-      const currentPic = userInfo.data[0].ProfilePic;
-      const mimeType = userInfo.data[0].MimeType;
+      const currentPic = userInfo.data.ProfilePic;
+      // const mimeType = userInfo.data[].MimeType;
 
       if (currentPic === null) {
         return AccountCircleIcon;
       } else {
-        if (mimeType) {
-          const base64 = `data:${mimeType};base64,${Buffer.from(
-            currentPic
-          ).toString("base64")}`;
-          return base64;
-        } else {
-          const base64 = `data:image/png;base64,${Buffer.from(
-            currentPic
-          ).toString("base64")}`;
-          return base64;
-        }
+        // if (mimeType) {
+        //   const base64 = `data:${mimeType};base64,${Buffer.from(
+        //     currentPic
+        //   ).toString("base64")}`;
+        //   return base64;
+        // } else {
+        //   const base64 = `data:image/png;base64,${Buffer.from(
+        //     currentPic
+        //   ).toString("base64")}`;
+        //   return base64;
+        // }
+        return currentPic;
       }
     };
 
     if (userInfo) {
       functionReturn = {
-        id: userInfo.data[0].UserID,
+        id: userInfo.data.UserID,
         isTeacher: isTeacher(),
-        TeacherID: userInfo.data[0].TeacherID,
-        school: userInfo.data[0].School,
+        TeacherID: userInfo.data.TeacherID,
+        school: userInfo.data.School,
         course: "beginner",
-        dateOfBirth: userInfo.data[0].DateOfBirth,
-        contactNo: userInfo.data[0].ContactNumber,
-        username: userInfo.data[0].FullName,
-        email: userInfo.data[0].Email,
+        dateOfBirth: userInfo.data.DateOfBirth,
+        contactNo: userInfo.data.ContactNumber,
+        username: userInfo.data.FullName,
+        email: userInfo.data.Email,
         profilePicture: hasPic(),
       };
     } else {
