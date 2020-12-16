@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { UserContext } from "../../userContext";
+import { UserContext, FilterContext } from "../../userContext";
 import "./Projects.css";
 import { Link, Redirect } from "react-router-dom";
 import Footer from "../Homepage/HomepageComponents/Footer/Footer";
@@ -20,6 +20,7 @@ import project14 from "../../img/project14.png";
 import project15 from "../../img/project15.png";
 import { ProjectsUI } from "./ProjectsComponents";
 import { Link as ScrollLink } from "react-scroll";
+import { fetchAllProjects } from "../../utils/projectQueries";
 
 export default function Projects() {
   const [projectItemContent, setProjectItemContent] = useState([
@@ -144,6 +145,33 @@ export default function Projects() {
       id: 14,
     },
   ]);
+
+  const [filteredList, setFilteredList] = useState([]);
+
+  const [filter, setFilter] = useState({
+    free: false,
+    premium: false,
+    animation: false,
+    game: false,
+    chatbot: false,
+    augmentedReality: false,
+    oneToFour: false,
+    fiveToSix: false,
+    sevenToEight: false,
+    nineToThirteen: false,
+    computerScience: false,
+    maths: false,
+    science: false,
+    language: false,
+    art: false,
+    music: false,
+  });
+
+  useEffect(() => {
+    const filterProjectList = fetchAllProjects(filter);
+    setFilteredList(filterProjectList);
+  }, [filter]);
+
   const [filterItemContent, setFilterItemContent] = useState([]);
   const [numberShown, setNumberShown] = useState(25);
 
@@ -173,10 +201,12 @@ export default function Projects() {
         <br />
       </div>
       <main className="projMain">
-        <ProjectsUI
-          handleSetNumber={(num) => handleSetNumber(num)}
-          numberShown={numberShown}
-        />
+        <FilterContext.Provider value={{ filter, setFilter }}>
+          <ProjectsUI
+            handleSetNumber={(num) => handleSetNumber(num)}
+            numberShown={numberShown}
+          />
+        </FilterContext.Provider>
         <div className="projContent">{projectList}</div>
         <div>
           <ConditionalButtons />

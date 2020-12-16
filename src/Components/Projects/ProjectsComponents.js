@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { FilterContext } from "../../userContext";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Button from "@material-ui/core/Button";
 import Checkbox from "@material-ui/core/Checkbox";
@@ -7,39 +8,18 @@ import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 
 export const ProjectsUI = (props) => {
+  const { filter, setFilter } = useContext(FilterContext);
   const [complexity, setComplexity] = useState("Beginner");
-  const [filter, setFilter] = useState({
-    free: false,
-    premium: false,
-    animation: false,
-    game: false,
-    chatbot: false,
-    augmentedReality: false,
-    oneToFour: false,
-    fiveToSix: false,
-    sevenToEight: false,
-    nineToThirteen: false,
-    computerScience: false,
-    maths: false,
-    science: false,
-    language: false,
-    art: false,
-    music: false,
-  });
 
   //Filter Functions
   const handleComp = (event) => {
     setComplexity(event);
   };
+
   const handleSearchParams = (e) => {
     setFilter({ ...filter, [e.target.name]: e.target.checked });
     console.log(filter);
   };
-
-  // useEffect(() => {
-  //   setFilterItemContent(projectItemContent.map)
-  // } [filter])
-  // Styling Functions
 
   const showVariant = (string) => {
     if (string === props.numberShown) {

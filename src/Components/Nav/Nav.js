@@ -9,6 +9,7 @@ import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import { UserContext } from "../../userContext";
 import NavModal from "./NavModal";
+import { Link as ScrollLink } from "react-scroll";
 
 function Nav() {
   const { user, setUser } = useContext(UserContext);
@@ -158,7 +159,9 @@ function Nav() {
           <Link style={navStyle} to="/">
             <li>HOME</li>
           </Link>
-          <li>FEATURES</li>
+          <ScrollLink activeClass="active" to="Skills" spy={true} smooth={true}>
+            <li>FEATURES</li>
+          </ScrollLink>
           <li>TEACHERS</li>
         </ul>
       );

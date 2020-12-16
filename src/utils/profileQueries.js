@@ -1,6 +1,5 @@
 import Axios from "axios";
 import AccountCircleIcon from "../img/account_circle.png";
-import { blobToFile } from "./convertBlob";
 
 export const login = async (email, password) => {
   let functionReturn;
@@ -23,14 +22,28 @@ export const login = async (email, password) => {
       }
     };
 
+    // src={`data:${user.profilePic};base64,${Buffer.from(
+    //   user.profilePic
+    // ).toString("base64")}`};
+
     const hasPic = () => {
-      if (userInfo.data[0].ProfilePic === null) {
+      const currentPic = userInfo.data[0].ProfilePic;
+      const mimeType = userInfo.data[0].MimeType;
+
+      if (currentPic === null) {
         return AccountCircleIcon;
       } else {
-        return blobToFile(
-          userInfo.data[0].ProfilePic,
-          `${userInfo.data[0].FullName}profPic.jpg`
-        );
+        if (mimeType) {
+          const base64 = `data:${mimeType};base64,${Buffer.from(
+            currentPic
+          ).toString("base64")}`;
+          return base64;
+        } else {
+          const base64 = `data:image/png;base64,${Buffer.from(
+            currentPic
+          ).toString("base64")}`;
+          return base64;
+        }
       }
     };
 
@@ -83,11 +96,11 @@ export const signup = async (fullname, email, password, isTeacher) => {
 };
 
 export const update = async (user) => {
-  Axios.post("http://localhost:3030/updateinfo", {
+  console.log(user);
+  await Axios.post("http://localhost:3030/updateinfo", {
     id: user.id,
     email: user.email,
     school: user.school,
-    profilePic: user.profilePicture,
     dateOfBirth: user.dateOfBirth,
     contactNumber: user.contactNo,
     fullName: user.username,
@@ -107,5 +120,15 @@ export const fetchTeacherId = async (teacherName) => {
     console.log(response.data[0].FullName);
     const teacherFullName = response.data[0].FullName;
     return teacherFullName;
+  });
+};
+
+export const submitProfilePicture = async (data, UserId) => {
+  console.log(data);
+  const fd = new FormData();
+  fd.append("image", data, UserId);
+  Axios.post("http://localhost:3030/updateprofilepic", fd).then((response) => {
+    console.log(response);
+    const URI = response.data.imageURI;
   });
 };
