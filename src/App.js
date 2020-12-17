@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Homepage from "./Components/Homepage/Homepage";
 import Nav from "./Components/Nav/Nav";
 import Projects from "./Components/Projects/Projects";
@@ -10,6 +10,7 @@ import ProjectBuilder from "./Components/Projects/ProjectBuilder/ProjectBuilder"
 import { UserContext } from "./userContext";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import { Link as ScrollLink } from "react-scroll";
+import store from "store";
 
 const theme = createMuiTheme({
   palette: {
@@ -20,6 +21,11 @@ const theme = createMuiTheme({
 
 export default function App() {
   const [user, setUser] = useState();
+
+  useEffect(() => {
+    store.set("Current User", { user });
+  }, [user]);
+
   return (
     <Router>
       <div>

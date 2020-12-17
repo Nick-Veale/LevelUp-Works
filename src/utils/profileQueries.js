@@ -22,10 +22,6 @@ export const login = async (email, password) => {
       }
     };
 
-    // src={`data:${user.profilePic};base64,${Buffer.from(
-    //   user.profilePic
-    // ).toString("base64")}`};
-
     const hasPic = () => {
       const currentPic = userInfo.data.ProfilePic;
       // const mimeType = userInfo.data[].MimeType;
@@ -33,17 +29,6 @@ export const login = async (email, password) => {
       if (currentPic === null) {
         return AccountCircleIcon;
       } else {
-        // if (mimeType) {
-        //   const base64 = `data:${mimeType};base64,${Buffer.from(
-        //     currentPic
-        //   ).toString("base64")}`;
-        //   return base64;
-        // } else {
-        //   const base64 = `data:image/png;base64,${Buffer.from(
-        //     currentPic
-        //   ).toString("base64")}`;
-        //   return base64;
-        // }
         return currentPic;
       }
     };

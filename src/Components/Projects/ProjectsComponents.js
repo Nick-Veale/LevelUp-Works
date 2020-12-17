@@ -28,18 +28,18 @@ export const ProjectsUI = (props) => {
       return null;
     }
   };
-  const complexityRadioButtonClassName = (num) => {
-    if (num === complexity) {
-      return "complexityRadioButton";
-    } else {
-      return "complexityRadioButtonGrey";
-    }
-  };
   const numberRadioButtonClassName = (num) => {
     if (num === props.numberShown) {
       return "numberRadioButton";
     } else {
       return "numberRadioButtonGrey";
+    }
+  };
+  const complexityRadioButtonClassName = (num) => {
+    if (num === complexity) {
+      return "complexityRadioButton";
+    } else {
+      return "complexityRadioButtonGrey";
     }
   };
   const complexityVariant = (string) => {

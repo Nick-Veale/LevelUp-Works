@@ -3,13 +3,37 @@ import { UserContext } from "../../userContext";
 import "./Projects.css";
 import { Link, Redirect } from "react-router-dom";
 import Footer from "../Homepage/HomepageComponents/Footer/Footer";
-import { ProjectsUI } from "./ProjectsComponents";
 import { Link as ScrollLink } from "react-scroll";
 import Axios from "axios";
+import ButtonGroup from "@material-ui/core/ButtonGroup";
+import Button from "@material-ui/core/Button";
+import Checkbox from "@material-ui/core/Checkbox";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import FormControl from "@material-ui/core/FormControl";
+import FormLabel from "@material-ui/core/FormLabel";
+import { filterButtonArray } from "./ProjectsFilterButtons";
 
 export default function Projects() {
   const [profileData, setProfileData] = useState([1, 2, 3]);
   const [q, setQ] = useState([]);
+  const [complexity, setComplexity] = useState("Beginner");
+  const [complexityArray] = useState(["Beginner", "Intermediate", "Advanced"]);
+  const [numberShownArray] = useState([25, 50, 100]);
+  const [numberShown, setNumberShown] = useState(25);
+  const [filterHeadings] = useState([
+    "Subscription",
+    "Activity Type",
+    "Year Level",
+    "Subject Matter",
+  ]);
+  const [queryHeadings] = useState([
+    "Subscription",
+    "ActivityType",
+    "SubjectMatter1",
+    "SubjectMatter2",
+    "SubjectMatter3",
+  ]);
+  const [filterButtons] = useState(filterButtonArray);
 
   useEffect(() => {
     Axios.get("http://localhost:3030/fetchallprojects").then((res) => {
@@ -18,14 +42,10 @@ export default function Projects() {
     });
   }, []);
 
-  const [numberShown, setNumberShown] = useState(25);
-
-  const fields = Object.keys(profileData[0]);
   const search = profileData.filter((item) =>
-    q.some((param) =>
-      fields.some(
-        (field) =>
-          item[field].toString().toLowerCase().indexOf(param.toLowerCase()) > -1
+    q.some((query) =>
+      queryHeadings.some(
+        (heading) => item[heading].toLowerCase() === query.toLowerCase()
       )
     )
   );
@@ -37,7 +57,6 @@ export default function Projects() {
     setNumberShown(num);
   };
 
-  //  appending the value to the array on the onChange function for the buttons
   const handleSetQ = (e) => {
     let newQuery = q;
     const check = e.target.checked;
@@ -52,7 +71,110 @@ export default function Projects() {
         setQ([...newQuery]);
       }
     }
+    console.log(q);
   };
+
+  const complexityVariant = (string) => {
+    if (string === complexity) {
+      return "contained";
+    } else {
+      return null;
+    }
+  };
+  const complexityColor = (string) => {
+    if (string === complexity) {
+      return "primary";
+    } else {
+      return null;
+    }
+  };
+  const handleComp = (event) => {
+    setComplexity(event);
+  };
+  const complexityRadioButtonClassName = (num) => {
+    if (num === complexity) {
+      return "complexityRadioButton";
+    } else {
+      return "complexityRadioButtonGrey";
+    }
+  };
+
+  const showVariant = (string) => {
+    if (string === numberShown) {
+      return "contained";
+    } else {
+      return null;
+    }
+  };
+  const showColor = (string) => {
+    if (string === numberShown) {
+      return "primary";
+    } else {
+      return null;
+    }
+  };
+  const numberRadioButtonClassName = (num) => {
+    if (num === numberShown) {
+      return "numberRadioButton";
+    } else {
+      return "numberRadioButtonGrey";
+    }
+  };
+
+  const complexityButtons = complexityArray.map((value) => (
+    <Button
+      id={complexityRadioButtonClassName(value)}
+      variant={complexityVariant(value)}
+      color={complexityColor(value)}
+      onClick={() => handleComp(value)}
+    >
+      {value}
+    </Button>
+  ));
+
+  const numberShownButtons = numberShownArray.map((value) => (
+    <Button
+      id={numberRadioButtonClassName(value)}
+      variant={showVariant(value)}
+      onClick={() => handleSetNumber(value)}
+      color={showColor(value)}
+    >
+      {value}
+    </Button>
+  ));
+
+  const filteredFilterButtons = (heading) =>
+    filterButtons.map((item) => {
+      if (item.formLabel === heading) {
+        return (
+          <FormControlLabel
+            id="FormControlLabel"
+            value={item.checkbox}
+            control={
+              <Checkbox
+                onChange={(e) => handleSetQ(e)}
+                checked={q.includes(item.checkbox)}
+                name={item.checkbox}
+                value={item.checkbox}
+                color="primary"
+              />
+            }
+            label={
+              <span style={{ fontFamily: "nunito" }}>{item.checkbox}</span>
+            }
+          />
+        );
+      } else {
+        return null;
+      }
+    });
+
+  const filterControlsUI = filterHeadings.map((item) => (
+    <FormControl>
+      <FormLabel id="FormLabel">{item}</FormLabel>
+      {filteredFilterButtons(item)}
+    </FormControl>
+  ));
 
   return (
     <div>
@@ -69,12 +191,16 @@ export default function Projects() {
         <br />
       </div>
       <main className="projMain">
-        <ProjectsUI
-          handleSetNumber={(num) => handleSetNumber(num)}
-          numberShown={numberShown}
-          handleSetQ={(e) => handleSetQ(e)}
-          queryValue={q}
-        />
+        <div>
+          <div className="projFilterControlsTop">
+            <ButtonGroup size="small">{complexityButtons}</ButtonGroup>
+            <ButtonGroup size="small">
+              <div style={{ marginRight: "20px" }}>SHOW</div>
+              {numberShownButtons}
+            </ButtonGroup>
+          </div>
+          <div className="projFilterControls">{filterControlsUI}</div>
+        </div>
         <div className="projContent">{projectList}</div>
         <div>
           <ConditionalButtons />
@@ -118,10 +244,21 @@ const ProjectItem = (props) => {
     }
   }, [props.number]);
 
+  const handlePicSrc = () => {
+    if (props.content.ThumbNail) {
+      console.log(props.content.ThumbNail);
+      return `data:${props.content.MimeType};base64,${Buffer.from(
+        props.content.ThumbNail
+      ).toString("base64")}`;
+    } else {
+      return "";
+    }
+  };
+
   return (
     <div className={itemDivStyles}>
       <Link to="/projectbuilder">
-        <img src={props.content.imgUrl} alt="" className={itemImageStyles} />
+        <img src={handlePicSrc()} alt="" className={itemImageStyles} />
       </Link>
       <div className={itemTextDivStyles}>
         <h3 className={itemHeading1Styles}>{props.content.ProjectName}</h3>
