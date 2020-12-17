@@ -23,18 +23,11 @@ export default function SignUp() {
   return (
     <div className="signUpDiv" style={signUpDivStyle}>
       <div className="prepareText">
-        <h1 className="signUpDivh1">
+        <h1>
           Prepare young minds for a better
           <b className="signUpDivBoldText"> future.</b>
         </h1>
-        <p
-          style={{
-            fontSize: "2vh",
-            color: "rgb(100, 100, 100)",
-            marginTop: "20px",
-            maxHeight: "100px",
-          }}
-        >
+        <p>
           Let us help you advance students in Digital Technologies and other
           learning areas with our project-based learning programme.
         </p>
@@ -49,10 +42,10 @@ export default function SignUp() {
           </button>
           <NavModal open={open} handleClose={handleClose} />
           <div className="buttonLabel">
-            <label for="signUp">
+            <p for="signUp">
               *Basic Subscription includes the first 15 projects <b>free</b> of
               charge
-            </label>
+            </p>
           </div>
         </div>
       </div>

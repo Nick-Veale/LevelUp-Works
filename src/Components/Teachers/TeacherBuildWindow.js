@@ -17,7 +17,7 @@ export default function ProjectBuildWindow(props) {
     if (props.contentId === 0) {
       return <ProgTrack />;
     } else if (props.contentId === 1) {
-      return <div className="teacherContentDiv"></div>;
+      return <StudProf />;
     } else if (props.contentId === 2) {
       let x = 80;
 

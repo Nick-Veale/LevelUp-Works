@@ -14,12 +14,14 @@
 }
 
 .wwoText {
-  width: 400px;
+  width: 40%;
 }
 
 .imageButtonContainer {
   display: flex;
+  justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .imageButton {
