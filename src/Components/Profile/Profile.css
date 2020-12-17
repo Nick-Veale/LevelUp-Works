@@ -64,6 +64,16 @@
   margin: 10px;
   box-shadow: 0px 2px 5px rgb(0, 0, 0, 0.3);
   font-size: 0.8em;
+  transition: 0.2s;
+}
+
+.profileEditButton:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.profileEditButton:hover {
+  width: 155px;
 }
 
 .backButton {
@@ -144,4 +154,76 @@ button:focus {
 
 .infoSpanContainer {
   margin-bottom: 20px;
+}
+
+.profileInfo input {
+  display: flex;
+  border-radius: 10px;
+  border: 1px solid rgb(190, 190, 190);
+  font-size: 0.8em;
+  font-weight: 600;
+  padding: 10px;
+  width: 225px;
+  height: 35px;
+  transition: 0.2s;
+  justify-content: flex-end;
+}
+
+.profileInfo input:focus {
+  border: 3px solid rgb(196, 196, 196);
+  border-radius: 10px;
+  outline: none;
+}
+
+.profPicModalContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 30vh;
+  width: 30vw;
+}
+
+.profPicModalContentDivLeft {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 20vh;
+  width: 30vw;
+  order: 2;
+}
+
+.profPicModalContentDivRight {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 20vh;
+  width: 20vw;
+}
+
+.profPicPreviewDiv {
+  width: 10vw;
+  height: 10vw;
+  border-radius: 50%;
+  background-color: grey;
+}
+
+.profPicPreview {
+  width: 10vw;
+  border-radius: 50%;
+}
+
+.profPicModalContentDivLeft button {
+  background-color: white;
+  border-radius: 5px;
+  border: 2px solid grey;
+  box-shadow: 0px 2px 5px rgb(0, 0, 0, 0.4);
+  width: 100px;
+}
+
+#profilePicFileInput {
+  max-width: 400px;
+  overflow: hidden;
 }

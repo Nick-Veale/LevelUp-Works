@@ -1,4 +1,4 @@
-.projectsHeader {
+#projectsHeader {
   margin-left: 22%;
   margin-right: 10%;
 }
@@ -31,9 +31,17 @@
 
 .projContent {
   position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-content: flex-start;
   bottom: 590px;
+  min-height: 1000px;
   margin-left: 22%;
   margin-right: 10%;
+  margin-bottom: -560px;
 }
 
 .MuiFormLabel-root {
@@ -46,30 +54,72 @@
   font-size: 50%;
 }
 
-Button:focus {
-  outline: none;
+.projectItemDiv {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-width: 320px;
+  height: 330px;
+  margin: 20px;
 }
 
-.projectItemDiv {
-  display: inline-block;
+.projectItemDiv50 {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
   text-align: center;
-  width: 320px;
-  height: 320px;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  max-width: 150px;
+  height: 150px;
+  margin: 20px;
+}
+
+.projectItemDiv100 {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-width: 100px;
+  height: 100px;
   margin: 20px;
 }
 
 .projectItemImage {
-  /* border: 2px solid grey; */
   border-radius: 15px;
   width: 314px;
   height: 221px;
-  /* box-shadow: 0px 2px 5px rgb(0, 0, 0, 0.4); */
+}
+
+.projectItemImage50 {
+  border-radius: 15px;
+  width: 133px;
+}
+
+.projectItemImage100 {
+  border-radius: 15px;
+  width: 80px;
 }
 
 .projectItemText {
   display: block;
   height: 100px;
   width: 320px;
+}
+
+.projectItemText50 {
+  display: block;
+  height: 50px;
+  width: 150px;
+}
+
+.projectItemText100 {
+  display: none;
 }
 
 .projectItemHeading {
@@ -80,7 +130,35 @@ Button:focus {
   color: grey;
 }
 
+.projectItemHeading50 {
+  font-size: 100%;
+  font-family: nunito;
+  font-weight: 700;
+  margin-top: 10px;
+  color: grey;
+}
+
+.projectItemHeading100 {
+  font-size: 130%;
+  font-family: nunito;
+  font-weight: 700;
+  margin-top: 10px;
+  color: grey;
+}
+
 .projectItemHeading2 {
+  font-size: 120%;
+  font-family: nunito;
+  font-weight: 300;
+  margin-top: 10px;
+  color: grey;
+}
+
+.projectItemHeading250 {
+  display: none;
+}
+
+.projectItemHeading2100 {
   font-size: 120%;
   font-family: nunito;
   font-weight: 300;
@@ -97,6 +175,82 @@ Button:focus {
 #FormControlLabel {
   font-family: nunito;
   font-weight: 500;
+}
+
+#complexityRadioButton:focus {
+  outline: none;
+}
+
+#numberRadioButton:focus {
+  outline: none;
+}
+
+#numberRadioButton {
+  font-family: nunito;
+  font-weight: 700;
+  color: white;
+}
+
+#numberRadioButtonGrey {
+  font-family: nunito;
+  font-weight: 700;
+  color: grey;
+}
+
+#complexityRadioButton {
+  font-family: nunito;
+  font-weight: 700;
+  color: white;
+}
+#complexityRadioButtonGrey {
+  font-family: nunito;
+  font-weight: 700;
+  color: grey;
+}
+
+.projectsFootButtons {
+  display: flex;
+  height: 100px;
+  justify-content: flex-end;
+  margin-right: 300px;
+}
+
+.projectsBackToTopButton {
+  height: 30px;
+  width: 200px;
+  border-radius: 5px;
+  margin-right: 20px;
+  margin-left: 20px;
+  background-color: #e5ab2c;
+  border: 2px solid #e5ab2c;
+  font-family: nunito;
+  color: white;
+  font-weight: 700;
+  box-shadow: 0px 5px 10px rgb(0, 0, 0, 0.4);
+}
+
+.projectsBackToDashButton {
+  height: 30px;
+  width: 200px;
+  margin-right: 20px;
+  margin-left: 20px;
+  border-radius: 5px;
+  background-color: #f91c85;
+  border: 2px solid #f91c85;
+  font-family: nunito;
+  color: white;
+  font-weight: 700;
+  box-shadow: 0px 5px 10px rgb(0, 0, 0, 0.4);
+  display: absolute;
+  right: 0px;
+}
+
+.projectsBackToTopButton:focus {
+  outline: none;
+}
+
+.projectsBackToDashButton:focus {
+  outline: none;
 }
 
 .projectCard {
@@ -145,4 +299,5 @@ color: grey;
   margin: 10px;
   font-family: nunito;
   font-weight: 700;  
-  }
+}
+

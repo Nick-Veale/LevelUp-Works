@@ -1,0 +1,87 @@
+/*progress tracker*/
+
+.teacherContentDiv {
+  width: 100%;
+  height: 100%;
+}
+
+.trackBox {
+  margin-bottom: 50px;
+  width: 100%;
+  height: 200px;
+  border-radius: 25px;
+  background-color: #ffffff;
+}
+
+.one {
+  margin-bottom: 100px;
+}
+
+.two {
+  margin-bottom: 100px;
+}
+
+.three {
+  margin-bottom: 100px;
+}
+
+.teachDashContainer {
+  width: 90%;
+  margin: auto;
+}
+.teachDashContainer > h1 {
+  margin-bottom: 100px;
+  padding-top: 100px;
+  font-weight: 700;
+  font-size: 2.7em;
+  color: #535353;
+}
+
+.PTleftDiv {
+  height: 100%;
+  width: 20%;
+  float: left;
+  border: none;
+  align-items: center;
+}
+
+.PTleftDiv p {
+  color: #535353;
+  font-weight: 650;
+  font-size: 1.8em;
+  margin: 0px 0px 0px 100px;
+}
+.PTleftDiv h1 {
+  color: #535353;
+  font-weight: 700;
+  margin: 55px 0px 10px 100px;
+}
+
+.PTrightDiv {
+  height: 100%;
+  width: 80%;
+  float: left;
+  border: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.PTrightDiv button {
+  display: inline;
+  min-width: 70px;
+  min-height: 70px;
+  box-shadow: 0px 5px 8px #535353;
+  border-radius: 2.75em;
+  margin: 0px 20px 0px 20px;
+  top: 50%;
+  font-weight: 600;
+  font-size: 2em;
+  color: #535353;
+  background-color: #ffffff;
+}
+
+.PTrightDiv button:focus {
+  outline: none;
+}
