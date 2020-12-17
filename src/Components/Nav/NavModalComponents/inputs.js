@@ -12,8 +12,11 @@ export const TeacherLogInPuts = () => {
     e.preventDefault();
     console.log("Submit Init");
     const defineUser = await login(emailLog, passwordLog);
-    if (typeof defineUser === String) {
-      alert({ defineUser });
+    console.log(typeof defineUser);
+    if (typeof defineUser === "string") {
+      console.log("This should stop the function");
+      alert("Please check your credentials and try again.");
+      return;
     } else {
       const defineTeacherName = await fetchTeacherName(defineUser);
       const definedUser = { ...defineUser, Teacher: defineTeacherName };
@@ -62,8 +65,11 @@ export const StudentLogInPuts = () => {
     e.preventDefault();
     console.log("Submit Init");
     const defineUser = await login(emailLog, passwordLog);
-    if (typeof defineUser === String) {
-      alert({ defineUser });
+    console.log(typeof defineUser);
+    if (typeof defineUser === "string") {
+      console.log("This should stop the function");
+      alert("Please check your credentials and try again.");
+      return;
     } else {
       const defineTeacherName = await fetchTeacherName(defineUser);
       const definedUser = { ...defineUser, Teacher: defineTeacherName };

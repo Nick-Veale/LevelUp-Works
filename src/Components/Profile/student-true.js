@@ -7,7 +7,7 @@ export default function StudentTrue(props) {
 
   return (
     <div>
-      <Modal open={props.open} onClose={() => props.handleClose}>
+      <Modal open={props.open} onClose={() => props.handleClose()}>
         <div style={props.modalStyle}>
           <h3 id="modalTitle">Welcome to LevelUp Works!</h3>
           <p>
