@@ -1,0 +1,39 @@
+.projectCard {
+    display: flex;
+    padding: 1rem 1rem;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
+    margin-right: 60px;
+    margin-left: 100px;
+    margin-bottom: 1rem;
+    background-color: white;
+    font-family: nunito;
+    font-weight: 700;
+    }
+    
+    .projectCardLeft {
+    justify-content: left;
+    align-items: center;
+    width: 80%;
+    overflow: hidden;
+    color: grey;
+    }
+    
+    .projectCardMiddle {
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      width: 200%;
+      overflow: hidden;
+      color: grey;
+      }
+    
+    
+    .projectCardRight {
+      justify-content: right;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      color: grey;
+      }
