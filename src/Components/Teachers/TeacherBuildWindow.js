@@ -3,7 +3,8 @@ import './TeacherDashboard.css';
 import scratchScreenshot from '../../img/scratchScreenshot.png';
 import { UserContext } from '../../userContext';
 import {Redirect} from 'react-router-dom';
-import Modal from '../../Modal'
+import Modal from '../../Modal';
+import StudProf from "./StudProf/StudProf.js";
 
 export default function ProjectBuildWindow(props) {
 
@@ -12,11 +13,9 @@ export default function ProjectBuildWindow(props) {
     const { user, userContext } = React.useContext(UserContext);
 
     const handleRender = () => {
+       //prog track
         if (props.contentId === 0) {
-            return (
-                <div className="teacherContentDiv">
-                          </div>
-            )
+            return <ProgTrack />;
         } else if (props.contentId === 1) {
             return (
                 <div className="teacherContentDiv">
@@ -206,4 +205,3 @@ export default function ProjectBuildWindow(props) {
         );
     };
 };
-

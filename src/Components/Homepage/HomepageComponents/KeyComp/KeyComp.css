@@ -2,6 +2,10 @@
   background-color: #efeff1;
   padding: 40px;
   color: #606060;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .KCkey {
@@ -52,7 +56,7 @@
   font-size: 1.4em;
   font-family: "Open Sans";
   color: #606060;
-  margin-top: 25;
+  margin-top: 25px;
   margin-bottom: 25px;
 }
 
