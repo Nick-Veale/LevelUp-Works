@@ -213,7 +213,7 @@ export default function Profile() {
             profilePic={user.profilePicture}
             handleOpenPic={handleOpenPic}
             handleInputChange={handleInputChange}
-            handleclose={handleClose}
+            handleClose={handleClose}
             handleClosePic={handleClosePic}
             handleSubmitPic={handleSubmitPic}
             handleSetProfilePic={(e) => setProfilePic(e)}
@@ -228,11 +228,11 @@ export default function Profile() {
             openPic={openPic}
             open={open}
             profilePic={user.profilePicture}
+            modalStyle={modalStyle}
+            picModalStyle={picModalStyle}
             handleOpenPic={handleOpenPic}
             handleInputChange={handleInputChange}
             handleClose={handleClose}
-            modalStyle={modalStyle}
-            picModalStyle={picModalStyle}
             handleClosePic={handleClosePic}
             handleSubmitPic={() => handleSubmitPic}
             handleApplyChange={handleApplyChange}

@@ -11,8 +11,9 @@ export const login = async (email, password) => {
 
   console.log(userInfo);
 
-  if (userInfo.data.length === 0) {
-    return "Input does not match our records. Please check your credentials and try again.";
+  if (userInfo.data.message) {
+    alert(userInfo.data.message);
+    return "Please check your credentials and try again";
   } else {
     const isTeacher = () => {
       if (userInfo.data.IsTeacher === 1) {

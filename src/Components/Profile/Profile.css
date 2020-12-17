@@ -69,7 +69,6 @@
 
 .profileEditButton:focus {
   outline: none;
-  box-shadow: none;
 }
 
 .profileEditButton:hover {
