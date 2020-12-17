@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./ProjectBuilder.css";
 import lookBlocks from "../../../img/lookBlocks.png";
 import lookBlocksSmall from "../../../img/lookBlocksSmall.png";
@@ -15,11 +15,19 @@ import teacherShow from "../../../img/teacherShow.png";
 import { UserContext } from "../../../userContext";
 import scratchScreenshot from "../../../img/scratchScreenshot.png";
 import Modal from "../../../Modal";
+import Axios from "axios";
 
 export default function ProjectBuildWindow(props) {
   const { user, setUser } = React.useContext(UserContext);
-
+  const [HTMLContent, setHTMLContent] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    Axios.get("http://localhost:3030/fetchproject").then((response) => {
+      console.log(response);
+      setHTMLContent(response.data[0]);
+    });
+  }, []);
 
   const handleRender = () => {
     if (props.contentId === 0) {

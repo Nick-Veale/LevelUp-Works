@@ -49,7 +49,20 @@ export default function Projects() {
       )
     )
   );
-  const projectList = search.map((item) => (
+
+  console.log(search);
+
+  const alteredSearch = () => {
+    if (search.length === 0) {
+      return profileData;
+    } else {
+      return search;
+    }
+  };
+
+  const finalSearch = alteredSearch();
+
+  const projectList = finalSearch.map((item) => (
     <ProjectItem content={item} number={numberShown} />
   ));
 
@@ -244,21 +257,10 @@ const ProjectItem = (props) => {
     }
   }, [props.number]);
 
-  const handlePicSrc = () => {
-    if (props.content.ThumbNail) {
-      console.log(props.content.ThumbNail);
-      return `data:${props.content.MimeType};base64,${Buffer.from(
-        props.content.ThumbNail
-      ).toString("base64")}`;
-    } else {
-      return "";
-    }
-  };
-
   return (
     <div className={itemDivStyles}>
       <Link to="/projectbuilder">
-        <img src={handlePicSrc()} alt="" className={itemImageStyles} />
+        <img src={props.content.ThumbNail} alt="" className={itemImageStyles} />
       </Link>
       <div className={itemTextDivStyles}>
         <h3 className={itemHeading1Styles}>{props.content.ProjectName}</h3>
