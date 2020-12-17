@@ -1,262 +1,312 @@
-import React, { useState, useEffect } from 'react';
-import './Projects.css';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
-import Button from '@material-ui/core/Button';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
-import {Link} from 'react-router-dom';
-import project1 from '../../img/project1.png';
-import project2 from '../../img/project2.png';
-import project3 from '../../img/project3.png';
-import project4 from '../../img/project4.png';
-import project5 from '../../img/project5.png';
-import project6 from '../../img/project6.png';
-import project7 from '../../img/project7.png';
-import project8 from '../../img/project8.png';
-import project9 from '../../img/project9.png';
-import project10 from '../../img/project10.png';
-import project11 from '../../img/project11.png';
-import project12 from '../../img/project12.png';
-import project13 from '../../img/project13.png';
-import project14 from '../../img/project14.png';
-import project15 from '../../img/project15.png';
+import React, { useState, useEffect, useContext } from "react";
+import { UserContext } from "../../userContext";
+import "./Projects.css";
+import { Link, Redirect } from "react-router-dom";
+import Footer from "../Homepage/HomepageComponents/Footer/Footer";
+import { Link as ScrollLink } from "react-scroll";
+import Axios from "axios";
+import ButtonGroup from "@material-ui/core/ButtonGroup";
+import Button from "@material-ui/core/Button";
+import Checkbox from "@material-ui/core/Checkbox";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import FormControl from "@material-ui/core/FormControl";
+import FormLabel from "@material-ui/core/FormLabel";
+import { filterButtonArray } from "./ProjectsFilterButtons";
 
 export default function Projects() {
+  const [profileData, setProfileData] = useState([1, 2, 3]);
+  const [q, setQ] = useState([]);
+  const [complexity, setComplexity] = useState("Beginner");
+  const [complexityArray] = useState(["Beginner", "Intermediate", "Advanced"]);
+  const [numberShownArray] = useState([25, 50, 100]);
+  const [numberShown, setNumberShown] = useState(25);
+  const [filterHeadings] = useState([
+    "Subscription",
+    "Activity Type",
+    "Year Level",
+    "Subject Matter",
+  ]);
+  const [queryHeadings] = useState([
+    "Subscription",
+    "ActivityType",
+    "SubjectMatter1",
+    "SubjectMatter2",
+    "SubjectMatter3",
+  ]);
+  const [filterButtons] = useState(filterButtonArray);
 
-    const [subscription, setSubscription] = useState('Free');
-    const [activity, setActivity] = useState('Animation');
-    const [yearLevel, setYearLevel] = useState('1-4');
-    const [subject, setSubject] = useState('Computer Science');
-    const [complexity, setComplexity] = useState('Beginner');
-    const [callDetails, setCallDetails] = useState({
-        subscription: subscription,
-        activity: activity,
-        yearLevel: yearLevel,
-        subject: subject,
-        complexity: complexity,
+  useEffect(() => {
+    Axios.get("http://localhost:3030/fetchallprojects").then((res) => {
+      console.log(res);
+      setProfileData(res.data);
     });
-    const [projectItemContent, setProjectItemContent] = useState([
-        {
-            imgUrl: project1,
-            name: "Introduction",
-            level: "Beginner",
-            type: "Animation",
-            id: 0
-        },
-        {
-            imgUrl: project2,
-            name: "My Birthday",
-            level: "Beginner",
-            type: "Animation",
-            id: 1
-        },
-        {
-            imgUrl: project3,
-            name: "10 Block Challenge",
-            level: "Beginner",
-            type: "Animation",
-            id: 2
-        },
-        {
-            imgUrl: project4,
-            name: "Build a Band",
-            level: "Beginner",
-            type: "Animation",
-            id: 3
-        },
-        {
-            imgUrl: project5,
-            name: "The bear and the Monkey",
-            level: "Beginner",
-            type: "Animation",
-            id: 4
-        },
-        {
-            imgUrl: project6,
-            name: "Debugging",
-            level: "Beginner",
-            type: "Animation",
-            id: 5
-        },
-        {
-            imgUrl: project7,
-            name: "About Me",
-            level: "Beginner",
-            type: "Animation",
-            id: 6
-        },
-        {
-            imgUrl: project8,
-            name: "I Am Here!",
-            level: "Beginner",
-            type: "Animation",
-            id: 7
-        },
-        {
-            imgUrl: project9,
-            name: "Funny Faces",
-            level: "Beginner",
-            type: "Animation",
-            id: 8
-        },
-        {
-            imgUrl: project10,
-            name: "It Tickles!",
-            level: "Beginner",
-            type: "Animation",
-            id: 9
-        },
-        {
-            imgUrl: project11,
-            name: "Penguin in a Desert",
-            level: "Beginner",
-            type: "Animation",
-            id: 10
-        },
-        {
-            imgUrl: project12,
-            name: "Time Travel",
-            level: "Beginner",
-            type: "Animation",
-            id: 11
-        },
-        {
-            imgUrl: project13,
-            name: "Birthday Card",
-            level: "Beginner",
-            type: "Animation",
-            id: 12
-        },
-        {
-            imgUrl: project14,
-            name: "The Lion and the Mouse Part 1",
-            level: "Beginner",
-            type: "Animation",
-            id: 13
-        },
-        {
-            imgUrl: project15,
-            name: "The Lion and the Mouse Part 2",
-            level: "Beginner",
-            type: "Animation",
-            id: 14
-        },
-    ])
+  }, []);
 
-    const handleComp = (event) => {
-        setComplexity(event.target.value);
-    };
-    const handleSub = (event) => {
-        setSubscription(event.target.value);
-    };
-    const handleYear = (event) => {
-        setYearLevel(event.target.value);
-    };
-    const handleSubject = (event) => {
-        setSubject(event.target.value);
-    };
-    const handleAct = (event) => {
-        setActivity(event.target.value);
-    };
+  const search = profileData.filter((item) =>
+    q.some((query) =>
+      queryHeadings.some(
+        (heading) => item[heading].toLowerCase() === query.toLowerCase()
+      )
+    )
+  );
+  const projectList = search.map((item) => (
+    <ProjectItem content={item} number={numberShown} />
+  ));
 
-    useEffect(() => {
-        // this is where I would put my fetch call the either the server or the API.
-        setCallDetails({
-            subscription: subscription,
-            activity: activity,
-            yearLevel: yearLevel,
-            subject: subject,
-            complexity: complexity
-        });
-        
-    }, [subscription], [activity], [yearLevel], [subject], [complexity]);
+  const handleSetNumber = (num) => {
+    setNumberShown(num);
+  };
 
-    const projectList = projectItemContent.map(item => <ProjectItem content={item} />);
+  const handleSetQ = (e) => {
+    let newQuery = q;
+    const check = e.target.checked;
+    const param = e.target.value;
 
-    return (
-        <div>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <div className="projectsHeader">
-                <h1 className="projectsH1">PROJECTS</h1>
-                <h4 className="projectsH4">Welcome to the Projects Library. You can use the filters on the left to help you search for specific projects.</h4>
-                <br/>
-            </div>
-            <main className="projMain">
-                <div className="projFilterControlsTop">
-                    <ButtonGroup size="small">
-                        <Button onClick={handleComp}>Beginner</Button>
-                        <Button onClick={handleComp}>Intermediate</Button>
-                        <Button onClick={handleComp}>Advanced</Button>
-                    </ButtonGroup>
-                    <ButtonGroup size="small">
-                        <div style={{marginRight: '20px'}}>SHOW</div>
-                        <Button>25</Button>
-                        <Button>50</Button>
-                        <Button>100</Button>
-                    </ButtonGroup>
-                </div>
-                <div className="projFilterControls">
-                    <FormControl>
-                        <FormLabel id="FormLabel">Subscription</FormLabel>                            
-                        <RadioGroup name="subscription" value={subscription} onChange={handleSub}>
-                            <FormControlLabel id="FormControlLabel" value="Free" control={<Radio color="primary"/>} label="Free" />
-                            <FormControlLabel id="FormControlLabel" value="Premium" control={<Radio color="primary"/>} label="Premium" />
-                        </RadioGroup>
-                    </FormControl>
-                    <FormControl>
-                        <FormLabel id="FormLabel">Activity Type</FormLabel> 
-                        <RadioGroup name="activity" value={activity} onChange={handleAct}>
-                            <FormControlLabel id="FormControlLabel" value="Animation" control={<Radio color="primary"/>} label="Animation" />
-                            <FormControlLabel id="FormControlLabel" value="Game" control={<Radio color="primary"/>} label="Game" />
-                            <FormControlLabel id="FormControlLabel" value="Chatbot" control={<Radio color="primary"/>} label="Chatbot" />
-                            <FormControlLabel id="FormControlLabel" value="Augmented Reality" control={<Radio color="primary"/>} label="Augmented Reality" />
-                        </RadioGroup>
-                    </FormControl>
-                    <FormControl>
-                        <FormLabel id="FormLabel">Year Level</FormLabel>                            
-                        <RadioGroup name="yearLevel" value={yearLevel} onChange={handleYear}>
-                            <FormControlLabel id="FormControlLabel" value="1-4" control={<Radio color="primary"/>} label="1-4" />
-                            <FormControlLabel id="FormControlLabel" value="5-6" control={<Radio color="primary"/>} label="5-6" />
-                            <FormControlLabel id="FormControlLabel" value="7-8" control={<Radio color="primary"/>} label="7-8" />
-                            <FormControlLabel id="FormControlLabel" value="9-13" control={<Radio color="primary"/>} label="9-13" />
-                        </RadioGroup>
-                    </FormControl>
-                    <FormControl>
-                        <FormLabel id="FormLabel">Subject Matter</FormLabel>                            
-                        <RadioGroup name="subscription" value={subject} onChange={handleSubject}>
-                            <FormControlLabel id="FormControlLabel" value="Computer Science" control={<Radio color="primary"/>} label="Computer Science" />
-                            <FormControlLabel id="FormControlLabel" value="Maths" control={<Radio color="primary"/>} label="Maths" />
-                            <FormControlLabel id="FormControlLabel" value="Science" control={<Radio color="primary"/>} label="Science" />
-                            <FormControlLabel id="FormControlLabel" value="Language" control={<Radio color="primary"/>} label="Language" />
-                            <FormControlLabel id="FormControlLabel" value="Art" control={<Radio color="primary"/>} label="Art" />
-                            <FormControlLabel id="FormControlLabel" value="Music" control={<Radio color="primary"/>} label="Music" />
-                        </RadioGroup>
-                    </FormControl>
-                </div>
-                <div className="projContent">
-                    {projectList}
-                </div>
-            </main>
-        </div>
+    if (check) {
+      setQ([...q, param]);
+    } else {
+      let index = newQuery.indexOf(param);
+      if (index > -1) {
+        newQuery.splice(index, 1);
+        setQ([...newQuery]);
+      }
+    }
+    console.log(q);
+  };
+
+  const complexityVariant = (string) => {
+    if (string === complexity) {
+      return "contained";
+    } else {
+      return null;
+    }
+  };
+  const complexityColor = (string) => {
+    if (string === complexity) {
+      return "primary";
+    } else {
+      return null;
+    }
+  };
+  const handleComp = (event) => {
+    setComplexity(event);
+  };
+  const complexityRadioButtonClassName = (num) => {
+    if (num === complexity) {
+      return "complexityRadioButton";
+    } else {
+      return "complexityRadioButtonGrey";
+    }
+  };
+
+  const showVariant = (string) => {
+    if (string === numberShown) {
+      return "contained";
+    } else {
+      return null;
+    }
+  };
+  const showColor = (string) => {
+    if (string === numberShown) {
+      return "primary";
+    } else {
+      return null;
+    }
+  };
+  const numberRadioButtonClassName = (num) => {
+    if (num === numberShown) {
+      return "numberRadioButton";
+    } else {
+      return "numberRadioButtonGrey";
+    }
+  };
+
+  const complexityButtons = complexityArray.map((value) => (
+    <Button
+      id={complexityRadioButtonClassName(value)}
+      variant={complexityVariant(value)}
+      color={complexityColor(value)}
+      onClick={() => handleComp(value)}
+    >
+      {value}
+    </Button>
+  ));
+
+  const numberShownButtons = numberShownArray.map((value) => (
+    <Button
+      id={numberRadioButtonClassName(value)}
+      variant={showVariant(value)}
+      onClick={() => handleSetNumber(value)}
+      color={showColor(value)}
+    >
+      {value}
+    </Button>
+  ));
+
+  const filteredFilterButtons = (heading) =>
+    filterButtons.map((item) => {
+      if (item.formLabel === heading) {
+        return (
+          <FormControlLabel
+            id="FormControlLabel"
+            value={item.checkbox}
+            control={
+              <Checkbox
+                onChange={(e) => handleSetQ(e)}
+                checked={q.includes(item.checkbox)}
+                name={item.checkbox}
+                value={item.checkbox}
+                color="primary"
+              />
+            }
+            label={
+              <span style={{ fontFamily: "nunito" }}>{item.checkbox}</span>
+            }
+          />
         );
-};
+      } else {
+        return null;
+      }
+    });
+
+  const filterControlsUI = filterHeadings.map((item) => (
+    <FormControl>
+      <FormLabel id="FormLabel">{item}</FormLabel>
+      {filteredFilterButtons(item)}
+    </FormControl>
+  ));
+
+  return (
+    <div>
+      <br />
+      <br />
+      <br />
+      <br />
+      <div id="projectsHeader">
+        <h1 className="projectsH1">PROJECTS</h1>
+        <h4 className="projectsH4">
+          Welcome to the Projects Library. You can use the filters on the left
+          to help you search for specific projects.
+        </h4>
+        <br />
+      </div>
+      <main className="projMain">
+        <div>
+          <div className="projFilterControlsTop">
+            <ButtonGroup size="small">{complexityButtons}</ButtonGroup>
+            <ButtonGroup size="small">
+              <div style={{ marginRight: "20px" }}>SHOW</div>
+              {numberShownButtons}
+            </ButtonGroup>
+          </div>
+          <div className="projFilterControls">{filterControlsUI}</div>
+        </div>
+        <div className="projContent">{projectList}</div>
+        <div>
+          <ConditionalButtons />
+        </div>
+        <Footer />
+      </main>
+    </div>
+  );
+}
 
 const ProjectItem = (props) => {
-    return(
-        <div className="projectItemDiv">
-            <Link to="/projectbuilder">
-                <img src={props.content.imgUrl} alt="" className="projectItemImage"/>
-            </Link>
-            <div className="projectItemText">
-                <h3 className="projectItemHeading">{props.content.name}</h3>
-                <h5 className="projectItemHeading2">{props.content.level} | {props.content.type}</h5>
-            </div>
+  const [itemDivStyles, setItemDivStyles] = useState("projectItemDiv");
+  const [itemImageStyles, setItemImageStyles] = useState("projectItemImage");
+  const [itemTextDivStyles, setItemTextDivStyles] = useState("projectItemText");
+  const [itemHeading1Styles, setItemHeading1Styles] = useState(
+    "projectItemHeading"
+  );
+  const [itemHeading2Styles, setItemHeading2Styles] = useState(
+    "projectItemHeading2"
+  );
+
+  useEffect(() => {
+    if (props.number === 25) {
+      setItemDivStyles("projectItemDiv");
+      setItemImageStyles("projectItemImage");
+      setItemTextDivStyles("projectItemText");
+      setItemHeading1Styles("projectItemHeading");
+      setItemHeading2Styles("projectItemHeading2");
+    } else if (props.number === 50) {
+      setItemDivStyles("projectItemDiv50");
+      setItemImageStyles("projectItemImage50");
+      setItemTextDivStyles("projectItemText50");
+      setItemHeading1Styles("projectItemHeading50");
+      setItemHeading2Styles("projectItemHeading250");
+    } else if (props.number === 100) {
+      setItemDivStyles("projectItemDiv100");
+      setItemImageStyles("projectItemImage100");
+      setItemTextDivStyles("projectItemText100");
+      setItemHeading1Styles("projectItemHeading100");
+      setItemHeading2Styles("projectItemHeading2100");
+    }
+  }, [props.number]);
+
+  const handlePicSrc = () => {
+    if (props.content.ThumbNail) {
+      console.log(props.content.ThumbNail);
+      return `data:${props.content.MimeType};base64,${Buffer.from(
+        props.content.ThumbNail
+      ).toString("base64")}`;
+    } else {
+      return "";
+    }
+  };
+
+  return (
+    <div className={itemDivStyles}>
+      <Link to="/projectbuilder">
+        <img src={handlePicSrc()} alt="" className={itemImageStyles} />
+      </Link>
+      <div className={itemTextDivStyles}>
+        <h3 className={itemHeading1Styles}>{props.content.ProjectName}</h3>
+        <h5 className={itemHeading2Styles}>
+          {props.content.Course} | {props.content.ActivityType}
+        </h5>
+      </div>
+    </div>
+  );
+};
+
+const ConditionalButtons = () => {
+  const { user, setUser } = useContext(UserContext);
+
+  if (!user) {
+    return <Redirect to="/" />;
+  } else {
+    if (user.isTeacher === true) {
+      return (
+        <div className="projectsFootButtons">
+          <ScrollLink
+            activeClass="active"
+            to="projectsHeader"
+            spy={true}
+            smooth={true}
+          >
+            <button className="projectsBackToTopButton">Back to Top</button>
+          </ScrollLink>
+          <Link to="/teachers">
+            <button className="projectsBackToDashButton">
+              Back to Dashboard
+            </button>
+          </Link>
         </div>
-    )
+      );
+    } else if (user.isTeacher === false) {
+      return (
+        <div className="projectsFootButtons">
+          <ScrollLink
+            activeClass="active"
+            to="projectsHeader"
+            spy={true}
+            smooth={true}
+          >
+            <button className="projectsBackToTopButton">Back to Top</button>
+          </ScrollLink>
+        </div>
+      );
+    }
+  }
 };

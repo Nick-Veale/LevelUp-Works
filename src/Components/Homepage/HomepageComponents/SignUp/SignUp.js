@@ -32,6 +32,7 @@ export default function SignUp() {
             fontSize: "2vh",
             color: "rgb(100, 100, 100)",
             marginTop: "20px",
+            maxHeight: "100px",
           }}
         >
           Let us help you advance students in Digital Technologies and other

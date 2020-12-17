@@ -17,6 +17,7 @@ import scratchScreenshot from '../../../img/scratchScreenshot.png';
 import Modal from '../../../Modal'
 
 export default function ProjectBuildWindow(props) {
+  const { user, setUser } = React.useContext(UserContext);
 
 const [isOpen, setIsOpen] = useState(false)
 
@@ -215,47 +216,91 @@ const [isOpen, setIsOpen] = useState(false)
                         </ul>
                         <div className="bonusChallengeDivMargin">Use your imagination and go wild! The bigger and crazier, the better!</div> 
                     </div>
-
                 </div>
-            );
-        } else if (props.contentId === 6) {
-            return (
-                <div className="projectContentDivInline">
-                    <div className="quizDiv">
-                        <h2>Test your Skills!</h2>
-                        <div>Answer these questions correctly to move on!</div>
-                        <form className="quizForm">
-                            <div className="quizInputCheckbox">
-                                <label>
-                                    <input type="checkbox" className="quizInputCheckbox2" />
-                                    Check this box if you think the answer to the question is this.
-                                </label>
-                            </div>
-                            <div classname="quizInputCheckbox">
-                                <label>
-                                    <input type="checkbox" className="quizInputCheckbox2" />
-                                    Check this box if you think that 1 is greater than 2.  
-                                </label>
-                            </div>
-                            <div className="quizInputCheckbox">
-                                <label>
-                                    <input type="checkbox" className="quizInputCheckbox2" />
-                                    Lol i don't know what you've been working on so i don't know what to ask.
-                                </label>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            )
-        }
-    } 
-
-    return (
-        <div style={{height: '90vh'}}>
-            <div className="projectBuildWindowCurlyBox">
-                {handleRender()}
+              </button>
             </div>
+            <div className="projectContentDivHalf halfRight">
+              <img
+                style={{ width: "600px", margin: "20px" }}
+                src={teacherShow}
+                alt=""
+              />
+              <h2>Show your Teacher</h2>
+              <p>
+                If your teacher is in the same room as you, clcik the button
+                below to let them know you're done.
+              </p>
+              <button className="largeButton">
+                <div className="largeButtonContent">
+                  <EmojiPeopleIcon style={{ fontSize: "60px" }} />
+                  <p>Call Teacher</p>
+                </div>
+              </button>
+            </div>
+          </div>
+        );
+      }
+    } else if (props.contentId === 5) {
+      return (
+        <div className="projectContentDivInline">
+          <div className="bonusChallengeDiv">
+            <div className="bonusChallengeDivMargin">As a Bonus</div>
+            <h2 className="bonusChallengeDivMargin">
+              Try this same excercise and add your twist!
+            </h2>
+            <h3 className="bonusChallengeDivMargin">
+              For some ideas, you can add ...
+            </h3>
+            <ul className="bonusChallengeList">
+              <li>Extra images of your own</li>
+              <li>Sound to the animations</li>
+              <li>Another chapter to the story!</li>
+            </ul>
+            <div className="bonusChallengeDivMargin">
+              Use your imagination and go wild! The bigger and crazier, the
+              better!
+            </div>
+          </div>
         </div>
-    );
-};
+      );
+    } else if (props.contentId === 6) {
+      return (
+        <div className="projectContentDivInline">
+          <div className="quizDiv">
+            <h2>Test your Skills!</h2>
+            <div>Answer these questions correctly to move on!</div>
+            <form className="quizForm">
+              <div className="quizInputCheckbox">
+                <label>
+                  <input type="checkbox" className="quizInputCheckbox2" />
+                  Check this box if you think the answer to the question is
+                  this.
+                </label>
+              </div>
+              <div classname="quizInputCheckbox">
+                <label>
+                  <input type="checkbox" className="quizInputCheckbox2" />
+                  Check this box if you think that 1 is greater than 2.
+                </label>
+              </div>
+              <div className="quizInputCheckbox">
+                <label>
+                  <input type="checkbox" className="quizInputCheckbox2" />
+                  Lol i don't know what you've been working on so i don't know
+                  what to ask.
+                </label>
+              </div>
+            </form>
+          </div>
+        </div>
+      );
+    }
+  };
+
+  return (
+    <div style={{ height: "90vh" }}>
+      <div className="projectBuildWindowCurlyBox">{handleRender()}</div>
+    </div>
+  );
+}
 
