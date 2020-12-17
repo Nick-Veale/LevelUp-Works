@@ -28,8 +28,84 @@ export default function ProjectBuildWindow(props) {
             let x = 80;
 
             return (
-                <div className="teacherContextDiv">
-                </div>
+                <>
+                <div>
+                    <span className="teacherSubmissionsTextSpan">
+                        <h2>HELP REQUESTS</h2>
+                        <div />
+                        <button className="teacherBuilderButton">
+                         <span>&#11178; </span>
+                         REPLY
+                        </button>
+                        <button className="teacherBuilderButton">
+                        <span>&#128505; </span>                                    
+                        MARK AS DONE
+                        </button>
+                    </span>
+                   </div>
+                   <div className="submittedProjects">
+                    <div className="projectCard">
+                    <div className="projectCardLeft">
+                    <img style={{width: "50px", height: "50px", margin: "20px"}} src={user.profilePicture} className="photo" alt=""></img>
+                    </div>
+                    <div className="projectCardMiddle">
+                    <p>AIDEN needs help with his project.</p>
+                    </div>
+                    <div className="projectCardRight">
+                    <p>TUE 28 April 2020</p>
+                    <p>10:43 AM</p>
+                    </div>
+                    </div>
+                    <div className="projectCard">
+                    <div className="projectCardLeft">
+                    <img style={{width: "50px", height: "50px", margin: "20px"}} src={user.profilePicture} className="photo" alt=""></img>
+                    </div>
+                    <div className="projectCardMiddle">
+                    <p>RAWIRI needs help with his project.</p>
+                    </div>
+                    <div className="projectCardRight">
+                    <p>TUE 28 April 2020</p>
+                    <p>9:52 AM</p>
+                    </div>
+                    </div>
+                    <div className="projectCard">
+                    <div className="projectCardLeft">
+                    <img style={{width: "50px", height: "50px", margin: "20px"}} src={user.profilePicture} className="photo" alt=""></img>
+                    </div>
+                    <div className="projectCardMiddle">
+                    <p>NEVEAH needs help with her project.</p>
+                    </div>
+                    <div className="projectCardRight">
+                    <p>TUE 27 April 2020</p>
+                    <p>4:59 PM</p>
+                    </div>
+                    </div>
+                    <div className="projectCard">
+                    <div className="projectCardLeft">
+                    <img style={{width: "50px", height: "50px", margin: "20px"}} src={user.profilePicture} className="photo" alt=""></img>
+                    </div>
+                    <div className="projectCardMiddle">
+                    <p>JAVIER needs help with his project.</p>
+                    </div>
+                    <div className="projectCardRight">
+                    <p>TUE 27 April 2020</p>
+                    <p>3:00 PM</p>
+                    </div>
+                    </div>
+                    <div className="projectCard">
+                    <div className="projectCardLeft">
+                    <img style={{width: "50px", height: "50px", margin: "20px"}} src={user.profilePicture} className="photo" alt=""></img>
+                    </div>
+                    <div className="projectCardMiddle">
+                    <p>TOKIO needs help with her project.</p>
+                    </div>
+                    <div className="projectCardRight">
+                    <p>MON 27 April 2020</p>
+                    <p>11:23 AM</p>
+                    </div>
+                    </div>
+                   </div>
+                   </>
             )
         } else if (props.contentId === 3) {
 
@@ -92,7 +168,7 @@ export default function ProjectBuildWindow(props) {
                         </div>
                         <div className="projectCardRight">
                         <p>TUE 28 April 2020</p>
-                        <p>09:58 AM</p>
+                        <p>9:58 AM</p>
                         </div>
                         </div>
                        </div>
