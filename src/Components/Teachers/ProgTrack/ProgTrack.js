@@ -7,23 +7,6 @@ function ProgTrack() {
     progTrackerArray
   );
 
-  //selected button counter
-  // const [PTbooleanCounter, setPTbooleanCounter] = React.useState(0);
-
-  // const toggle = () => {
-  //   setButtonArrayInfo(!buttonArrayInfo.complete);
-  //   if (buttonArrayInfo.complete === true) {
-  //     setPTbooleanCounter(PTbooleanCounter + 1);
-  //   } else {
-  //     setPTbooleanCounter(PTbooleanCounter - 1);
-  //   }
-  // // };
-
-  // React.useEffect(() => {
-  //   const lengthBooleans = aidenAndrewsArray.filter((index) => index.complete);
-  //   setPTbooleanCounter(lengthBooleans.length);
-  // }, [progTrackerInfo]);
-
   const handleCompleted = (item, array) => {
     const newArray = progTrackerInfo.map((progTracker) => {
       const returnThing = progTracker.data.map((prevItem) => {

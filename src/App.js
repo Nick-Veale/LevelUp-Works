@@ -8,7 +8,6 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ProjectBuilder from "./Components/Projects/ProjectBuilder/ProjectBuilder";
 import { UserContext } from "./userContext";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
-import { Link as ScrollLink } from "react-scroll";
 import store from "store";
 
 const theme = createMuiTheme({
