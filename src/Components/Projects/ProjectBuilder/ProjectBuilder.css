@@ -248,13 +248,24 @@
 }
 
 .teacherSubmissionsTextSpan {
+  position: relative;
+  left: 70px;
+  padding-top: 50px;
   display: flex;
   justify-content: space-between;
+  width: 93%;
+}
+
+.teacherSubmissionsTextSpan h2 {
+  font-family: nunito;
+  font-weight: 700;
+  color: grey;
 }
 
 .teacherBuilderButton {
   background-color: #d5f2ff;
   border: 0;
+  color: grey;
 }
 
 .bonusChallengeDiv {
