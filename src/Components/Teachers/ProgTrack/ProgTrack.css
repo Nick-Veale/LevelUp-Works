@@ -12,18 +12,7 @@
   height: 180px;
   border-radius: 25px;
   background-color: #ffffff;
-}
-
-.one {
-  margin-bottom: 100px;
-}
-
-.two {
-  margin-bottom: 100px;
-}
-
-.three {
-  margin-bottom: 100px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
 }
 
 .teachDashContainer {
@@ -32,11 +21,11 @@
   margin-bottom: -10px;
 }
 .teachDashContainer > h1 {
-  margin-bottom: 100px;
-  padding-top: 100px;
+  margin-bottom: 50px;
+  padding-top: 50px;
   font-weight: 700;
-  font-size: 2.7em;
-  color: #535353;
+  font-size: 1.8em;
+  color: #535354;
 }
 
 .PTleftDiv {
@@ -52,11 +41,13 @@
   font-weight: 650;
   font-size: 1.6em;
   margin: 0px 0px 5px 100px;
+
 }
 .PTleftDiv h1 {
   color: #535353;
   font-weight: 700;
-  margin: 55px 0px 10px 100px;
+  font-size: larger;
+  margin: 25px 0px 10px 40px;
 }
 
 .PTrightDiv {
@@ -72,14 +63,14 @@
 
 .PTrightDiv button {
   display: inline;
-  min-width: 70px;
-  min-height: 70px;
-  box-shadow: 0px 5px 8px #535353;
-  border-radius: 2.75em;
-  margin: 0px 20px 0px 20px;
+  min-width: 35px;
+  min-height: 35px;
+  box-shadow: 2px 2px 4px #535353;
+  border-radius: 2.1em;
+  margin: 0px 10px 0px 10px;
   top: 50%;
   font-weight: 600;
-  font-size: 2em;
+  font-size: 0.8em;
   color: #535353;
   background-color: #ffffff;
 }

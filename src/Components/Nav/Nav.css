@@ -1,3 +1,29 @@
+@media only screen and (max-width: 600px) {
+  .CenterList {
+    display: none;
+  }
+  .navHomeContainer {
+    display: none;
+  }
+}
+
+.navHomeContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.spanStyle {
+  width: 200px;
+}
+
+.spanStyle1 {
+  cursor: pointer;
+  text-align: end;
+  font-size: 0.9em;
+}
+
 .NavBar {
   height: 60px;
   border: 0px solid #43c0f6;
@@ -225,9 +251,6 @@ h2 {
 .profileSpan {
   display: inline;
   font-size: 0.8em;
-}
-
-#simple-menu {
 }
 
 .MuiPopover-paper {

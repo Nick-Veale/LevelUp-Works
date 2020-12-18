@@ -1,9 +1,12 @@
 .signUpDiv {
   display: flex;
-  height: 400px;
+  max-height: 400px;
   align-items: center;
   padding: 10%;
   justify-content: space-between;
+<<<<<<< HEAD
+  overflow: hidden;
+=======
 }
 
 .signUpDivh1 {
@@ -11,14 +14,25 @@
   font-weight: 700;
   font-size: 3em;
   max-width: 1000px;
+>>>>>>> 32a6d22850ed7a5f03e3e015da45f46af580b888
 }
 
 .prepareText {
   max-width: 40%;
-  max-height: 400px;
-  font-size: 100%;
+  max-height: 100%;
   object-fit: contain;
   white-space: pre-line;
+}
+
+.prepareText > h1 {
+  font-size: 2.8em;
+  font-weight: 700;
+  color: #767676;
+}
+.prepareText > p {
+  font-size: 1.5em;
+  font-weight: 700;
+  color: #767676;
 }
 
 .signUpDivBoldText {
@@ -60,6 +74,6 @@
   line-height: 15px;
 }
 
-.buttonLabel label {
-  font-size: 1vh;
+.buttonLabel p {
+  font-size: 0.8em;
 }

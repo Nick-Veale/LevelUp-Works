@@ -44,16 +44,15 @@ function Nav() {
   const handleRightDivWhenLoggedIn = () => {
     if (!user) {
       return (
-        <span style={{ width: "200px" }}>
-          <span
-            onClick={() => handleOpen()}
-            style={{ cursor: "pointer", textAlign: "end", fontSize: "0.9em" }}
-          >
-            <AccountCircleIcon style={{ marginRight: "3px" }} />
-            REGISTER | LOGIN
+        <div className="navHomeContainer">
+          <span className="spanstyle">
+            <span className="spanStyle1" onClick={() => handleOpen()}>
+              <AccountCircleIcon />
+              REGISTER | LOGIN
+            </span>
+            <NavModal open={open} handleClose={handleClose} />
           </span>
-          <NavModal open={open} handleClose={handleClose} />
-        </span>
+        </div>
       );
     } else {
       if (user.isTeacher === false) {
